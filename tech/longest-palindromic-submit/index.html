@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="最近过的真的很抓狂，今天终于有点小小时间，可以记录下这个几天前就完成了的事情。我的算法真的很差，就和我的编程能力一样，所以希望可以一点点的提高啦！ 题目Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.Example:1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Longest Palindromic Substring">
+<meta property="og:url" content="https://esther.fun/tech/longest-palindromic-submit/index.html">
+<meta property="og:site_name" content="HELLO_E$THER">
+<meta property="og:description" content="最近过的真的很抓狂，今天终于有点小小时间，可以记录下这个几天前就完成了的事情。我的算法真的很差，就和我的编程能力一样，所以希望可以一点点的提高啦！ 题目Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.Example:1">
+<meta property="og:image" content="https://esther.fun/pics/longest-palindromic-submit-1.png">
+<meta property="og:image" content="https://esther.fun/pics/longest-palindromic-submit-2.png">
+<meta property="article:published_time" content="2017-08-01T17:55:56.000Z">
+<meta property="article:modified_time" content="2021-01-27T08:27:31.405Z">
+<meta property="article:author" content="Esther Li">
+<meta property="article:tag" content="Algorithms">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://esther.fun/pics/longest-palindromic-submit-1.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Longest Palindromic Substring</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/writing/">Writing</a></li>
+         
+          <li><a href="/categories/tech/">Tech</a></li>
+         
+          <li><a href="/books/">📚</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/reading/in-this-complicated-world/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/tech/build-bolg-in-github-and-connect-to-your-website/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://esther.fun/tech/longest-palindromic-submit/" target="_blank" rel="noopener"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://esther.fun/tech/longest-palindromic-submit/&text=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://esther.fun/tech/longest-palindromic-submit/&title=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://esther.fun/tech/longest-palindromic-submit/&is_video=false&description=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Longest Palindromic Substring&body=Check out this article: https://esther.fun/tech/longest-palindromic-submit/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://esther.fun/tech/longest-palindromic-submit/&title=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://esther.fun/tech/longest-palindromic-submit/&title=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://esther.fun/tech/longest-palindromic-submit/&title=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://esther.fun/tech/longest-palindromic-submit/&title=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://esther.fun/tech/longest-palindromic-submit/&name=Longest Palindromic Substring&description=" target="_blank" rel="noopener"><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-1"><span class="toc-number">2.</span> <span class="toc-text">Try No.1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-2"><span class="toc-number">3.</span> <span class="toc-text">Try No.2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-3"><span class="toc-number">4.</span> <span class="toc-text">Try No.3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-4"><span class="toc-number">5.</span> <span class="toc-text">Try No.4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-5"><span class="toc-number">6.</span> <span class="toc-text">Try No.5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-6"><span class="toc-number">7.</span> <span class="toc-text">Try No.6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-7"><span class="toc-number">8.</span> <span class="toc-text">Try No.7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工整写法"><span class="toc-number">9.</span> <span class="toc-text">工整写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最快写法"><span class="toc-number">10.</span> <span class="toc-text">最快写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度"><span class="toc-number">11.</span> <span class="toc-text">复杂度</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Longest Palindromic Substring
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">HELLO_E$THER</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-08-01T17:55:56.000Z" itemprop="datePublished">2017-08-01</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Algorithms/" rel="tag">Algorithms</a>, <a class="tag-link" href="/tags/LeetCode/" rel="tag">LeetCode</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>最近过的真的很抓狂，今天终于有点小小时间，可以记录下这个几天前就完成了的事情。<br>我的算法真的很差，就和我的编程能力一样，所以希望可以一点点的提高啦！</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode.com/problems/longest-palindromic-substring/description/" target="_blank" rel="noopener">题目</a></h2><p>Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.<br>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br></pre></td></tr></table></figure><br>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure></p>
+<p>当然选择js啦！</p>
+<h2 id="Try-No-1"><a href="#Try-No-1" class="headerlink" title="Try No.1"></a>Try No.1</h2><p>js的array有很多fancy的方法，比如整个倒过来，还有各种遍历，forEach, every, map, some等等。<br>从第一个字母开始，一直到最后一个这样一直遍历，找到回文字符串，然后，记录下最长的那个就好啦。</p>
+<p>简单粗暴，一切So Easy！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isP &#x3D; function (s) &#123;</span><br><span class="line">  var aS &#x3D; s.split(&quot;&quot;);</span><br><span class="line">  var aR &#x3D; aS.slice().reverse()</span><br><span class="line">  return aS.every(function(e, index) &#123;</span><br><span class="line">    return e &#x3D;&#x3D;&#x3D; aR[index];</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var longestPalindrome &#x3D; function(s) &#123;</span><br><span class="line">  var result &#x3D; s.substr(0, 1);</span><br><span class="line">  for (var i &#x3D; 0; i &lt; s.length - 1; i++) &#123;</span><br><span class="line">    for (var j &#x3D; i + 1; j &lt;&#x3D; s.length; j++) &#123;</span><br><span class="line">      var a &#x3D; s.substr(i, j);</span><br><span class="line">      if (a.length &gt; result.length &amp;&amp; isP(a)) &#123;</span><br><span class="line">        result &#x3D; a;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这段代码有两个问题：</p>
+<ol>
+<li>混淆了string的substr和substring方法，导致结果会错。<br>比如：longestPalindrome(“abcch”)</li>
+<li>有很多冗余，比如，一位数的字符串肯定是不需要的，只要大于现在已知最长的字符串就好啦。</li>
+</ol>
+<p>但是这段代码居然挂在了“Time Limit Exceeded”上，而不是”Wrong Answer”。</p>
+<h2 id="Try-No-2"><a href="#Try-No-2" class="headerlink" title="Try No.2"></a>Try No.2</h2><p>fix No.1 的问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isP &#x3D; function (s) &#123;</span><br><span class="line">  var aS &#x3D; s.split(&quot;&quot;);</span><br><span class="line">  var aR &#x3D; aS.slice().reverse()</span><br><span class="line">  return aS.every(function(e, index) &#123;</span><br><span class="line">    return e &#x3D;&#x3D;&#x3D; aR[index];</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var longestPalindrome &#x3D; function(s) &#123;</span><br><span class="line">  var result &#x3D; s.substr(0, 1);</span><br><span class="line">  for (var i &#x3D; 0; i &lt; s.length - 1; i++) &#123;</span><br><span class="line">    for (var j &#x3D; result.length + 1; j &lt;&#x3D; s.length - i; j++) &#123;</span><br><span class="line">      var a &#x3D; s.substr(i, j);</span><br><span class="line">      if (isP(a)) &#123;</span><br><span class="line">        result &#x3D; a;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这段代码还是挂在了“Time Limit Exceeded”上。<br>把string转成array这么多次，效率看起来是很低下，每一次都要做转化，要做好多好多次啊！！<br>快想想有啥好办法。<br>有了，直接传个array，这样就不用每次都转啦。</p>
+<h2 id="Try-No-3"><a href="#Try-No-3" class="headerlink" title="Try No.3"></a>Try No.3</h2><p>fix No.2 的问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isP &#x3D; function (a) &#123;</span><br><span class="line">  var aS &#x3D; a;</span><br><span class="line">  var aR &#x3D; a.slice().reverse()</span><br><span class="line">  return aS.every(function(e, index) &#123;</span><br><span class="line">    return e &#x3D;&#x3D;&#x3D; aR[index];</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var longestPalindrome &#x3D; function(s) &#123;</span><br><span class="line">  var aResult &#x3D; s.split(&quot;&quot;);</span><br><span class="line">  var result &#x3D; [aResult[0]];</span><br><span class="line">  for (var i &#x3D; 0; i &lt; s.length - 1; i++) &#123;</span><br><span class="line">    for (var j &#x3D; result.length + 1; j &lt;&#x3D; s.length - i; j++) &#123;</span><br><span class="line">      var a &#x3D; aResult.slice(i, i + j);</span><br><span class="line">      if (isP(a)) &#123;</span><br><span class="line">        result &#x3D; a;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result.join(&quot;&quot;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>和2的结局一摸一样。呜呜。<br>虽然Array的every真的很fancy，但是好像我们并不需要每一个都比，其实我们的需求是只要发现一个不合适的，就可以return false了。</p>
+<h2 id="Try-No-4"><a href="#Try-No-4" class="headerlink" title="Try No.4"></a>Try No.4</h2><p>fix No.3 的问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isP &#x3D; function (a) &#123;</span><br><span class="line">  var aS &#x3D; a;</span><br><span class="line">  var aR &#x3D; a.slice().reverse()</span><br><span class="line">  return !aS.some(function(e, index) &#123;</span><br><span class="line">    return e !&#x3D;&#x3D; aR[index];</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var longestPalindrome &#x3D; function(s) &#123;</span><br><span class="line">  var aResult &#x3D; s.split(&quot;&quot;);</span><br><span class="line">  var result &#x3D; [aResult[0]];</span><br><span class="line">  for (var i &#x3D; 0; i &lt; s.length - 1; i++) &#123;</span><br><span class="line">    for (var j &#x3D; result.length + 1; j &lt;&#x3D; s.length - i; j++) &#123;</span><br><span class="line">      var a &#x3D; aResult.slice(i, i + j);</span><br><span class="line">      if (isP(a)) &#123;</span><br><span class="line">        result &#x3D; a;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result.join(&quot;&quot;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>并没有卵用啊，一点变化都没有。<br>自己写一套吧。</p>
+<h2 id="Try-No-5"><a href="#Try-No-5" class="headerlink" title="Try No.5"></a>Try No.5</h2><p>fix No.4 的问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var isP &#x3D; function (aS) &#123;</span><br><span class="line">  for (var i &#x3D; 0; i &lt; aS.length&#x2F;2; i++) &#123;</span><br><span class="line">    if (aS[i] !&#x3D;&#x3D; aS[aS.length - i - 1]) &#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return true;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var longestPalindrome &#x3D; function(s) &#123;</span><br><span class="line">  var aResult &#x3D; s.split(&quot;&quot;);</span><br><span class="line">  var result &#x3D; [aResult[0]];</span><br><span class="line">  for (var i &#x3D; 0; i &lt; s.length - 1; i++) &#123;</span><br><span class="line">    for (var j &#x3D; result.length + 1; j &lt;&#x3D; s.length - i; j++) &#123;</span><br><span class="line">      var a &#x3D; aResult.slice(i, i + j);</span><br><span class="line">      if (isP(a)) &#123;</span><br><span class="line">        result &#x3D; a;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result.join(&quot;&quot;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>虽然也没什么卵用，但是，好歹前进了一个case。</p>
+<h2 id="Try-No-6"><a href="#Try-No-6" class="headerlink" title="Try No.6"></a>Try No.6</h2><p>看来只能用全新的思路了。<br>一计不成，再生一计。<br>就像我有个同事在发现问题的时候一直会说的那样，OK，我还有个方法。</p>
+<p>搅了搅脑汁，我想到两种方法：</p>
+<ol>
+<li>还是老方法的更新版，两个指针，开始时，i为数组的第一个字符位置，j为数组的最后一个字符位置。<br>（1）指针A从i开始遍历数组，指针B从j往前<br>（2）如果A指向的字符和B指向的字符相同，则指针A往后移一位，指针B向前一位，直到A指向的字符和B指向的字符不相同，或者指针AB相遇。<br>（3）如果指针AB相遇，记录i和j之间的字符串，i加1，重复步骤1-3</li>
+<li>以每个字符为中心，以及两者中间为中心，前后进行比较</li>
+</ol>
+<p>第2种我们后面再说，先实现明显更好实现，更直接的第一种吧。<br>有一些可以优化的小店，比如，当i和j的差距小于已有结果的长度时，其实就可以直接return，不用继续啦。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var longestPalindrome &#x3D; function(s) &#123;</span><br><span class="line">  var aS &#x3D; s.split(&quot;&quot;);</span><br><span class="line">  var result &#x3D; aS[0];</span><br><span class="line">  </span><br><span class="line">  for (var i &#x3D; 0; i &lt; aS.length - result.length; i++) &#123;</span><br><span class="line">    for (var j &#x3D; aS.length - 1; j &gt;&#x3D; i + result.length; j--) &#123;</span><br><span class="line">      var iPointer &#x3D; i;</span><br><span class="line">      var jPointer &#x3D; j;</span><br><span class="line">      while (aS[iPointer] &#x3D;&#x3D;&#x3D; aS[jPointer] &amp;&amp; iPointer &lt;&#x3D; jPointer) &#123;</span><br><span class="line">        iPointer++;</span><br><span class="line">        jPointer--;</span><br><span class="line">      &#125;</span><br><span class="line">      if (iPointer &gt;&#x3D; jPointer) &#123;</span><br><span class="line">        result &#x3D; s.substring(i, j + 1);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;    </span><br><span class="line">  return result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这次总算是过了。<br>可是一看效率统计结果，我脸都绿了。<br><img src="../../../../../pics/longest-palindromic-submit-1.png" alt="统计结果1"></p>
+<h2 id="Try-No-7"><a href="#Try-No-7" class="headerlink" title="Try No.7"></a>Try No.7</h2><p>没事咱还有方法2呢，来详细说说方法2。<br>以每个字符为中心，以及两者中间为中心，前后进行比较。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var longestPalindrome &#x3D; function(s) &#123;</span><br><span class="line">  var aS &#x3D; s.split(&quot;&quot;), i, j, flg;</span><br><span class="line">  var result &#x3D; aS[0];</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F; 以a[i]为中心</span><br><span class="line">  for (i &#x3D; 1; i &lt; aS.length; i++) &#123;</span><br><span class="line">    j &#x3D; 1; </span><br><span class="line">    flag &#x3D; true;</span><br><span class="line">    while (flag) &#123;</span><br><span class="line">      if (aS[i + j] !&#x3D;&#x3D; aS[i - j]) &#123;</span><br><span class="line">        flag &#x3D; false;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        result &#x3D; (result.length &lt;&#x3D; (j*2 +1)) ? s.substring(i-j, i+j+1): result;</span><br><span class="line">        j++;</span><br><span class="line">        if (aS.length &lt;&#x3D; i + j || i - j &lt; 0) &#123;</span><br><span class="line">          flag &#x3D; false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">    </span><br><span class="line">  &#x2F;&#x2F; 以a[i]和a[i+1]为中心</span><br><span class="line">  for (i &#x3D; 0; i &lt; aS.length - 1; i++) &#123;</span><br><span class="line">    j &#x3D; 0;</span><br><span class="line">    flag &#x3D; true;</span><br><span class="line">    while (flag) &#123;</span><br><span class="line">      if (aS[i - j] !&#x3D;&#x3D; aS[i + 1 + j]) &#123;</span><br><span class="line">        flag &#x3D; false;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        result &#x3D; (result.length &lt;&#x3D; (j*2 + 2)) ? s.substring(i-j, i + j + 2): result;</span><br><span class="line">        j++;</span><br><span class="line">        if (aS.length &lt;&#x3D; i + 1 + j || i - j &lt; 0) &#123;</span><br><span class="line">          flag &#x3D; false;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>效率统计结果总算是好了一点点了。没辙了这次。<br><img src="../../../../../pics/longest-palindromic-submit-2.png" alt="统计结果2"></p>
+<h2 id="工整写法"><a href="#工整写法" class="headerlink" title="工整写法"></a>工整写法</h2><p>确实，while (true) 还有用flag的方法是挺低级的，看起来很弱智。<br>看了看大家答案的做法，觉得别人的写法确实更优雅。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var longestPalindrome &#x3D; function(s) &#123;</span><br><span class="line">  var longsubstr1 &#x3D;&quot;&quot;, longsubstr2 &#x3D; &quot;&quot;;</span><br><span class="line">  var maxlen1 &#x3D; 0, maxlen2 &#x3D; 0;</span><br><span class="line">  &#x2F;&#x2F;利用动态规划判断奇数的情况，以中间元素为基准，向两边扩展</span><br><span class="line">  for(var i &#x3D; 0; i &lt; s.length; i++)&#123;</span><br><span class="line">    for(var j &#x3D; 0; i - j &gt;&#x3D; 0 &amp;&amp; i + j &lt; s.length; j++)&#123;</span><br><span class="line">      if(s[i - j] &#x3D;&#x3D; s[i + j])&#123;</span><br><span class="line">        &#x2F;&#x2F;比较长度，只记录更长的子串</span><br><span class="line">        if(maxlen1 &lt; 2 * j + 1)&#123;</span><br><span class="line">          maxlen1 &#x3D; 2 * j + 1;</span><br><span class="line">          longsubstr1 &#x3D; s.substring(i - j, i + j + 1);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      else break;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;&#x2F;利用动态规划再判断偶数的情况，首先当前元素与其后面元素相等，其次再比较两边</span><br><span class="line">  for(var m &#x3D; 0; m &lt; s.length; m++)&#123;</span><br><span class="line">    if(s[m] &#x3D;&#x3D; s[m + 1])&#123;</span><br><span class="line">      for(var n &#x3D; 0; m - n &gt;&#x3D; 0 &amp;&amp; m + 1 + n &lt; s.length; n++)&#123;</span><br><span class="line">        if(s[m - n] &#x3D;&#x3D; s[m + 1 + n])&#123;</span><br><span class="line">          if(maxlen2 &lt; 2 * n + 2)&#123;</span><br><span class="line">            maxlen2 &#x3D; 2 * n + 2;</span><br><span class="line">            longsubstr2 &#x3D; s.substring(m - n , m + 2 + n);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;&#x2F; return longsubstr2;</span><br><span class="line">    return (longsubstr1.length &gt; longsubstr2.length) ? longsubstr1 : longsubstr2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="最快写法"><a href="#最快写法" class="headerlink" title="最快写法"></a>最快写法</h2><p>再看看效率最高的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * @param &#123;string&#125; s</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> *&#x2F;</span><br><span class="line">var longestPalindrome &#x3D; function(s) &#123;</span><br><span class="line">  &#x2F;&#x2F;去掉空和单个</span><br><span class="line">  if(s &#x3D;&#x3D;&#x3D; &quot;&quot;) &#123;</span><br><span class="line">    return &quot;&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  if(s.length &#x3D;&#x3D;&#x3D; 1) &#123;</span><br><span class="line">    return s;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  var min_start&#x3D;0;</span><br><span class="line">  var max_len&#x3D;1;</span><br><span class="line">  for( let i &#x3D; 0; i &lt; s.length;) &#123;</span><br><span class="line">    if ( s.length - i &lt;&#x3D; max_len&#x2F;2) &#123;</span><br><span class="line">      break;</span><br><span class="line">    &#125;</span><br><span class="line">    var j&#x3D;i,k&#x3D;i;</span><br><span class="line">    &#x2F;&#x2F; [机智]去掉重复的</span><br><span class="line">    while( k &lt; s.length-1 &amp;&amp; s[k+1] &#x3D;&#x3D;&#x3D; s[k] ) &#123;</span><br><span class="line">      k++;</span><br><span class="line">    &#125;</span><br><span class="line">    while( k &lt; s.length-1 &amp;&amp; j&gt;0 &amp;&amp; s[k+1] &#x3D;&#x3D;&#x3D; s[j-1] ) &#123;</span><br><span class="line">      k++;</span><br><span class="line">      j--;</span><br><span class="line">    &#125;</span><br><span class="line">    var new_len &#x3D; k-j+1;</span><br><span class="line">    if ( new_len &gt; max_len ) &#123;</span><br><span class="line">      min_start &#x3D; j;</span><br><span class="line">      max_len &#x3D; new_len;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return s.substr(min_start,max_len)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><br>其实也是这样的一个思路，以某一个字母为中心。机智之处就在于，他通过判断是否有重复的字段，来解决奇偶的问题，这样不用遍历两次了，真是机智啊！！</p>
+<h2 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h2><p>计算复杂度一直是个让我头大的问题啊啊啊。<br>不过，我们要迎难而上，算平均复杂度对我来说，还是要求太高了，我们来比较一个字符串长度为n的情况下的最坏情况复杂度吧。<br>假设一次比较的复杂度为1，那么前四种方法都是n的平方级别，而重写之后的……<br>还是不会算啊……呜呜呜……谁来救救我……</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/writing/">Writing</a></li>
+         
+          <li><a href="/categories/tech/">Tech</a></li>
+         
+          <li><a href="/books/">📚</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-1"><span class="toc-number">2.</span> <span class="toc-text">Try No.1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-2"><span class="toc-number">3.</span> <span class="toc-text">Try No.2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-3"><span class="toc-number">4.</span> <span class="toc-text">Try No.3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-4"><span class="toc-number">5.</span> <span class="toc-text">Try No.4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-5"><span class="toc-number">6.</span> <span class="toc-text">Try No.5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-6"><span class="toc-number">7.</span> <span class="toc-text">Try No.6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Try-No-7"><span class="toc-number">8.</span> <span class="toc-text">Try No.7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工整写法"><span class="toc-number">9.</span> <span class="toc-text">工整写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最快写法"><span class="toc-number">10.</span> <span class="toc-text">最快写法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复杂度"><span class="toc-number">11.</span> <span class="toc-text">复杂度</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://esther.fun/tech/longest-palindromic-submit/" target="_blank" rel="noopener"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://esther.fun/tech/longest-palindromic-submit/&text=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://esther.fun/tech/longest-palindromic-submit/&title=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://esther.fun/tech/longest-palindromic-submit/&is_video=false&description=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Longest Palindromic Substring&body=Check out this article: https://esther.fun/tech/longest-palindromic-submit/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://esther.fun/tech/longest-palindromic-submit/&title=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://esther.fun/tech/longest-palindromic-submit/&title=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://esther.fun/tech/longest-palindromic-submit/&title=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://esther.fun/tech/longest-palindromic-submit/&title=Longest Palindromic Substring" target="_blank" rel="noopener"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://esther.fun/tech/longest-palindromic-submit/&name=Longest Palindromic Substring&description=" target="_blank" rel="noopener"><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2021 Esther Li
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories/writing/">Writing</a></li>
+         
+          <li><a href="/categories/tech/">Tech</a></li>
+         
+          <li><a href="/books/">📚</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+
+<!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-102069354-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'estherlzx';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
