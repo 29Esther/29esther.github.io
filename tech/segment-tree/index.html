@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Segment Tree 线段树 - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="开篇废话做题遇到了线段树，三脸懵逼，赶紧的吧！
+基础
+...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Segment Tree 线段树</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">Segment Tree 线段树</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 16, 2022</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/tech/segment-tree/" class="leancloud-counter" data-flag-title="Segment Tree 线段树"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/tech/segment-tree/" class="leancloud-like" data-flag-title="Segment Tree 线段树"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>9904</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <h1 id="开篇废话"><a href="#开篇废话" class="headerlink" title="开篇废话"></a>开篇废话</h1><p>做题遇到了线段树，三脸懵逼，赶紧的吧！</p>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><ul>
+<li>线段树是一棵二叉树</li>
+<li>构造线段树的时间复杂度和空间复杂度都为O(n)</li>
+<li>二叉树的节点区间定义，<code>[start, end]</code>代表节点的区间范围，<code>max / min / sum</code>是节点在<code>[start, end]</code>区间上的最值, <code>left</code>, <code>right</code>是当前节点区间划分之后的左右节点区间。</li>
+<li>维护线段树中存在的区间中最值，有利于高效查询任何区间的最值，O(logN)。</li>
+<li>单点更新：单点更新需要从叶子节点一路走到根节点, 去更新线段树上的值。因为线段树的高度为log(n),所以更新序列中一个节点的复杂度为log(n)</li>
+<li>使用Lazy Propagation 懒加载实现区间更新，期望复杂度降到了O(logn) 的级别或更低</li>
+<li>对于值域范围不确定的处理技巧：（1）离散化 + 线段树；（2）动态开点: 不事前构造空树，而是在插入操作 update 和查询操作 query 时根据访问需要进行「开点」操作，线段树的插入和查询都是log(n)的，因此我们在单次操作的时候，最多会创建数量级为log(n)的点，因此空间复杂度为O(mlog(n))。</li>
+</ul>
+<h1 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h1><h2 id="树的实现"><a href="#树的实现" class="headerlink" title="树的实现"></a>树的实现</h2><h3 id="节点区间定义"><a href="#节点区间定义" class="headerlink" title="节点区间定义"></a>节点区间定义</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// [start, end] 代表节点的区间范围</span><br><span class="hljs-comment">// max 是节点在(start,end)区间上的最大值</span><br><span class="hljs-comment">// left , right 是当前节点区间划分之后的左右节点区间</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SegmentTreeNode</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> start, end, max;<br>    <span class="hljs-keyword">public</span> SegmentTreeNode left, right;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">SegmentTreeNode</span><span class="hljs-params">(<span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end, <span class="hljs-type">int</span> max)</span> &#123;<br>        <span class="hljs-built_in">this</span>.start = start;<br>        <span class="hljs-built_in">this</span>.end = end;<br>        <span class="hljs-built_in">this</span>.max = max<br>        <span class="hljs-built_in">this</span>.left = <span class="hljs-built_in">this</span>.right = <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="构造代码"><a href="#构造代码" class="headerlink" title="构造代码"></a>构造代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 构造的代码及注释</span><br><span class="hljs-keyword">public</span> SegmentTreeNode <span class="hljs-title function_">build</span><span class="hljs-params">(<span class="hljs-type">int</span>[] A)</span> &#123;<br>    <span class="hljs-comment">// write your code here</span><br>    <span class="hljs-keyword">return</span> buildhelper(<span class="hljs-number">0</span>, A.length - <span class="hljs-number">1</span>, A);<br>&#125;<br><span class="hljs-keyword">public</span> SegmentTreeNode <span class="hljs-title function_">buildhelper</span><span class="hljs-params">(<span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right, <span class="hljs-type">int</span>[] A)</span>&#123;<br>    <span class="hljs-keyword">if</span>(left &gt; right)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>    <span class="hljs-type">SegmentTreeNode</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SegmentTreeNode</span>(left, right, A[left]); <span class="hljs-comment">// 根据节点区间的左边界的序列值为节点赋初值</span><br>    <span class="hljs-keyword">if</span>(left == right)&#123;<br>        <span class="hljs-keyword">return</span> root; <span class="hljs-comment">// 如果左边界和右边界相等,节点左边界的序列值就是线段树节点的接节点值</span><br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) / <span class="hljs-number">2</span>; <span class="hljs-comment">// 划分当前区间的左右区间</span><br>    root.left = buildhelper(left, mid, A);<br>    root.right = buildhelper(mid + <span class="hljs-number">1</span>, right, A);<br>    root.max = Math.max(root.left.max, root.right.max); <span class="hljs-comment">// 根据节点区间的左右区间的节点值得到当前节点的节点值</span><br>    <span class="hljs-keyword">return</span> root;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="区间查询的代码"><a href="#区间查询的代码" class="headerlink" title="区间查询的代码"></a>区间查询的代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">query</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;<br>    <span class="hljs-keyword">if</span> (start &lt;= root.start &amp;&amp; root.end &lt;= end) &#123;<br>        <span class="hljs-comment">// 如果查询区间在当前节点的区间之内,直接输出结果</span><br>        <span class="hljs-keyword">return</span> root.max;<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (root.start + root.end) / <span class="hljs-number">2</span>; <span class="hljs-comment">// 将当前节点区间分割为左右2个区间的分割线</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> Integer.MIN_VALUE; <span class="hljs-comment">// 给结果赋初值</span><br>    <span class="hljs-keyword">if</span> (mid &gt;= start) &#123;   <span class="hljs-comment">// 如果查询区间和左边节点区间有交集,则寻找查询区间在左边区间上的最大值</span><br>        ans = Math.max(ans, query(root.left, start, end));<br>    &#125;<br>    <span class="hljs-keyword">if</span> (mid + <span class="hljs-number">1</span> &lt;= end) &#123; <span class="hljs-comment">// 如果查询区间和右边节点区间有交集,则寻找查询区间在右边区间上的最大值</span><br>        ans = Math.max(ans, query(root.right, start, end));<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans; <span class="hljs-comment">// 返回查询结果</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="单点更新的代码"><a href="#单点更新的代码" class="headerlink" title="单点更新的代码"></a>单点更新的代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">modify</span><span class="hljs-params">(SegmentTreeNode root, <span class="hljs-type">int</span> index, <span class="hljs-type">int</span> value)</span> &#123;<br>    <span class="hljs-keyword">if</span>(root.start == root.end &amp;&amp; root.start == index) &#123; <span class="hljs-comment">// 找到被改动的叶子节点</span><br>        root.max = value; <span class="hljs-comment">// 改变value值</span><br>        <span class="hljs-keyword">return</span> ;<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (root.start + root.end) / <span class="hljs-number">2</span>; <span class="hljs-comment">// 将当前节点区间分割为2个区间的分割线</span><br>    <span class="hljs-keyword">if</span>(index &lt;= mid)&#123; <span class="hljs-comment">// 如果index在当前节点的左边</span><br>        modify(root.left, index, value); <span class="hljs-comment">// 递归操作</span><br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 如果index在当前节点的右边</span><br>        modify(root.right, index, value); <span class="hljs-comment">// 递归操作</span><br>    &#125;<br>    root.max = Math.max(root.left.max, root.right.max); <span class="hljs-comment">// 可能对当前节点的影响</span><br>    <span class="hljs-keyword">return</span> ;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="数组的实现"><a href="#数组的实现" class="headerlink" title="数组的实现"></a>数组的实现</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">NumArray</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>  <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>  <span class="hljs-type">int</span>[] seg = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">4</span> * n]; <span class="hljs-comment">// 一般去数组长度的四倍</span><br>  build(nums, <span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>, seg, <span class="hljs-number">0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="构造代码-1"><a href="#构造代码-1" class="headerlink" title="构造代码"></a>构造代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// build segment tree, set the value of seg[idx]</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">build</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end, <span class="hljs-type">int</span>[] seg, <span class="hljs-type">int</span> idx)</span> &#123;<br>    <span class="hljs-keyword">if</span> (start == end) &#123;<br>      seg[idx] = nums[start];<br>      <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> start + (end - start) / <span class="hljs-number">2</span>;<br>    build(nums, start, mid, seg, <span class="hljs-number">2</span> * idx + <span class="hljs-number">1</span>);<br>    build(nums, mid + <span class="hljs-number">1</span>, end, seg, <span class="hljs-number">2</span> * idx + <span class="hljs-number">2</span>);<br>    seg[idx] = seg[<span class="hljs-number">2</span> * idx + <span class="hljs-number">1</span>] + seg[<span class="hljs-number">2</span> * idx + <span class="hljs-number">2</span>];<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="区间查询的代码-1"><a href="#区间查询的代码-1" class="headerlink" title="区间查询的代码"></a>区间查询的代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">query</span><span class="hljs-params">(<span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end, <span class="hljs-type">int</span> queryStart, <span class="hljs-type">int</span> queryEnd, <span class="hljs-type">int</span>[] seg, <span class="hljs-type">int</span> idx)</span> &#123;<br>  <span class="hljs-keyword">if</span> (queryStart &lt;= start &amp;&amp; end &lt;= queryEnd) <span class="hljs-keyword">return</span> seg[idx];<br>  <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>  <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> start + (end - start) / <span class="hljs-number">2</span>;<br>  <span class="hljs-keyword">if</span> (mid &gt;= queryStart) &#123;<br>    ans += query(start, mid, queryStart, queryEnd, seg, <span class="hljs-number">2</span> * idx + <span class="hljs-number">1</span>);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (mid + <span class="hljs-number">1</span> &lt;= queryEnd) &#123;<br>    ans += query(mid + <span class="hljs-number">1</span>, end, queryStart, queryEnd, seg, <span class="hljs-number">2</span> * idx + <span class="hljs-number">2</span>);<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="单点更新的代码-1"><a href="#单点更新的代码-1" class="headerlink" title="单点更新的代码"></a>单点更新的代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">(<span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end, <span class="hljs-type">int</span> indexToBeUpdated, <span class="hljs-type">int</span> newVal, <span class="hljs-type">int</span>[] seg, <span class="hljs-type">int</span> idx)</span> &#123;<br>  <span class="hljs-keyword">if</span> (start == end) &#123;<br>    seg[idx] = newVal;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> start + (end - start) / <span class="hljs-number">2</span>;<br>  <span class="hljs-keyword">if</span> (indexToBeUpdated &lt;= mid) &#123;<br>    update(start, mid, indexToBeUpdated, newVal, seg, <span class="hljs-number">2</span> * idx + <span class="hljs-number">1</span>);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    update(mid + <span class="hljs-number">1</span>, end, indexToBeUpdated, newVal, seg, <span class="hljs-number">2</span> * idx + <span class="hljs-number">2</span>);<br>  &#125;<br>  seg[idx] = seg[<span class="hljs-number">2</span> * idx + <span class="hljs-number">1</span>] + seg[<span class="hljs-number">2</span> * idx + <span class="hljs-number">2</span>];<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Lazy-Propagation-懒加载"><a href="#Lazy-Propagation-懒加载" class="headerlink" title="Lazy Propagation 懒加载"></a>Lazy Propagation 懒加载</h2><h3 id="区间懒更新"><a href="#区间懒更新" class="headerlink" title="区间懒更新"></a>区间懒更新</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// update [left, right] by val</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateLazySegTree</span><span class="hljs-params">(<span class="hljs-type">int</span> index, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right, <span class="hljs-type">int</span> val)</span> &#123;<br>  <span class="hljs-keyword">if</span> (lazy[index] != <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// this node is lazy</span><br>    seg[index] += (end - start + <span class="hljs-number">1</span>) * lazy[index]; <span class="hljs-comment">// update current node by removing laziness</span><br>    <span class="hljs-keyword">if</span> (start != end) &#123; <span class="hljs-comment">// update lazy[] for children nodes</span><br>      lazy[<span class="hljs-number">2</span> * index + <span class="hljs-number">1</span>] += lazy[index];<br>      lazy[<span class="hljs-number">2</span> * index + <span class="hljs-number">2</span>] += lazy[index];<br>    &#125;<br>    lazy[index] = <span class="hljs-number">0</span>; <span class="hljs-comment">// current node processed. No longer lazy</span><br>  &#125;<br>  <span class="hljs-keyword">if</span> (left &lt;= start &amp;&amp; end &lt;= right) &#123; <span class="hljs-comment">// segment is fully within update range</span><br>    seg[index] += (end - start + <span class="hljs-number">1</span>) * val; <span class="hljs-comment">// update segment</span><br>    <span class="hljs-keyword">if</span> (start != end) &#123; <span class="hljs-comment">// update lazy[] for children</span><br>      lazy[<span class="hljs-number">2</span> * index + <span class="hljs-number">1</span>] += val;<br>      lazy[<span class="hljs-number">2</span> * index + <span class="hljs-number">2</span>] += val;<br>    &#125;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> start + (end - start) / <span class="hljs-number">2</span>; <span class="hljs-comment">// recurse deeper for appropriate child</span><br><br>  <span class="hljs-keyword">if</span> (left &lt;= mid) &#123;<br>    updateLazySegTree(<span class="hljs-number">2</span> * index + <span class="hljs-number">1</span>, start, mid, left, right, val);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (mid + <span class="hljs-number">1</span> &lt;= right) &#123;<br>    updateLazySegTree(<span class="hljs-number">2</span> * index + <span class="hljs-number">2</span>, mid + <span class="hljs-number">1</span>, end, left, right, val);<br>  &#125;<br>  <span class="hljs-comment">// merge updates</span><br>  seg[index] = seg[<span class="hljs-number">2</span> * index + <span class="hljs-number">1</span>] + sef[<span class="hljs-number">2</span> * index + <span class="hljs-number">2</span>];<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="区间懒查询"><a href="#区间懒查询" class="headerlink" title="区间懒查询"></a>区间懒查询</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// query [left, right]</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">queryLazySegTree</span><span class="hljs-params">(<span class="hljs-type">int</span> index, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;<br>  <span class="hljs-keyword">if</span> (lazy[index] != <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// this node is lazy</span><br>    seg[index] += (end - start + <span class="hljs-number">1</span>) * lazy[index]; <span class="hljs-comment">// normalize current node by removing laziness</span><br>    <span class="hljs-keyword">if</span> (start != end) &#123; <span class="hljs-comment">// update lazy[] for children nodes</span><br>      lazy[<span class="hljs-number">2</span> * index + <span class="hljs-number">1</span>] += lazy[index];<br>      lazy[<span class="hljs-number">2</span> * index + <span class="hljs-number">2</span>] += lazy[index];<br>    &#125;<br>    lazy[index] = <span class="hljs-number">0</span>; <span class="hljs-comment">// current node processed. No longer lazy</span><br>  &#125;<br>  <span class="hljs-keyword">if</span> (left &lt;= start &amp;&amp; end &lt;= right) <span class="hljs-comment">// segment completely inside range</span><br>    <span class="hljs-keyword">return</span> seg[index];<br>  <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> start + (end - start) / <span class="hljs-number">2</span>; <span class="hljs-comment">// partial overlap of current segment and queried range. Recurse deeper.</span><br>  <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">if</span> (left &lt;= mid)<br>    ans += queryLazySegTree(<span class="hljs-number">2</span> * index + <span class="hljs-number">1</span>, start, mid, left, right);<br>  <span class="hljs-keyword">if</span> (mid+<span class="hljs-number">1</span> &lt;= right)<br>    ans += queryLazySegTree(<span class="hljs-number">2</span> * index + <span class="hljs-number">2</span>, mid + <span class="hljs-number">1</span>, right, left, right);<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="动态开点"><a href="#动态开点" class="headerlink" title="动态开点"></a>动态开点</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// LC: 699</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>  <span class="hljs-type">int</span> <span class="hljs-variable">N</span> <span class="hljs-operator">=</span> (<span class="hljs-type">int</span>)<span class="hljs-number">1e9</span>;<br>  <span class="hljs-keyword">class</span> <span class="hljs-title class_">Node</span> &#123;<br>      Node l, r;<br>      <span class="hljs-type">int</span> val, lazy;<br>  &#125;<br>  <span class="hljs-type">Node</span> <span class="hljs-variable">root</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>();<br>  <span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">fallingSquares</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] positions)</span> &#123;<br>      List&lt;Integer&gt; ans = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>      <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] info : positions) &#123;<br>          <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> info[<span class="hljs-number">0</span>], h = info[<span class="hljs-number">1</span>], cur = query(root, <span class="hljs-number">0</span>, N, x, x + h - <span class="hljs-number">1</span>);<br>          update(root, <span class="hljs-number">0</span>, N, x, x + h - <span class="hljs-number">1</span>, cur + h);<br>          ans.add(root.val);<br>      &#125;<br>      <span class="hljs-keyword">return</span> ans;<br>  &#125;<br>  <br>  <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">query</span><span class="hljs-params">(Node node, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;<br>      <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>      updateLazy(node, start, end);<br>      <span class="hljs-keyword">if</span> (left &lt;= start &amp;&amp; end &lt;= right) <span class="hljs-keyword">return</span> node.val;<br>      <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> start + (end - start) / <span class="hljs-number">2</span>;<br>      <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>      <span class="hljs-keyword">if</span> (left &lt;= mid) &#123;<br>          <span class="hljs-keyword">if</span> (node.l == <span class="hljs-literal">null</span>)  &#123;<br>              node.l = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>();<br>              node.l.val = node.val;<br>          &#125;<br>          ans = query(node.l, start, mid, left, right);<br>      &#125;<br>      <span class="hljs-keyword">if</span> (mid + <span class="hljs-number">1</span> &lt;= right) &#123;<br>          <span class="hljs-keyword">if</span> (node.r == <span class="hljs-literal">null</span>)  &#123;<br>              node.r = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>();<br>              node.r.val = node.val;<br>          &#125;<br>          ans = Math.max(ans, query(node.r, mid + <span class="hljs-number">1</span>, end, left, right));<br>      &#125;<br>      <span class="hljs-keyword">return</span> ans;<br>  &#125;<br>  <br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateLazy</span><span class="hljs-params">(Node node, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;<br>      <span class="hljs-keyword">if</span> (node.lazy != <span class="hljs-number">0</span>) &#123;<br>          node.val = node.lazy;<br>          <span class="hljs-keyword">if</span> (start != end) &#123;<br>              <span class="hljs-keyword">if</span> (node.l != <span class="hljs-literal">null</span>) node.l.lazy = node.lazy;<br>              <span class="hljs-keyword">if</span> (node.r != <span class="hljs-literal">null</span>) node.r.lazy = node.lazy;<br>          &#125;<br>          node.lazy = <span class="hljs-number">0</span>;<br>      &#125;<br>  &#125;<br>  <br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">(Node node, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right, <span class="hljs-type">int</span> newValue)</span> &#123;<br>      <span class="hljs-keyword">if</span> (node == <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span>;<br>      <span class="hljs-keyword">if</span> (left &lt;= start &amp;&amp; end &lt;= right) &#123;<br>          node.val = newValue;<br>          node.lazy = <span class="hljs-number">0</span>;<br>          <span class="hljs-keyword">if</span> (node.l != <span class="hljs-literal">null</span>) node.l.lazy = newValue;<br>          <span class="hljs-keyword">if</span> (node.r != <span class="hljs-literal">null</span>) node.r.lazy = newValue;<br>          <span class="hljs-keyword">return</span>;<br>      &#125;<br>      <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> start + (end - start) / <span class="hljs-number">2</span>;<br>      <span class="hljs-keyword">if</span> (node.l == <span class="hljs-literal">null</span>) &#123;<br>          node.l = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>();<br>          node.l.val = node.val;<br>      &#125;<br>      <span class="hljs-keyword">if</span> (node.r == <span class="hljs-literal">null</span>) &#123;<br>          node.r = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>();<br>          node.r.val = node.val;<br>      &#125;<br>      <span class="hljs-keyword">if</span> (left &lt;= mid) &#123;<br>          update(node.l, start, mid, left, right, newValue);<br>      &#125;<br>      <span class="hljs-keyword">if</span> (mid + <span class="hljs-number">1</span> &lt;= right) &#123;<br>          update(node.r, mid + <span class="hljs-number">1</span>, end, left, right, newValue);<br>      &#125;<br>      node.val = Math.max(node.l.val, node.r.val);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/range-sum-query-immutable/">303. Range Sum Query - Immutable</a> Easy，拿来上手</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/range-sum-query-mutable/">307. Range Sum Query - Mutable</a> 在上一提的代码基础上，加修改，Easy</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/range-addition/">370. Range Addition</a> 练手区间更新，建议在303的基础上修改，基础代码都一样，可以考虑去掉seg数组</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/falling-squares/">699. Falling Squares</a> 练习对于值域范围不确定的处理技巧1:离散化 + 线段树，非强制在线：将值域映射到较小的空间，然后套用固定空间的线段树求解；2:动态开点</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/range-sum-query-2d-mutable/">308. Range Sum Query 2D - Mutable</a> 训练下思维转化，对于二维数组我们应该咋办……</li>
+</ul>
+<h2 id="todo"><a href="#todo" class="headerlink" title="todo"></a>todo</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/the-skyline-problem/">218. The Skyline Problem</a> &#x2F;&#x2F; todo: 没时间了，写一题实在是费老大劲了！放弃</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/count-integers-in-intervals/">2276. Count Integers in Intervals</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/amount-of-new-area-painted-each-day/">2158. Amount of New Area Painted Each Day</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/my-calendar-iii/">732. My Calendar III</a></li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/articles/a-recursive-approach-to-segment-trees-range-sum-queries-lazy-propagation/">Recursive Approach to Segment Trees</a></li>
+<li><a target="_blank" rel="noopener" href="https://seramasumi.github.io/docs/Algorithms/mc-%E5%BE%AE%E8%AF%BE%E5%A0%82-%E7%BA%BF%E6%AE%B5%E6%A0%91_Segment_Tree.html">线段树 by Sera Masumi??</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/91f2c503e62f">Segment Tree 线段树 原理及实现</a></li>
+<li><a target="_blank" rel="noopener" href="https://maratona.ic.unicamp.br/MaratonaVerao2016/material/segment_tree_lecture.pdf">Segment tree - Theory and applications</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU4NDE3MTEyMA==&mid=2247491187&idx=2&sn=bb2d8b7e89c535914da8107387e951a2">【线段树专题】求解常见「值域爆炸，查询有限」区间问题的几种方式</a></li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/tech/interesting-series/"><i class="iconfont iconleft"></i>系列特辑</a>
+    <a href="/tech/quickselect/">Quick Select 快速选择<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E7%AF%87%E5%BA%9F%E8%AF%9D"><span class="toc-text">开篇废话</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-text">基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E7%89%88"><span class="toc-text">模版</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">树的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E5%8C%BA%E9%97%B4%E5%AE%9A%E4%B9%89"><span class="toc-text">节点区间定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E4%BB%A3%E7%A0%81"><span class="toc-text">构造代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E6%9F%A5%E8%AF%A2%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-text">区间查询的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-text">单点更新的代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">数组的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E4%BB%A3%E7%A0%81-1"><span class="toc-text">构造代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E6%9F%A5%E8%AF%A2%E7%9A%84%E4%BB%A3%E7%A0%81-1"><span class="toc-text">区间查询的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BB%A3%E7%A0%81-1"><span class="toc-text">单点更新的代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lazy-Propagation-%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-text">Lazy Propagation 懒加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E6%87%92%E6%9B%B4%E6%96%B0"><span class="toc-text">区间懒更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E6%87%92%E6%9F%A5%E8%AF%A2"><span class="toc-text">区间懒查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%BC%80%E7%82%B9"><span class="toc-text">动态开点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-text">练习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#todo"><span class="toc-text">todo</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,543 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Understanding Bitwise Operators - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="
+&amp; (bitwise AND)
+| (bit...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Understanding Bitwise Operators</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">Understanding Bitwise Operators</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>October 10, 2019</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/tech/understanding-bitwise-operators/" class="leancloud-counter" data-flag-title="Understanding Bitwise Operators"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/tech/understanding-bitwise-operators/" class="leancloud-like" data-flag-title="Understanding Bitwise Operators"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2791</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <ul>
+<li>&amp; (bitwise AND)</li>
+<li>| (bitwise OR)</li>
+<li>~ (bitwise NOT)</li>
+<li>^ (bitwise XOR)</li>
+<li>&lt;&lt; (bitwise left shift)</li>
+<li>&gt;&gt; (bitwise right shift)</li>
+<li>&gt;&gt;&gt; (bitwise unsigned right shift)</li>
+<li>&amp;&#x3D; (bitwise AND assignment)</li>
+<li>|&#x3D; (bitwise OR assignment)</li>
+<li>^&#x3D; (bitwise XOR assignment)</li>
+<li>&lt;&lt;&#x3D; (bitwise left shift and assignment)</li>
+<li>&gt;&gt;&#x3D; (bitwise right shift and assignment)</li>
+<li>&gt;&gt;&gt;&#x3D; (bitwise unsigned right shift and assignment)</li>
+</ul>
+<h1 id="与"><a href="#与" class="headerlink" title="&amp; 与"></a>&amp; 与</h1><p>0 &amp; 0 &#x3D; 0<br>0 &amp; 1 &#x3D; 0<br>1 &amp; 1 &#x3D; 1<br>与1在一起，保留自己，与0(您)一起，奉献一生</p>
+<p>Usage: 奇偶检查</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> randInt = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>()*<span class="hljs-number">1000</span>);<br><span class="hljs-keyword">if</span>(randInt &amp; <span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-title function_">trace</span>(<span class="hljs-string">&quot;Odd number.&quot;</span>);<br>&#125; <span class="hljs-keyword">else</span><br>&#123;<br>    <span class="hljs-title function_">trace</span>(<span class="hljs-string">&quot;Even number.&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="或"><a href="#或" class="headerlink" title="| 或"></a>| 或</h1><p>0 | 0 &#x3D; 0<br>0 | 1 &#x3D; 1<br>1 | 1 &#x3D; 1<br>或1变1，或0(您)还是自己</p>
+<p>Usage: 条件判断</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> option1 = <span class="hljs-number">1</span>, option2 = <span class="hljs-number">2</span>, option3 = <span class="hljs-number">4</span>, option4 = <span class="hljs-number">8</span>; <br><br><span class="hljs-keyword">var</span> determineConditions = <span class="hljs-keyword">function</span> (<span class="hljs-params">options</span>) &#123;<br>  <span class="hljs-keyword">if</span> (options &amp; option1) &#123;<br>    <span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;option1&quot;</span>);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (options &amp; option2) &#123;<br>    <span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;option2&quot;</span>);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (options &amp; option3) &#123;<br>    <span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;option3&quot;</span>);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (options &amp; option4) &#123;<br>    <span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;option4&quot;</span>);<br>  &#125;<br>&#125;<br><br><span class="hljs-title function_">determineConditions</span>(option1 | option3);<br></code></pre></td></tr></table></figure>
+
+<h1 id="非"><a href="#非" class="headerlink" title="~ 非"></a>~ 非</h1><p>~0 &#x3D; 1<br>~1 &#x3D; 0</p>
+<p>Usage: 补数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> num = <span class="hljs-number">37</span>, cnum = ~num + <span class="hljs-number">1</span>; <br><span class="hljs-title function_">log</span>(cnum + num === <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+
+<h1 id="异或"><a href="#异或" class="headerlink" title="^ 异或"></a>^ 异或</h1><p>0 ^ 0 &#x3D; 0<br>0 ^ 1 &#x3D; 1<br>1 ^ 1 &#x3D; 0</p>
+<p>Properties:</p>
+<ul>
+<li>0 ^ N &#x3D; N, N ^ N &#x3D; 0</li>
+<li>交换律和结合律: a ^ b &#x3D; b ^ a, a ^ b ^ c &#x3D; a ^ (b ^ c)</li>
+</ul>
+<p>Usage: </p>
+<ul>
+<li>交换两个数<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">a = a ^ b;<br>b = a ^ b;<br>a = a ^ b; <span class="hljs-comment">// a, b 值交换</span><br></code></pre></td></tr></table></figure></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/single-number/">Single Number</a><br>Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">nums.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">n,a</span>) =&gt;</span> a^n, <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="左移"><a href="#左移" class="headerlink" title="&lt;&lt; 左移"></a>&lt;&lt; 左移</h1><p>a &lt;&lt; b is shifting the number a to the left by b places, and add 0 to the last b position<br>a &lt;&lt; b &#x3D;&#x3D; a * Math.pow(2,b)</p>
+<p>Usage: 乘以2的倍数</p>
+<h1 id="右移"><a href="#右移" class="headerlink" title="&gt;&gt; 右移"></a>&gt;&gt; 右移</h1><p>a &gt;&gt; b is shifting the number a to the right by b places, and add 0 to the last b position<br>a &gt;&gt; b &#x3D;&#x3D; a &#x2F; Math.pow(2,b)</p>
+<h1 id="无符号右移，逻辑右移"><a href="#无符号右移，逻辑右移" class="headerlink" title="&gt;&gt;&gt; 无符号右移，逻辑右移"></a>&gt;&gt;&gt; 无符号右移，逻辑右移</h1><p>a &gt;&gt;&gt; b is shifting the number a to the right by b places, and add 0 to position.</p>
+<h1 id="其他常见技巧"><a href="#其他常见技巧" class="headerlink" title="其他常见技巧"></a>其他常见技巧</h1><h2 id="n-n-1"><a href="#n-n-1" class="headerlink" title="n &amp; (n-1)"></a>n &amp; (n-1)</h2><p>移除二进制数n中最低位的1</p>
+<blockquote>
+<p>假设 n 的二进制表示为：a10⋯0，其中 a 表示若干个高位，1 表示最低位的1，0⋯0 表示后面的若干个0，那么 n-1 的二进制表示为：a01⋯1，将 a10⋯0 与 a01⋯1 进行按位与运算，高位 a 不变，在这之后的所有位都会变为0，这样我们就将最低位的那个1移除了。</p>
+</blockquote>
+<p>练习：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-1-bits/">191. Number of 1 Bits</a></li>
+</ul>
+<h2 id="n-n-n-n-1"><a href="#n-n-n-n-1" class="headerlink" title="n &amp; (-n) &#x2F; n &amp; (~n + 1)"></a>n &amp; (-n) &#x2F; n &amp; (~n + 1)</h2><p>直接获取n二进制表示的最低位的1</p>
+<blockquote>
+<p>假设 n 的二进制表示为：a10⋯0，其中 a 表示若干个高位，1 表示最低位的1，0⋯0 表示后面的若干个0，那么 -n 的二进制表示为：(ā01⋯1)+(1) &#x3D; (ā10⋯0)，将 a10⋯0 与 ā10⋯0 进行按位与运算，高位全部变为0，最低位的1以及之后的所有0不变，这样我们就获取了n二进制表示的最低位的1。</p>
+</blockquote>
+<h1 id="更多练习"><a href="#更多练习" class="headerlink" title="更多练习"></a>更多练习</h1><h2 id="EASY"><a href="#EASY" class="headerlink" title="EASY"></a>EASY</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-bits/">190. Reverse Bits</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/power-of-two/">231. Power of Two</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sum-of-two-integers/">371. Sum of Two Integers</a></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sum-of-two-integers/discuss/84278/A-summary%3A-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently">https://leetcode.com/problems/sum-of-two-integers/discuss/84278/A-summary%3A-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently</a></p>
+
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/reading/the-life-changing-magic-of-tidying-up/"><i class="iconfont iconleft"></i>断舍离</a>
+    <a href="/thinking/reflection-on-an-internal-interview/">Reflection on an Internal Interview<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8E"><span class="toc-text">&amp; 与</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%96"><span class="toc-text">| 或</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9E"><span class="toc-text">~ 非</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E6%88%96"><span class="toc-text">^ 异或</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A6%E7%A7%BB"><span class="toc-text">&lt;&lt; 左移</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%B3%E7%A7%BB"><span class="toc-text">&gt;&gt; 右移</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E5%8F%B3%E7%A7%BB%EF%BC%8C%E9%80%BB%E8%BE%91%E5%8F%B3%E7%A7%BB"><span class="toc-text">&gt;&gt;&gt; 无符号右移，逻辑右移</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A7%81%E6%8A%80%E5%B7%A7"><span class="toc-text">其他常见技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#n-n-1"><span class="toc-text">n &amp; (n-1)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#n-n-n-n-1"><span class="toc-text">n &amp; (-n) &#x2F; n &amp; (~n + 1)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E7%BB%83%E4%B9%A0"><span class="toc-text">更多练习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EASY"><span class="toc-text">EASY</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

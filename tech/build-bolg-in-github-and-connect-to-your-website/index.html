@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Use Hexo Build Bolg in Github and Connect to your website - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="Recommend read the whole ar...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Use Hexo Build Bolg in Github and Connect to your website</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">Use Hexo Build Bolg in Github and Connect to your website</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>July 12, 2017</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/tech/build-bolg-in-github-and-connect-to-your-website/" class="leancloud-counter" data-flag-title="Use Hexo Build Bolg in Github and Connect to your website"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/tech/build-bolg-in-github-and-connect-to-your-website/" class="leancloud-like" data-flag-title="Use Hexo Build Bolg in Github and Connect to your website"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>6660</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <p><strong>Recommend read the whole article throught before taking actions</strong></p>
+<h1 id="What-do-you-need"><a href="#What-do-you-need" class="headerlink" title="What do you need?"></a>What do you need?</h1><h3 id="Required"><a href="#Required" class="headerlink" title="Required"></a>Required</h3><ul>
+<li>An account in <a target="_blank" rel="noopener" href="https://github.com/">Github</a></li>
+<li>Git in your computer</li>
+<li>Node.js</li>
+</ul>
+<h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h3><ul>
+<li>Your own personalized domain, like: LycheeX.com </li>
+<li>An account in <a target="_blank" rel="noopener" href="https://www.cloudflare.com/">Cloudflare</a> for certification (<strong>https</strong> looks really cool!)</li>
+<li><a target="_blank" rel="noopener" href="https://travis-ci.org/">Travis-ci</a> for continuious integration</li>
+</ul>
+<h1 id="Step-by-Step-Guidance"><a href="#Step-by-Step-Guidance" class="headerlink" title="Step by Step Guidance"></a>Step by Step Guidance</h1><h2 id="Follow-the-step-in-Hexo-Doc-to-install-Git-Node-js-and-Hexo"><a href="#Follow-the-step-in-Hexo-Doc-to-install-Git-Node-js-and-Hexo" class="headerlink" title="Follow the step in Hexo Doc to install Git, Node.js and Hexo"></a>Follow the step in <a target="_blank" rel="noopener" href="https://hexo.io/docs/">Hexo Doc</a> to install Git, Node.js and Hexo</h2><p>The doc gives a short and clear introduction in Hexo as well as detailed guidance of installation of Node.js and Git Tool.</p>
+<h3 id="Special-for-Mac-User"><a href="#Special-for-Mac-User" class="headerlink" title="Special for Mac User:"></a>Special for Mac User:</h3><p>Installing Node.js® and NPM is pretty straightforward using Homebrew. Homebrew handles downloading, unpacking and installing Node and NPM on your system. The whole process (after you have Homebrew installed) should only take you a few minutes.</p>
+<p><strong>Installation Steps:</strong><br>Open the Terminal app and type </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">brew update</span> <br>// This updates Homebrew with a list of the latest version of Node<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">brew install node</span> <br>// Tell Homebrew to install Node<br></code></pre></td></tr></table></figure>
+
+<p><strong>Test:</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">node -v</span> <br>// This should print the version number of node, ike v0.10.31<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">npm -v</span> <br>// This should print the version number of npm like this 1.4.27<br></code></pre></td></tr></table></figure>
+
+<h2 id="Genernate-Hexo-Blog"><a href="#Genernate-Hexo-Blog" class="headerlink" title="Genernate Hexo Blog"></a>Genernate Hexo Blog</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">hexo init [folder]</span> <br>// Initializes a website. If no folder is provided, Hexo will set up the website in the current directory<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">hexo generate</span> <br>// Generates static files<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">hexo server</span> <br>// Starts a local server. By default, this is at http://localhost:4000/<br>Open http://localhost:4000 and enjoy<br></code></pre></td></tr></table></figure>
+
+<p>More command information, you can refet to <a target="_blank" rel="noopener" href="https://hexo.io/docs/commands.html">Hexo Command Doc</a></p>
+<h2 id="Choose-a-theme"><a href="#Choose-a-theme" class="headerlink" title="Choose a theme"></a>Choose a theme</h2><p>Lots of developers donated their theme to Hexo, which can save us plenty of time for designing and developing. It’s nice and easy to use. Of course, you can develop your own theme if you want to. I am not sure about the detailed information, but it can be found in the website.</p>
+<p>As for me, I chose the theme <a target="_blank" rel="noopener" href="https://github.com/gabithume/cactus-light">Cactus Light</a>. Normally, the theme repository on github provides you the steps of add them to your hexo project. </p>
+<p>Genernally, following things:</p>
+<ol>
+<li>In the root directory of your project:</li>
+</ol>
+<p><code>$ git clone &lt;theme-git-location&gt; themes/&lt;theme-name&gt; </code></p>
+<ol start="2">
+<li><p>Change the theme property in the _config.yml file under your project</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># theme: landscape</span><br><span class="hljs-attr">theme:</span> <span class="hljs-string">cactus-light</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Enter ‘theme&#x2F;<theme-name>‘ folder and change _config.yml file to configure your information to the template</p>
+</li>
+<li><p>Run: <code>$ hexo generate</code> and <code>$ hexo server</code></p>
+</li>
+</ol>
+<h2 id="Create-a-new-article"><a href="#Create-a-new-article" class="headerlink" title="Create a new article"></a>Create a new article</h2><p><code>hexo new [layout] &lt;title&gt;</code><br>This command is used to create a new article. If no layout is provided, Hexo will use the default_layout from _config.yml. If the title contains spaces, surround it with quotation marks.<br>Then a new .md file will be created in ‘<your-project>&#x2F;source&#x2F;_posts’ folder.<br>Use any tool you like to edit it. After that, use the following steps:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">hexo clean</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">hexo generate</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">hexo deploy</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">hexo server</span><br></code></pre></td></tr></table></figure>
+<p>Now, you are able to see your new blog in <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a>.</p>
+<h2 id="Put-it-online-using-Github"><a href="#Put-it-online-using-Github" class="headerlink" title="Put it online using Github"></a>Put it online using Github</h2><p>You need to have a github account. Registering one is as easy as creating an account in Weibo.</p>
+<p>Then, you need to create a repository using the name ‘<your-user-name>.github.io’.</p>
+<p>Now, let’s get back to your local environment from the web world. </p>
+<p>Edit ‘_config.yml’ file in the root directory of your project.<br>Change the deploy node like this:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span><br>     <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>     <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/&lt;your-user-name&gt;/&lt;your-user-name&gt;.github.io.git</span><br>     <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span><br></code></pre></td></tr></table></figure>
+
+<p>Now, it’s time to deploy to the website.</p>
+<p>Hold on, type following code when you are ready.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install hexo-deployer-git --save<br>// This is install a package for deploying, you only need to type this once.<br>hexo deploy<br></code></pre></td></tr></table></figure>
+
+<p>Then, open the http:&#x2F;&#x2F;<your-user-name>.github.io to enjoy your website. It should look the same with <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a>.</p>
+<h2 id="Connect-to-your-own-domain"><a href="#Connect-to-your-own-domain" class="headerlink" title="Connect to your own domain."></a>Connect to your own domain.</h2><p>Go to the setting page in the respository.<br><img    class="lazyload" data-original="/../../../../../pics/tech/bbigactyw/github-setting.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">Github Setting</span><br>Enter your domain in the input and click save.<br><img    class="lazyload" data-original="/../../../../../pics/tech/bbigactyw/add-a-domain.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">Add a Domain</span><br>After that, you can visit your website and see the blog.</p>
+<h2 id="Connect-to-github"><a href="#Connect-to-github" class="headerlink" title="Connect to github"></a>Connect to github</h2><p>Now all the work is done. You can visit your website from anywhere, add a new article or editing an existing one.<br>However, now you can only edit it in your computer. If you want to put the sources online and edit it anywhere, github is a good help.</p>
+<p>Create another repository in Github, give it any name you like. Here, I will use ‘you-like’ as an Example.</p>
+<p>In the root directory of your project， type：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git init</span><br>// this will change your project to a git one.<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git remote add origin &lt;your-repositoy-location&gt;</span><br>// &lt;your-repositoy-location&gt; should be git@github.com:&lt;your-username&gt;/&lt;your-repository-name&gt;.git<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git add *</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git commit -m <span class="hljs-string">&quot;First Commit&quot;</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git push</span><br></code></pre></td></tr></table></figure>
+
+<p>If you meet some authentication problems during the process, you can check that if you have connected your coputer to Github. Follow the steps in <a target="_blank" rel="noopener" href="https://help.github.com/articles/connecting-to-github-with-ssh/">Connecting to GitHub with SSH</a> to solve the problems.</p>
+<p>Now you have pushed your original resource to the website. Which means you no longer need to worry about the loss of your project. Every time you change something, just commit them to the Github.</p>
+<p>Check the project in github, the folder of the theme that you added may be empty. It is skipped by git because it contains another git log. So the easiest solution is to delete the .git folder and then commit again.</p>
+<h2 id="Using-Travis-ci-to-deploy-the-project-on-commit"><a href="#Using-Travis-ci-to-deploy-the-project-on-commit" class="headerlink" title="Using Travis-ci to deploy the project on commit"></a>Using Travis-ci to deploy the project on commit</h2><p>CI is short for Continuous Integration. <a target="_blank" rel="noopener" href="https://travis-ci.org/">Travis-ci</a> is one of the most popular website for CI. You could login with your github account and then it will get all your reporsitory.<br><img    class="lazyload" data-original="/../../../../../pics/tech/bbigactyw/travis-ci.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">travis-ci</span><br>Switch on the repository of your project and enter the setting of the repository in travis-ci.<br><img    class="lazyload" data-original="/../../../../../pics/tech/bbigactyw/travis-ci-setting.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">travid-ci-setting</span><br>Switch on the ‘Build only if .travis.yml is present’.</p>
+<p>Now, let’s get back to the repositroy in your computer.<br>Add a new file ‘.travis.yml’ in the root direction. This is for configuration of travis-ci.</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">language:</span> <span class="hljs-string">node_js</span><br><span class="hljs-attr">node_js:</span> <span class="hljs-string">stable</span><br><span class="hljs-attr">install:</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">npm</span> <span class="hljs-string">install</span><br><span class="hljs-attr">before_install:</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">git</span> <span class="hljs-string">submodule</span> <span class="hljs-string">update</span> <span class="hljs-string">--init</span> <span class="hljs-string">--remote</span> <span class="hljs-string">--recursive</span><br><span class="hljs-attr">script:</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">hexo</span> <span class="hljs-string">generate</span><br><span class="hljs-attr">after_script:</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">git</span> <span class="hljs-string">config</span> <span class="hljs-string">--global</span> <span class="hljs-string">user.email</span> <span class="hljs-string">&quot;&lt;your-user-email-in-github&gt;&quot;</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">git</span> <span class="hljs-string">config</span> <span class="hljs-string">--global</span> <span class="hljs-string">user.name</span> <span class="hljs-string">&quot;&lt;your-user-name-in-github&gt;&quot;</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">sed</span> <span class="hljs-string">-i&#x27;&#x27;</span> <span class="hljs-string">&quot;/^ *repo/s~github\.com~$&#123;GH_TOKEN&#125;@github.com~&quot;</span> <span class="hljs-string">_config.yml</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">hexo</span> <span class="hljs-string">deploy</span><br><span class="hljs-string">//</span> <span class="hljs-string">The</span> <span class="hljs-string">following</span> <span class="hljs-string">is</span> <span class="hljs-string">required</span> <span class="hljs-string">only</span> <span class="hljs-string">when</span> <span class="hljs-string">you</span> <span class="hljs-string">need</span> <span class="hljs-string">to</span> <span class="hljs-string">use</span> <span class="hljs-string">your</span> <span class="hljs-string">own</span> <span class="hljs-string">domain</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">cd</span> <span class="hljs-string">/home/travis/build/&lt;your-user-name-in-github&gt;/&lt;your-hexo-repository-name-in-github&gt;/.deploy_git/</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">echo</span> <span class="hljs-string">&quot;&lt;your-domain&gt;.com&quot;</span> <span class="hljs-string">&gt;</span> <span class="hljs-string">CNAME</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">git</span> <span class="hljs-string">add</span> <span class="hljs-string">CNAME</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">git</span> <span class="hljs-string">commit</span> <span class="hljs-string">-m</span> <span class="hljs-string">&quot;Add CNAME&quot;</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">git</span> <span class="hljs-string">push</span> <span class="hljs-string">https://$&#123;GH_TOKEN&#125;@github.com/&lt;your-user-name-in-github&gt;/&lt;your-user-name-in-github&gt;.github.io.git</span><br></code></pre></td></tr></table></figure>
+
+
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h1><ol>
+<li><a target="_blank" rel="noopener" href="http://troyyang.com/2017/05/21/Add_Free_Certification_In_Blog_Step_By_Step/">Add Free Certification In Blog Step By Step</a></li>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/docs/commands.html">Hexo Command Doc</a></li>
+</ol>
+
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/reading/in-this-complicated-world/"><i class="iconfont iconleft"></i>在这个复杂世界里</a>
+    <a href="/hello-everyone/">Hello Everyone<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#What-do-you-need"><span class="toc-text">What do you need?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Required"><span class="toc-text">Required</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Optional"><span class="toc-text">Optional</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step-by-Step-Guidance"><span class="toc-text">Step by Step Guidance</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Follow-the-step-in-Hexo-Doc-to-install-Git-Node-js-and-Hexo"><span class="toc-text">Follow the step in Hexo Doc to install Git, Node.js and Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Special-for-Mac-User"><span class="toc-text">Special for Mac User:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Genernate-Hexo-Blog"><span class="toc-text">Genernate Hexo Blog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Choose-a-theme"><span class="toc-text">Choose a theme</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-a-new-article"><span class="toc-text">Create a new article</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Put-it-online-using-Github"><span class="toc-text">Put it online using Github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Connect-to-your-own-domain"><span class="toc-text">Connect to your own domain.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Connect-to-github"><span class="toc-text">Connect to github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-Travis-ci-to-deploy-the-project-on-commit"><span class="toc-text">Using Travis-ci to deploy the project on commit</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference:</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

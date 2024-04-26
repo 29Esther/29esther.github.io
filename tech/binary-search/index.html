@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Binary Search 二分查找法 - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="前言纠结症患者的福音，也算是分治策略的一种吧，逐渐把大...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Binary Search 二分查找法</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">Binary Search 二分查找法</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 15, 2022</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/tech/binary-search/" class="leancloud-counter" data-flag-title="Binary Search 二分查找法"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/tech/binary-search/" class="leancloud-like" data-flag-title="Binary Search 二分查找法"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4554</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>纠结症患者的福音，也算是分治策略的一种吧，逐渐把大问题化小，小问题化无。<br>最早接触二分查找法，是小时候的一道数学题。问有n个球，其中有一个球是残次品，质量略小于其他的球，你有一个天平，没有砝码和刻度，请问，你怎样可以最快找出这个残次球。<br>二分法的思想很简单，但是有很多细节需要考虑。常常同一道题，用二分法的思想，可以写出不同的解法，而且殊途同归，都可以解决问题。一开始我也常常很苦恼，直到真正找到其中的奥秘，有一种拨云见日的感觉。现在遇到二分题，我也不敢说一定能百分百秒杀，至少经过练习，心理上会自信很多。</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>二分查找的基本思想是将n个顺序元素分成大致相等的两部分，将查找目标值与分隔中间值进行比较，选择中间值的两边，进行比较，直到范围缩小为1。时间复杂度为O(lgN)，空间复杂度为O(1)。</p>
+<h2 id="自用模版"><a href="#自用模版" class="headerlink" title="自用模版"></a>自用模版</h2><p>我在前沿里说了，二分的模版有很多，这里是我最顺手，最常用的模版，它找的是第一个大于等于k的数在数组中的位置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-title function_">binarySearch</span><span class="hljs-params">(<span class="hljs-type">int</span>[] a, <span class="hljs-type">int</span> k)</span> &#123;<br>  <span class="hljs-type">int</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, r = a.length - <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span> (l &lt; r) &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> l + (r - l) / <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span> (a[mid] &lt; k) &#123;<br>      l = mid + <span class="hljs-number">1</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      r = mid;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> l;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h2><ol>
+<li>选择左右指针<br>我习惯用l和r，也有人用l(low)和h(high)来代表左右指针。<br>左指针一般都是0起步，没什么异议，但是对于右指针，我们有的时候会选择为<strong>数组的长度n</strong>，而不是最后一个元素的index。<br>这个选择，取决于答案的范围。例如，最大可能答案是n，那么我们的右指针应当从<strong>数组的长度n</strong>开始。</li>
+<li>中间元素index mid的计算<br>一般来说计算方式有如下两种：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// when odd, return the only mid</span><br><span class="hljs-comment">// when even, return the lower mid</span><br><span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> lo + ((hi - lo)/<span class="hljs-number">2</span>);<br><br><span class="hljs-comment">// when odd, return the only mid</span><br><span class="hljs-comment">// when even, return the upper mid</span><br><span class="hljs-type">int</span> <span class="hljs-variable">mid2</span> <span class="hljs-operator">=</span> lo + ((hi - lo + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>);<br></code></pre></td></tr></table></figure>
+如果区间范围内的元素总数为奇数，那么两种方式计算出的mid和mid2都为中间元素，所以并没有区别。<br>但是，如果区间范围内的元素总数为偶数，那么在选取中间元素时，我们就会有较小元素mid，和较大元素mid2，两种选择方式了。<br>此外，为了防止溢出，我们一般不会直接把左右元素相加除以2，而是写成 l+差 这样形式的。</li>
+<li>左右指针的移动 &#x3D; if条件<br>写我们100%确定的条件<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (<span class="hljs-number">100</span>% sure logic) &#123;<br>  left = mid + <span class="hljs-number">1</span>; <span class="hljs-comment">// 100% sure target is to the right of mid</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  right = mid; <br>&#125;<br><br><span class="hljs-keyword">if</span> (<span class="hljs-number">100</span>% sure logic) &#123;<br>  right = mid - <span class="hljs-number">1</span>; <span class="hljs-comment">// 100% sure target is to the left of mid</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  left = mid;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>循环的出口 &#x3D; while条件<br>有的人会使用<code>l &lt;= r</code>，来作为while的条件。但是，在我的模版中，我们始终使用<code>l &lt; r</code>来作为循环的出口，因为这样我们可以保证，当循环结束时，l和r一定相等。如果需要判断target不存在情况，那么我们可以在循环外判断。</li>
+<li>防止无限循环<br>这是一个新手经常会遇到的问题。为啥我的二分法没法结束呢？这时候，你需要检查一下，你的mid值取的是上边界，还是下边界，如果像下面的代码，你的mid值是上边界，而移动左右指针时，又是保持左边界l不变，移动右边界r，那么你可能就会进入无限循环了。<br>解决的诀窍是，考虑当左右边界之间，只有2个元素时的情况下，如何退出循环。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ❌ The following code results in inifite loop</span><br><span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> lo + ((hi - lo)/<span class="hljs-number">2</span>); <span class="hljs-comment">// aka the lower mid</span><br><span class="hljs-comment">// We should use:</span><br><span class="hljs-comment">// int mid = lo + ((hi - lo + 1)/2) // aka the upper mid</span><br><br><span class="hljs-keyword">if</span> (<span class="hljs-number">100</span>% sure logic) &#123;<br>	right = mid - <span class="hljs-number">1</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>	left = mid <span class="hljs-comment">// &lt;-- note here</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="API-大法"><a href="#API-大法" class="headerlink" title="API 大法"></a>API 大法</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* Searches a range of the specified array of ints for the specified value using the binary search algorithm. The range must be sorted (as by the sort(int[], int, int) method) prior to making this call. If it is not sorted, the results are undefined. If the range contains multiple elements with the specified value, there is no guarantee which one will be found.</span><br><span class="hljs-comment">Params:</span><br><span class="hljs-comment">a – the array to be searched</span><br><span class="hljs-comment">fromIndex – the index of the first element (inclusive) to be searched</span><br><span class="hljs-comment">toIndex – the index of the last element (exclusive) to be searched</span><br><span class="hljs-comment">key – the value to be searched for</span><br><span class="hljs-comment">Returns:</span><br><span class="hljs-comment">index of the search key, if it is contained in the array within the specified range; otherwise, (-(insertion point) - 1). The insertion point is defined as the point at which the key would be inserted into the array: the index of the first element in the range greater than the key, or toIndex if all elements in the range are less than the specified key. Note that this guarantees that the return value will be &gt;= 0 if and only if the key is found.</span><br><span class="hljs-comment">Throws:</span><br><span class="hljs-comment">IllegalArgumentException – if fromIndex &gt; toIndex</span><br><span class="hljs-comment">ArrayIndexOutOfBoundsException – if fromIndex &lt; 0 or toIndex &gt; a.length</span><br><span class="hljs-comment">Since:</span><br><span class="hljs-comment">1.6</span><br><span class="hljs-comment">**/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">binarySearch</span><span class="hljs-params">(<span class="hljs-type">int</span>[] a, <span class="hljs-meta">@Optional</span> <span class="hljs-type">int</span> fromIndex, <span class="hljs-meta">@Optional</span> <span class="hljs-type">int</span> toIndex, <span class="hljs-meta">@Optional</span> <span class="hljs-type">int</span> key)</span> &#123;<br>    rangeCheck(a.length, fromIndex, toIndex);<br>    <span class="hljs-keyword">return</span> binarySearch0(a, fromIndex, toIndex, key);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h1><h2 id="精选练习"><a href="#精选练习" class="headerlink" title="精选练习"></a>精选练习</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/binary-search/">704.Binary Search</a> 首选练习，不能更直接了</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/fixed-point/">1064.Fixed Point</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/">34.Find First and Last Position of Element in Sorted Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/search-in-rotated-sorted-array/">33.Search in Rotated Sorted Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/">34.Find First and Last Position of Element in Sorted Array</a></li>
+</ul>
+<h2 id="更多基础练习"><a href="#更多基础练习" class="headerlink" title="更多基础练习"></a>更多基础练习</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/search-insert-position/">35.Search Insert Position</a> 注意左右指针的初始选择</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sqrtx/">69.Sqrt(x)</a> 注意溢出，if条件的选择</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/valid-perfect-square/">367.Valid Perfect Square</a> 和上一题很像</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/first-bad-version/">278.First Bad Version</a> </li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/guess-number-higher-or-lower/">374.Guess Number Higher or Lower</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/binary-search/">704.Binary Search</a> 首选练习，不能更直接了</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/peak-index-in-a-mountain-array/">852.Peak Index in a Mountain Array</a> 不错的一题，建议练习</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/fixed-point/">1064.Fixed Point</a> 不错的一题，建议练习</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum-less-than-k/">1099.Two Sum Less Than K</a> 小变体</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/check-if-a-number-is-majority-element-in-a-sorted-array/">1150.Check If a Number Is Majority Element in a Sorted Array</a> 小变体</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/">1337.The K Weakest Rows in a Matrix</a> 坑特别多，值得练习</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/check-if-n-and-its-double-exist/">1346.Check If N and Its Double Exist</a> 二分法的典型应用，注意负数</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/search-a-2d-matrix/">74.Search a 2D Matrix</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/">1351.Count Negative Numbers in a Sorted Matrix</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-the-distance-value-between-two-arrays/">1385.Find the Distance Value Between Two Arrays</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/kth-missing-positive-number/">1539.Kth Missing Positive Number</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/">1608. Special Array With X Elements Greater Than or Equal X</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/">153.Find Minimum in Rotated Sorted Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-peak-element/">162.Find Peak Element</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/">167.Two Sum II - Input Array Is Sorted</a> 双指针 + 二分查找，如果你已经想到双指针了，那想想是不是可以结合二分查找缩小指针范围呢？</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/search-insert-position/discuss/423166/Binary-Search-101">Binary Search 101</a></li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/reading/ha-ma-xian-sheng-qu-kan-xin-li-yi-sheng/"><i class="iconfont iconleft"></i>蛤蟆先生去看心理医生</a>
+    <a href="/skills/texas-hold%E2%80%99em/">Texas Hold’em<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E7%94%A8%E6%A8%A1%E7%89%88"><span class="toc-text">自用模版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%86%E8%8A%82"><span class="toc-text">细节</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#API-%E5%A4%A7%E6%B3%95"><span class="toc-text">API 大法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%B7%E9%A2%98"><span class="toc-text">刷题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B2%BE%E9%80%89%E7%BB%83%E4%B9%A0"><span class="toc-text">精选练习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E5%9F%BA%E7%A1%80%E7%BB%83%E4%B9%A0"><span class="toc-text">更多基础练习</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

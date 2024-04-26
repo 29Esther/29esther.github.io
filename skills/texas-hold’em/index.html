@@ -1,0 +1,505 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Texas Hold’em - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="规则德州扑克采用52张扑克牌（除去两张王牌）,游戏玩家...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Texas Hold’em</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">Texas Hold’em</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>February 14, 2022</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/skills/texas-hold%E2%80%99em/" class="leancloud-counter" data-flag-title="Texas Hold’em"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/skills/texas-hold%E2%80%99em/" class="leancloud-like" data-flag-title="Texas Hold’em"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2813</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Skills/" rel="tag">Skills</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <h1 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h1><p>德州扑克采用52张扑克牌（除去两张王牌）,游戏玩家人数限制在2~9人。在牌局开始时,荷官会给每个玩家发2张“底牌”（只有个人看到）,桌面上会分三次陆续发出3张、1张、1张（共5张）的公共牌,在经过四轮的“加注”、“跟注”和“弃牌”等押注圈操作后,若牌局存在至少两名玩家仍然没有弃牌的情况下,进入“摊牌”阶段,把自己的2张底牌和5张公共牌力挑选出最大的5张组合,按照牌型大小规则分出胜负,赢家拿下“底池”全部筹码。<br>德州扑克是指无限注德州扑克(NLHM, No Limit Texas Hold’em)；玩法上又分为常规桌(Cash, 现金局)，单桌赛(SNG)和多桌锦标赛(MTT)。一般采用的是无限下注（No-Limit），指每轮下注过程中，下注额将没有任何限制，但最低限度要等于该押注圈的注限，而且你如果要加注，<strong>加注额至少要是你前面玩家下注额的两倍</strong>。</p>
+<h1 id="牌型-（从大到小）"><a href="#牌型-（从大到小）" class="headerlink" title="牌型 （从大到小）"></a>牌型 （从大到小）</h1><p>皇家同花顺 Royal Flush<br>同花顺 Straight Flush<br>四条 Four of a Kind<br>葫芦 Full House<br>同花 Flush<br>顺子 Straight<br>三条 Three of a Kind<br>两队 Two Pairs<br>一队 One Pair<br>高牌 High Card</p>
+<h1 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h1><p><strong>庄家 Button&#x2F;Btn</strong>：按钮位，全场最有利的位置，它决定了牌圈行动顺序<br><strong>小盲注 Small Blind&#x2F;SB</strong>：庄家位置左手边第一个位置，强制下注，下注额为大盲注的一半<br><strong>大盲注 Big Blind&#x2F;BB</strong>：庄家位置左手边第二个位置，强制下注，下注额为当前牌圈的底注<br><strong>枪口位 Under The Gun&#x2F;UTG</strong>：大盲注左手边第一个位置，翻牌前最先行动，是最被动的玩家，起手牌的要求比其他位置要高，往往会弃牌<br><strong>中间位 Middle Position&#x2F;MP</strong>：枪口位之后，行动灵活收放自如，进可加注、咋唬，退可跟注、弃牌。<br><strong>关煞位 Cut Off&#x2F;CO</strong>：庄家右手，行动灵活收放自如，进可加注、咋唬，退可跟注、弃牌。<br><strong>行动顺序</strong>：</p>
+<ul>
+<li>（翻牌前）按顺时针排列为枪口位，中间位，关煞位，庄位，小盲注，大盲注</li>
+<li>（翻牌后）小盲注，大盲注，枪口位，中间位，关煞位，庄位<br>九人桌相比于六人桌，区别在于枪口位和庄位之间加入UTG+1，MP+1，MP+2三个位置。如下图所示,</li>
+</ul>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="玩家"><a href="#玩家" class="headerlink" title="玩家"></a>玩家</h2><p><strong>下注 Bet</strong>：用筹码下注，作为注额<br><strong>跟注 Call</strong>：与前一位押下相同注额<br><strong>弃牌 Fold</strong>：放弃继续游戏的机会<br><strong>过牌 Check</strong>：不需要跟注的情况下，把下注机会留给下一位<br><strong>加注 Raise</strong>：提高现有的注额<br><strong>再加注 Re-Raise</strong>：在其他人加注后，再进行加注<br><strong>全下 All in</strong>：将所有筹码作为注额<br><strong>3 Bet</strong>：翻牌前面对对手的加注后进行再次加注，对3 Bet再加注就是4 Bet，以此类推<br><strong>c Bet</strong>： 翻牌后，翻牌前做raise的人持续加注</p>
+<h2 id="公共牌"><a href="#公共牌" class="headerlink" title="公共牌"></a>公共牌</h2><p><strong>翻牌前 Pre-flop</strong>：发出底牌后,公共牌出现以前的第一轮叫注阶段<br><strong>翻牌 Flop</strong>：前三张公共牌<br><strong>翻牌圈 Flop-round</strong>：前三张公共牌出现以后的押注圈<br><strong>转牌 Turn</strong>：第四牌公共牌<br><strong>转牌圈 Turn-round</strong>：第四张出现以后的押注圈<br><strong>河牌 River</strong>：第五张公共牌<br><strong>河牌圈 River-round</strong>：第五张出现以后的押注圈</p>
+<h2 id="名词"><a href="#名词" class="headerlink" title="名词"></a>名词</h2><p><strong>咋唬 Bluff</strong>：在低胜率或者零胜率的情况下，通过加大筹码来虚张声势达到吓跑对手的目的<br><strong>鱼 Fish</strong>：指较好的玩家对牌品差的玩家的贬义称呼<br><strong>T</strong>：ten的简写，代表扑克牌中的10<br><strong>坚果 Nuts</strong>：能和公共牌组合成最大的成牌的最强底牌。如K-K-T-5-2公共牌，能和其组成最强成牌四条K的KK就是坚果<br><strong>出路 Outs</strong>：也叫补牌，能够使玩家在某个阶段所有可能获胜的公共牌。如口袋对8的玩家需要再获得一张8来获得，那么他就有两个“出路”（两张不同花色的8）<br><strong>底池 Pot</strong>：当前牌局的筹码总注额<br><strong>彩虹面 Rainbow</strong>：三张翻牌不同花色的情况<br><strong>暗三条 Set</strong>：与公共牌能够组成三条的“口袋对”底牌，如底牌是J-J口袋对，翻牌J-8-2的情况<br><strong>鲨鱼 Shark</strong>：能够稳定赢钱的实力玩家<br><strong>摊牌 Showdown</strong>：最后一圈押注后，仍存在至少两名玩家没有放弃，就把底牌亮出比高低。国际上通用的规则是：“在游戏结束前最后一个下注轮里（可能不是河牌圈），最后一个激进行为的发起者，应该先亮牌。”如果在河牌圈，所有人祥和地过牌，没有激进行为，从小盲注玩家开始，依次亮底牌。后面的玩家如果看到前面亮出的牌大过自己，知道自己牌力不如人，可以选择不亮出自己底牌给大家看<br><strong>上头 Tilt</strong>：一般指情绪不稳定状态，没经过思考、胡乱地玩</p>
+<h2 id="其他术语"><a href="#其他术语" class="headerlink" title="其他术语"></a>其他术语</h2><p><strong>♠ 黑桃S spade</strong>：权力<br><strong>♥ 红桃H heart</strong>：爱情<br><strong>♣ 梅花C club</strong>： 幸运<br><strong>◆ 方块D diamond</strong>：财富<br><strong>相同花色 Suited</strong>：如AQs代表AQ两张牌相同花色,包括四种组合<br><strong>不同花色 Off Suit</strong>：如AQo代表AQ两张牌不相同花色,包括十二种组合<br><strong>慢打 Slow Play</strong><br><strong>破绽&#x2F;马脚 Tells</strong>:马脚通常是指玩家下意识露出的习惯性动作，从一定层面上暴露出了他的手牌信息和心理活动<br><strong>爆冷 Bad Beat</strong></p>
+<h1 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h1><ol>
+<li>四二法则<br>先想好自己想要的牌的张数，然后，还有两轮机会就乘4，还有一轮机会就乘2，得到的就是你想要的牌接下来会出现的概率。</li>
+<li>比平时更具侵略性<br>当你有一副不错的起手牌，所以要确保在这手牌中，将持有较弱牌的玩家打走，或者迫使他们付出更高代价来留在游戏中。最糟糕的情况莫过于，KK在翻牌前过牌，结果却被持有手牌84的玩家，奇迹般地抽中顺子而击败。应该让弱牌玩家看牌前付出一定的代价，尽早将大多数玩家推挤出底池。 你要知道当底池中有六个玩家时，你获胜的基础几率仅为17％，即使你的手牌是AA，六人底池中你的胜率也不会太高。 而在底池中只有两个的情况下，你的基础胜率上升至50％，若这时你持有AA，你的胜率将上升至76%以上。<br>谨慎打法更糟糕之处在于，它会让你在牌桌上其他玩家心中打上“弱势玩家”的标记。如果你很少下注或加注，你很快便会发现，那些知道你在压力下会弃牌的强势玩家将时刻压榨你。当你大额下注时，其他玩家将立刻知道你手握强牌，所有人都会迅速弃牌，最大限度降低你可赢得的金额。</li>
+<li>必须有耐心<br>弃牌次数远多于入池玩牌次数。耐心等待赔率对你有利的情况，然后用你的攻击性去造大底池，最终赢得胜利。</li>
+<li>注意观察对手<br>Play the player, not your cards.</li>
+<li>考虑“长期”<br>必要时加强攻击性、耐心地谨慎地玩牌、像对待心爱的电影一样研究对手和牌局。这将让你的玩法保持在控制范围内，抵制“上头”的冲动，不要试图用愚蠢的下注拼运气来弥补损失。为每一阶段和长期都设定一笔资金，并坚持下去。</li>
+<li>学习知识，提升技术</li>
+<li>起手牌概率<br><img    class="lazyload" data-original="/../../../../../pics/skills/th/%E8%B5%B7%E6%89%8B%E7%89%8C.jpeg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">起手牌</span></li>
+</ol>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://www.moshike.com/a/1011.html">德扑_德州扑克—-学习德扑技巧和德扑策略之家</a></li>
+<li><a target="_blank" rel="noopener" href="https://pokerclub.co/tips/">德扑基地</a></li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/tech/binary-search/"><i class="iconfont iconleft"></i>Binary Search 二分查找法</a>
+    <a href="/tech/meta-coding-questions/">Meta 高频面试题<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%84%E5%88%99"><span class="toc-text">规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%8C%E5%9E%8B-%EF%BC%88%E4%BB%8E%E5%A4%A7%E5%88%B0%E5%B0%8F%EF%BC%89"><span class="toc-text">牌型 （从大到小）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE"><span class="toc-text">位置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-text">基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%A9%E5%AE%B6"><span class="toc-text">玩家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%85%B1%E7%89%8C"><span class="toc-text">公共牌</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D"><span class="toc-text">名词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%9C%AF%E8%AF%AD"><span class="toc-text">其他术语</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%80%E5%B7%A7"><span class="toc-text">技巧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

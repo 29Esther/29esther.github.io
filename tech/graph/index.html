@@ -1,0 +1,590 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Graph 图 - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="太难了！我哭了！
+遍历所有顶点797. All Pat...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Graph 图</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">Graph 图</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>December 18, 2021</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/tech/graph/" class="leancloud-counter" data-flag-title="Graph 图"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/tech/graph/" class="leancloud-like" data-flag-title="Graph 图"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>5696</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <p>太难了！我哭了！</p>
+<h1 id="遍历所有顶点"><a href="#遍历所有顶点" class="headerlink" title="遍历所有顶点"></a>遍历所有顶点</h1><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/all-paths-from-source-to-target">797. All Paths From Source to Target</a></p>
+<h2 id="深度优先搜索算法-Depth-First-Search-DFS"><a href="#深度优先搜索算法-Depth-First-Search-DFS" class="headerlink" title="深度优先搜索算法 Depth First Search - DFS"></a>深度优先搜索算法 Depth First Search - DFS</h2><p><strong>栈</strong><br>主要用途：</p>
+<ul>
+<li>遍历「图」中所有顶点</li>
+<li>遍历「图」中任意两点之间的所有路径<br>实现：递归</li>
+</ul>
+<h2 id="广度优先搜索算法-BFS"><a href="#广度优先搜索算法-BFS" class="headerlink" title="广度优先搜索算法 BFS"></a>广度优先搜索算法 BFS</h2><p><strong>队列</strong><br>主要用途：</p>
+<ul>
+<li>当在 权重相等且均为正数的「图」 中，快速找出两点之间的最短路径</li>
+<li>遍历「图」中所有顶点<br>实现：队列</li>
+</ul>
+<p>时间复杂度: O(V+E)<br>&#x2F;V&#x2F; 表示顶点数，&#x2F;E&#x2F; 表示边数。</p>
+<p>空间复杂度: O(V)<br>&#x2F;V&#x2F; 表示顶点数。</p>
+<h1 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h1><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/min-cost-to-connect-all-points/">1584. Min Cost to Connect All Points</a><br>生成树指的是「无向图」中，具有该图的<strong>全部顶点</strong>且<strong>边数最少</strong>的连通子图。<br>最小生成树指的是「加权无向图」中总权重最小的生成树。</p>
+<h2 id="切分定理"><a href="#切分定理" class="headerlink" title="切分定理"></a>切分定理</h2><p>切分：将「图」切成两个部分，称之为一个「切分」。<br>横切边：如果一条边连接的两个顶点属于切分的两个部分，这个边称为「横切边」。<br>切分定理：在一幅连通加权无向图中，给定任意的切分，如果有一条横切边的权值严格小于所有其他横切边，则这条边必然属于图的最小生成树中的一条边。</p>
+<h2 id="Kruskal-算法"><a href="#Kruskal-算法" class="headerlink" title="Kruskal 算法"></a>Kruskal 算法</h2><p>求解「加权无向图」的「最小生成树」<br>Steps:</p>
+<ol>
+<li>所有边从小到大排序</li>
+<li>依次加入最小生成树中，形成环则跳过</li>
+<li>直到选择n-1条边为止</li>
+</ol>
+<p>时间复杂度: O(ElogE)<br>&#x2F;E&#x2F; 表示边数。</p>
+<p>空间复杂度: O(V)<br>&#x2F;V&#x2F; 表示顶点数。</p>
+<h2 id="Prim-算法"><a href="#Prim-算法" class="headerlink" title="Prim 算法"></a>Prim 算法</h2><p>求解「加权无向图」的「最小生成树」的另一种算法<br>Steps:</p>
+<ol>
+<li>用两个集合a, b分别存储已访问节点和未访问节点</li>
+<li>从未访问节点集合b中，任选一个节点放入a中</li>
+<li>从连接的a, b集合的所有边中，选择权重最小的边，将边连接的b集合中的节点放入a中</li>
+<li>重复步骤3，直到b为空</li>
+</ol>
+<p>时间复杂度: </p>
+<ul>
+<li>普通二叉堆： O(ElogV)</li>
+<li>斐波那契堆：O(E+VlogV)<br>&#x2F;V&#x2F; 表示顶点数，&#x2F;E&#x2F; 表示边数。</li>
+</ul>
+<p>空间复杂度: O(V)<br>&#x2F;V&#x2F; 表示顶点数。</p>
+<h1 id="单源最短路径"><a href="#单源最短路径" class="headerlink" title="单源最短路径"></a>单源最短路径</h1><p>在加权图中，给定一个起点，求出它分别到其他顶点的「最短路径」</p>
+<h2 id="Dijkstra-算法"><a href="#Dijkstra-算法" class="headerlink" title="Dijkstra 算法"></a>Dijkstra 算法</h2><p>求解加权图「单源最短路径」问题，其中该图的所有权重必须为非负数<br><a target="_blank" rel="noopener" href="https://leetcode.com/problems/network-delay-time">743. Network Delay Time</a><br>Steps:</p>
+<ol>
+<li>初始时，S只包含起点s；U包含除s外的其他顶点，且U中顶点的距离为“起点s到该顶点的距离”，例如，U中顶点v的距离为(s,v)的长度，然后s和v不相邻，则v的距离为∞</li>
+<li>从U中选出“距离最短的顶点k”，并将顶点k加入到S中；同时，从U中移除顶点k。</li>
+<li>更新U中各个顶点到起点s的距离。由于上一步中确定了k是求出最短路径的顶点，从而可以利用k来更新其它顶点的距离；例如，(s,v)的距离可能大于(s,k)+(k,v)的距离。</li>
+<li>重复步骤(2)和(3)，直到遍历完所有顶点。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 用一个数据结构，存储每一个节点的相邻节点和距离，也可以用int[]&#123;next node index, distance&#125;</span><br>List&lt;Map&lt;Integer, Integer&gt;&gt; neighbors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(); <br>...<br><span class="hljs-comment">// 利用优先队列排序下一条边</span><br>PriorityQueue&lt;<span class="hljs-type">int</span>[]&gt; heap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PriorityQueue</span>&lt;<span class="hljs-type">int</span>[]&gt;(<br>        (info1, info2) -&gt; info1[<span class="hljs-number">0</span>] - info2[<span class="hljs-number">0</span>]); <br><span class="hljs-comment">// 将目标节点放入队列中</span><br>heap.offer(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">0</span>, target&#125;);<br><span class="hljs-comment">// 用map存储结果</span><br>Map&lt;Integer, Integer&gt; dist = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>();<br><span class="hljs-keyword">while</span> (!heap.isEmpty()) &#123;<br>    <span class="hljs-type">int</span>[] info = heap.poll();<br>    <span class="hljs-type">int</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> info[<span class="hljs-number">0</span>], cur = info[<span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">if</span> (dist.containsKey(cur)) <span class="hljs-keyword">continue</span>; <span class="hljs-comment">// 已知cur节点的最优解，不用再麻烦了</span><br>    dist.put(cur, d); <span class="hljs-comment">// 当前解为cur的最优解</span><br>    Map&lt;Integer, Integer&gt; nexts = neighbors.get(node); <span class="hljs-comment">// 得到下一节点</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> nxt: nexts.keySet()) &#123;<br>        <span class="hljs-keyword">if</span> (!dist.containsKey(nxt)) <span class="hljs-comment">// 下一节点的最优解未知，加入队列中</span><br>            heap.offer(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;d + nexts.get(nxt), nxt&#125;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度: </p>
+<ul>
+<li>斐波那契堆：O(E+VlogV)<br>&#x2F;V&#x2F; 表示顶点数，&#x2F;E&#x2F; 表示边数。</li>
+</ul>
+<p>空间复杂度: O(V)<br>&#x2F;V&#x2F; 表示顶点数。</p>
+<h2 id="Bellman-Ford-算法"><a href="#Bellman-Ford-算法" class="headerlink" title="Bellman-Ford 算法"></a>Bellman-Ford 算法</h2><p>解决「负权图」的「单源最短路径」问题<br><a target="_blank" rel="noopener" href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">787. Cheapest Flights Within K Stops</a></p>
+<h3 id="基础定理"><a href="#基础定理" class="headerlink" title="基础定理"></a>基础定理</h3><p><strong>定理一</strong>：在一个有 N 个顶点的「非负权环图」中，两点之间的最短路径最多经过 N-1N−1 条边<br><strong>定理二</strong>：「负权环」没有最短路径</p>
+<h3 id="Dynamic-Programming"><a href="#Dynamic-Programming" class="headerlink" title="Dynamic Programming"></a>Dynamic Programming</h3><p>Def. OPT(i, v) &#x3D; length of shortest path P from v to t using at most i edges.<br>There are two options: </p>
+<ul>
+<li>P uses at most i-1 edges -&gt; OPT(i, v) &#x3D; OPT(i-1, v) </li>
+<li>P uses exactly i edges -&gt; OPT(i-1, w)+Cwv</li>
+</ul>
+<h4 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Shortest</span>-<span class="hljs-title class_">Path</span>(G, t) &#123; <br>	<span class="hljs-keyword">for</span> each node v ∈ V<br>		M[<span class="hljs-number">0</span>,v] =  ∞ <br>		M[<span class="hljs-number">0</span>, t] = <span class="hljs-number">0</span><br>	<span class="hljs-keyword">for</span> I = <span class="hljs-number">1</span> to n-<span class="hljs-number">1</span><br>		<span class="hljs-keyword">for</span> each node v ∈ V<br>			M[i, v] = M[i-<span class="hljs-number">1</span>, v] <br>		<span class="hljs-keyword">for</span> each edge (v, w) ∈ E<br>			M[i, v] = <span class="hljs-title function_">min</span>(M[i, v], M[i-<span class="hljs-number">1</span>, w] + <span class="hljs-title class_">Cvw</span>) <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>时间复杂度: O(mn)</p>
+<p>空间复杂度: O(n^2)</p>
+<h4 id="Practical-improvements"><a href="#Practical-improvements" class="headerlink" title="Practical improvements"></a>Practical improvements</h4><ul>
+<li>Maintain only one array M[v] &#x3D; shortest v-t path that we have found so far. </li>
+<li>No need to check edges of the form (v, w) unless M[w] changed in previous iteration. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Push</span>-<span class="hljs-title class_">Based</span>-<span class="hljs-title class_">Shortest</span>-<span class="hljs-title class_">Path</span>(G, s, t) &#123; <br>	<span class="hljs-keyword">for</span> each node v ∈ V &#123;<br>		M[v] = ∞<br>		successor[v] = <span class="hljs-literal">null</span><br>	&#125;<br>	M[t] = <span class="hljs-number">0</span><br>	<span class="hljs-keyword">for</span> i = <span class="hljs-number">1</span> to n-<span class="hljs-number">1</span> &#123;<br>		<span class="hljs-keyword">for</span> each node w ∈ V &#123;<br>			<span class="hljs-keyword">if</span> (M[w] has been updated <span class="hljs-keyword">in</span> previous iteration) &#123;<br>				<span class="hljs-keyword">for</span> each node v such that (v, w) ∈ E &#123; <br>					<span class="hljs-keyword">if</span> (M[v] &gt; M[w] + <span class="hljs-title class_">Cvw</span>)  &#123;<br>						M[v] = M[w] + <span class="hljs-title class_">Cvw</span><br>						successor[v] = w<br>					&#125;<br>				&#125; <br>			&#125;<br>			<span class="hljs-title class_">If</span> no M[w] value changed <span class="hljs-keyword">in</span> iteration I, stop. <br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Bellman-Ford-检测「负权环」"><a href="#Bellman-Ford-检测「负权环」" class="headerlink" title="Bellman-Ford 检测「负权环」"></a>Bellman-Ford 检测「负权环」</h3><p>当对所有边进行N-1次松弛之后，再进行第N次松弛。<br>根据「Bellman-Ford 算法」，所有的边在N−1次松弛之后，所有的距离必然是最短距离。<br>如果在进行第N次松弛后，对于一条边edge(u, v)，还存在<code>distances[u] + weight(u, v) &lt; distances(v)</code>的情况，也就是说，还存在更短的路径。<br>此时就能说明「图」中存在「负权环」。</p>
+<h3 id="SPFA-算法-基于「队列」优化的-Bellman-Ford-算法"><a href="#SPFA-算法-基于「队列」优化的-Bellman-Ford-算法" class="headerlink" title="SPFA 算法 - 基于「队列」优化的 Bellman-Ford 算法"></a>SPFA 算法 - 基于「队列」优化的 Bellman-Ford 算法</h3><p>「SPFA 算法」主要是通过「队列」来维护我们接下来要遍历边的起点，而不是「Bellman Ford」算法中的任意还没有遍历过的边。每次只有当某个顶点的最短距离更新之后，并且该顶点不在「队列」中，我们就将该顶点加入到「队列」中。一直循环以上步骤，直到「队列」为空，我们就可以终止算法。</p>
+<h1 id="拓扑排序-Topological-Sort"><a href="#拓扑排序-Topological-Sort" class="headerlink" title="拓扑排序 Topological Sort"></a>拓扑排序 Topological Sort</h1><p>对「有向无环图」中所有顶点按照先后顺序的一种线性排序</p>
+<h4 id="条件："><a href="#条件：" class="headerlink" title="条件："></a>条件：</h4><ul>
+<li>有向无环图；</li>
+<li>「图」中至少有一个顶点「入度」为 0 。如果「图」中所有顶点都有「入度」，则代表所有顶点都至少有一个前置顶点，那么这个就没有顶点可以作为「拓扑排序」的起点。</li>
+</ul>
+<h2 id="Kahn-算法"><a href="#Kahn-算法" class="headerlink" title="Kahn 算法"></a>Kahn 算法</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/course-schedule-ii/">210. Course Schedule II</a><br>Steps:</p>
+<ol>
+<li>统计所有的顶点的出入度，将所有入度为0的节点，放入队列中</li>
+<li>将队列中的节点取出，标记为已访问，并更新剩余节点的入度数量</li>
+<li>重复步骤1-2直到队列为空</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] indegrees = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>List&lt;List&lt;Integer&gt;&gt; nexts = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;(); <span class="hljs-comment">// 存储下一个节点，可以用Map</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>  nexts.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;());<br>&#125;<br><br>Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br><span class="hljs-comment">// 找出所有入度为0的第一层节点，放入队列中</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>  <span class="hljs-keyword">if</span> (indegrees[i] == <span class="hljs-number">0</span>)<br>    queue.add(i);<br>&#125;<br><br><span class="hljs-keyword">while</span> (!queue.isEmpty()) &#123;<br>  <span class="hljs-type">int</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> queue.poll(); <span class="hljs-comment">// 取出当前节点</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> nxt : nexts.get(cur)) &#123;<br>    <span class="hljs-comment">// 更新下一节点的入度</span><br>    indegrees[nxt]--;<br>    <span class="hljs-keyword">if</span> (indegrees[nxt] == <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// 更新时检查，是否还有前序节点</span><br>      queue.add(nxt); <br>    &#125;<br>  &#125;<br>&#125;<br>...<br></code></pre></td></tr></table></figure>
+
+<p>时间复杂度: O(V+E)<br>&#x2F;V&#x2F; 表示顶点数，&#x2F;E&#x2F; 表示边数。</p>
+<p>空间复杂度: O(V+E)<br>&#x2F;V&#x2F; 表示顶点数，&#x2F;E&#x2F; 表示边数。</p>
+<h4 id="更多练习"><a href="#更多练习" class="headerlink" title="更多练习"></a>更多练习</h4><h1 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h1><h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/course-schedule/">207. Course Schedule</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/loud-and-rich/">851. Loud and Rich</a>（拓扑排序）</li>
+</ul>
+<h4 id="复杂"><a href="#复杂" class="headerlink" title="复杂"></a>复杂</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-height-trees/">310. Minimum Height Trees</a> （拓扑排序）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-increasing-path-in-a-matrix/">329. Longest Increasing Path in a Matrix</a> （DFS）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-eventual-safe-states/">802. Find Eventual Safe States</a>（1. 拓扑排序; 2. 深度优先搜索 + 三色标记法）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sequence-reconstruction">444. Sequence Reconstruction</a>（拓扑排序，费了我老劲了！）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/parallel-courses">1136. Parallel Courses</a>（拓扑排序，这次就轻松多了）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/parallel-courses-iii/">2050. Parallel Courses III</a>（拓扑排序，和上一题类似，但是<a target="_blank" rel="noopener" href="https://leetcode.com/problems/parallel-courses-ii/">2050. Parallel Courses II</a>就变态多了，是个NP问题）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-restricted-paths-from-first-to-last-node/">1786. Number of Restricted Paths From First to Last Node</a>（Dijkstra 算法 + 记忆化dp）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/">1976. Number of Ways to Arrive at Destination</a>（Dijkstra 算法 + 记忆化dp）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/course-schedule-iv/">1462. Course Schedule IV</a>	（拓扑排序）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/tag/topological-sort/#:~:text=Largest%20Color%20Value%20in%20a%20Directed%20Graph">1857. Largest Color Value in a Directed Graph</a>	（拓扑排序）</li>
+</ul>
+<h4 id="未解之谜"><a href="#未解之谜" class="headerlink" title="未解之谜"></a>未解之谜</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/count-ways-to-build-rooms-in-an-ant-colony">1916. Count Ways to Build Rooms in an Ant Colony</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/design-excel-sum-formula/">631. Design Excel Sum Formula</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/rank-transform-of-a-matrix/">1632. Rank Transform of a Matrix</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sort-items-by-groups-respecting-dependencies/">1203. Sort Items by Groups Respecting Dependencies</a></li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/leetbook/read/graph/r340gv/">LeetBook《图》</a></li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/reading/ba-qi-zi-di-de-shi-jie/"><i class="iconfont iconleft"></i>北京口述历史·八旗子弟的世界</a>
+    <a href="/tech/heap/">Heap 堆（优先队列）<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%89%80%E6%9C%89%E9%A1%B6%E7%82%B9"><span class="toc-text">遍历所有顶点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95-Depth-First-Search-DFS"><span class="toc-text">深度优先搜索算法 Depth First Search - DFS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95-BFS"><span class="toc-text">广度优先搜索算法 BFS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-text">最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E5%88%86%E5%AE%9A%E7%90%86"><span class="toc-text">切分定理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kruskal-%E7%AE%97%E6%B3%95"><span class="toc-text">Kruskal 算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prim-%E7%AE%97%E6%B3%95"><span class="toc-text">Prim 算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-text">单源最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Dijkstra-%E7%AE%97%E6%B3%95"><span class="toc-text">Dijkstra 算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bellman-Ford-%E7%AE%97%E6%B3%95"><span class="toc-text">Bellman-Ford 算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%AE%9A%E7%90%86"><span class="toc-text">基础定理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-Programming"><span class="toc-text">Dynamic Programming</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bellman-Ford-%E6%A3%80%E6%B5%8B%E3%80%8C%E8%B4%9F%E6%9D%83%E7%8E%AF%E3%80%8D"><span class="toc-text">Bellman-Ford 检测「负权环」</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SPFA-%E7%AE%97%E6%B3%95-%E5%9F%BA%E4%BA%8E%E3%80%8C%E9%98%9F%E5%88%97%E3%80%8D%E4%BC%98%E5%8C%96%E7%9A%84-Bellman-Ford-%E7%AE%97%E6%B3%95"><span class="toc-text">SPFA 算法 - 基于「队列」优化的 Bellman-Ford 算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-Topological-Sort"><span class="toc-text">拓扑排序 Topological Sort</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kahn-%E7%AE%97%E6%B3%95"><span class="toc-text">Kahn 算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%B7%E9%A2%98"><span class="toc-text">刷题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

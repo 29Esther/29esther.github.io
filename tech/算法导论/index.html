@@ -1,0 +1,593 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>算法导论第二章读书笔记 - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="插入排序伪代码123456789INSERTION-S...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">算法导论第二章读书笔记</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">算法导论第二章读书笔记</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 14, 2019</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/tech/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/" class="leancloud-counter" data-flag-title="算法导论第二章读书笔记"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/tech/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/" class="leancloud-like" data-flag-title="算法导论第二章读书笔记"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>13390</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><figure class="highlight js"><figcaption><span>伪代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">INSERTION</span>-<span class="hljs-title function_">SORT</span>(A)<br><span class="hljs-keyword">for</span> j=<span class="hljs-number">2</span> to A.<span class="hljs-property">length</span><br>  key = A[j]<br>  <span class="hljs-comment">//insert A[j] into the sortes sequence A[1...j-1]</span><br>  i = j-<span class="hljs-number">1</span><br>  <span class="hljs-keyword">while</span> i&gt;<span class="hljs-number">0</span> and A[i]&gt;key<br>    A[i+<span class="hljs-number">1</span>] = A[i]<br>    i = i-<span class="hljs-number">1</span><br>  A[i+<span class="hljs-number">1</span>] = key<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>javascript实现</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">insertion_sort</span>(<span class="hljs-params">arr</span>) &#123;<br>  <span class="hljs-keyword">var</span> key = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">1</span>; j &lt; arr.<span class="hljs-property">length</span>; j++) &#123;<br>    key = arr[j];<br>    i = j - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (i &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[i] &gt; key) &#123;<br>      arr[i+<span class="hljs-number">1</span>] = arr[i];<br>      i = i - <span class="hljs-number">1</span>;<br>    &#125;<br>    arr[i+<span class="hljs-number">1</span>] = key;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="循环不变式"><a href="#循环不变式" class="headerlink" title="循环不变式"></a>循环不变式</h2><p><strong>初始化</strong>：循环第一次迭代之前，它为真<br><strong>保持</strong>：如果循环的某次迭代之前它为真，那么下次迭代之前它仍为真<br><strong>终止</strong>：在循环终止时，不变式为我们提供一个有用的性质，该性质有助于证明算法是正确的  </p>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><table>
+<thead>
+<tr>
+<th align="left">INSERTION-SORT(A)</th>
+<th align="left">代价</th>
+<th align="left">次数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>for j=2 to A.length</code></td>
+<td align="left">c1</td>
+<td align="left">n</td>
+</tr>
+<tr>
+<td align="left"><code>  key = A[j]</code></td>
+<td align="left">c2</td>
+<td align="left">n-1</td>
+</tr>
+<tr>
+<td align="left"><code>  //insert A[j] into the sortes sequence A[1...j-1]</code></td>
+<td align="left">0</td>
+<td align="left">n-1</td>
+</tr>
+<tr>
+<td align="left"><code>  i = j-1</code></td>
+<td align="left">c4</td>
+<td align="left">n-1</td>
+</tr>
+<tr>
+<td align="left"><code>  while i&gt;0 and A[i]&gt;key</code></td>
+<td align="left">c5</td>
+<td align="left">∑tj (2&lt;&#x3D;j&lt;&#x3D;n)</td>
+</tr>
+<tr>
+<td align="left"><code>  A[i+1] = A[i]</code></td>
+<td align="left">c6</td>
+<td align="left">∑(tj - 1) (2&lt;&#x3D;j&lt;&#x3D;n)</td>
+</tr>
+<tr>
+<td align="left"><code>  i = i-1</code></td>
+<td align="left">c7</td>
+<td align="left">∑(tj - 1) (2&lt;&#x3D;j&lt;&#x3D;n)</td>
+</tr>
+<tr>
+<td align="left"><code>  A[i+1] = key</code></td>
+<td align="left">c8</td>
+<td align="left">n-1</td>
+</tr>
+</tbody></table>
+<p>tj 表示对那个值j第5行执行while循环测试的次数<br>所以，T(n) &#x3D; c1n + c2(n-1) + c4(n-1) + c5∑tj (2&lt;&#x3D;j&lt;&#x3D;n) + c6∑(tj - 1) (2&lt;&#x3D;j&lt;&#x3D;n) + c7∑(tj - 1) (2&lt;&#x3D;j&lt;&#x3D;n) + c8(n-1)<br><strong>最佳情况</strong>：对j&#x3D;2, 3, …, n，有tj &#x3D; 1，所以 T(n) &#x3D; (c1 + c2 + c4 + c5 +c8)n - (c2 + c4 + c5 + c8) &#x3D; Θ(n)<br><strong>最坏情况</strong>：对j&#x3D;2, 3, …, n，有tj &#x3D; j，所以 ∑tj (2&lt;&#x3D;j&lt;&#x3D;n) &#x3D; ∑j (2&lt;&#x3D;j&lt;&#x3D;n) &#x3D; n(n+1)&#x2F;2 - 1,  ∑(tj - 1) (2&lt;&#x3D;j&lt;&#x3D;n) &#x3D; n(n-1)&#x2F;2, T(n) &#x3D; (c5 + c6 + c7)n^2&#x2F;2 + (c1 + c2 + c4 + c5&#x2F;2 - c6&#x2F;2 - c7&#x2F;2 + c8)n - (c2 + c4 + c5 + c8) &#x3D; Θ(n^2)  </p>
+<h1 id="归并排序算法"><a href="#归并排序算法" class="headerlink" title="归并排序算法"></a>归并排序算法</h1><h2 id="分治模式"><a href="#分治模式" class="headerlink" title="分治模式"></a>分治模式</h2><p>分治模式在每层递归时都有三个步骤：<br><strong>分解</strong>原问题为若干个子问题，这些字问题是原问题的规模较小的实例。<br><strong>解决</strong>这些子问题，递归地求解各子问题。然而，若子问题的规模足够小，则直接求解。<br><strong>合并</strong>这些子问题的解成原问题的解。</p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>归并排序算法完全遵循分治模式。直观上其操作如下：<br><strong>分解</strong>：分解待排序的n个元素的序列成各具n&#x2F;2个元素的两个子序列。<br><strong>解决</strong>：使用归并排序递归地排序两个子序列。<br><strong>合并</strong>：合并两个已排序的子序列以产生已排序的答案。</p>
+<p>通过调用一个辅助过程MERGE(A, p, q, r)来完成两个已排序序列的合并，其中A是一个数组，p、q和r是数组下标，满足 p&lt;&#x3D;q&lt;r。该过程假设子数组A[p..q]和A[q+1..r]都已排好序。它合并两个子数组形成单一的已排好序的子数组并代替当前的子数组A[p..r]。</p>
+<figure class="highlight js"><figcaption><span>伪代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">MERGE</span>(A, p, q, r)<br>  n1 = q - p + <span class="hljs-number">1</span><br>  n2 = r - q<br>  <span class="hljs-title class_">Let</span> L[<span class="hljs-number">1.</span>.<span class="hljs-property">n1</span>+<span class="hljs-number">1</span>] and R[<span class="hljs-number">1.</span>.<span class="hljs-property">n2</span>+<span class="hljs-number">1</span>] be <span class="hljs-keyword">new</span> arrays<br>  <span class="hljs-keyword">for</span> i = <span class="hljs-number">1</span> to n1<br>    L[i] = A[p + i - <span class="hljs-number">1</span>]<br>  <span class="hljs-keyword">for</span> j = <span class="hljs-number">1</span> to n2<br>    R[j] = A[q+j]<br>  <span class="hljs-comment">//插入哨兵牌</span><br>  L[n1 + <span class="hljs-number">1</span>] = ∞<br>  R[n2 + <span class="hljs-number">1</span>] = ∞<br>  i = <span class="hljs-number">1</span><br>  j = <span class="hljs-number">1</span><br>  <span class="hljs-keyword">for</span> k = p to r<br>    <span class="hljs-keyword">if</span> L[i] &lt;= R[j]<br>      A[k] = L[i]<br>      i = i + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">else</span> A[k] = R[j]<br>      j = j + <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">MERGE</span>-<span class="hljs-title function_">SORT</span>(A, p, r)<br><span class="hljs-keyword">if</span> p &lt; r<br>  q = └(p + r)/<span class="hljs-number">2</span>┘<br>  <span class="hljs-variable constant_">MERGE</span>-<span class="hljs-title function_">SORT</span>(A, p, q)<br>  <span class="hljs-variable constant_">MERGE</span>-<span class="hljs-title function_">SORT</span>(A, q + <span class="hljs-number">1</span>, r)<br>  <span class="hljs-title function_">MERGE</span>(A, p, q, r)<br></code></pre></td></tr></table></figure>
+
+<h2 id="分析分治算法"><a href="#分析分治算法" class="headerlink" title="分析分治算法"></a>分析分治算法</h2><p>分治算法运行时间的递归式来自基本模式的单个步骤。假设T(n)是规模为n的一个问题的运行时间。若问题规模足够小，如对某个常量c，n&lt;&#x3D;c，则直接求解需要常量时间，将其记作Θ(1)。假设把原问题分解成a个子问题，每个子问题的规模是原问题的1&#x2F;b。为了求解一个规模为n&#x2F;b的子问题，需要T(n&#x2F;b)的时间，所以，需要aT(n&#x2F;b)的时间来求解a个子问题，如果分解问题成子问题需要时间D(n)，合并子问题的解成原问题的解需要C(n)，那么得到递归式：<br>若n&lt;&#x3D;c，T(n) &#x3D; Θ(1)；其他，T(n) &#x3D; aT(n&#x2F;b) + D(n) + C(n)  </p>
+<p>所以，归并排序的最坏情况运行时间T(n)的递归式：<br>若n&#x3D;1，T(n) &#x3D; Θ(1)；若n&gt;1，T(n) &#x3D; 2T(n&#x2F;2) + Θ(n)<br>等价于：若n&#x3D;1，T(n) &#x3D; c；若n&gt;1，T(n) &#x3D; 2T(n&#x2F;2) +  cn<br>对递归式T(n) &#x3D; 2T(n&#x2F;2) +  cn构造递归树，如下：<br>所以，T(n) &#x3D; Θ(nlgn)</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>2.1-2 重写INSERTION-SORT，使之按非升序排列</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">INSERTION</span>-<span class="hljs-title class_">SORT2</span>(A)<br><span class="hljs-keyword">for</span> j=<span class="hljs-number">2</span> to A.<span class="hljs-property">length</span><br>  key = A[j]<br>  i = j-<span class="hljs-number">1</span><br>  <span class="hljs-keyword">while</span> i &gt; <span class="hljs-number">0</span> and A[i] &lt; key<br>    A[i+<span class="hljs-number">1</span>] = A[i]<br>    i = i-<span class="hljs-number">1</span><br>  A[i+<span class="hljs-number">1</span>] = key<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">insertion_sort2</span>(<span class="hljs-params">arr</span>) &#123;<br>  <span class="hljs-keyword">var</span> key = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">1</span>; j &lt; arr.<span class="hljs-property">length</span>; j++) &#123;<br>    key = arr[j];<br>    i = j - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (i &gt;= <span class="hljs-number">0</span> &amp;&amp; arr[i] &lt; key) &#123;<br>      arr[i+<span class="hljs-number">1</span>] = arr[i];<br>      i = i - <span class="hljs-number">1</span>;<br>    &#125;<br>    arr[i+<span class="hljs-number">1</span>] = key;<br>  &#125;<br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.1-3 考虑一下查找问题：<br>输入：n个数的一个序列 A&#x3D;&lt;a1, a2, …, an&gt; 和一个值v<br>输出：下标i是的 v&#x3D;A[i] 或者当v不在A中出现时，v为特殊值NIL<br>写出<em>线性查找</em>的伪代码，它扫描整个序列来查找v。使用一个循环不变式来证明你的算法是正确的。确保你的循环不变式满足三条必要的性质。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">LINEAR</span>-<span class="hljs-title function_">SEARCH</span>(A, v)<br><span class="hljs-keyword">for</span> i=<span class="hljs-number">1</span> to A.<span class="hljs-property">length</span><br>  <span class="hljs-keyword">if</span> A[i] equals v<br>    <span class="hljs-keyword">return</span> i<br><span class="hljs-keyword">return</span> <span class="hljs-variable constant_">NIL</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">linear_search</span>(<span class="hljs-params">arr, v</span>) &#123;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-keyword">if</span> (arr[i] === v) &#123;<br>      <span class="hljs-keyword">return</span> i+<span class="hljs-number">1</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.1-4 考虑把两个n位二进制整数加起来的问题，这两个整数分别存储在两个n元数组A和B中。这两个整数的和应按二进制形式存储在一个(n+1)元数组C中。请给出该问题的形式化描述，并写出伪代码。<br>输入：两个n元数组A和B<br>输出：一个(n+1)元数组C  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">BINARY</span>-<span class="hljs-title function_">ADD</span>(A, B)<br><span class="hljs-keyword">for</span> i=A.<span class="hljs-property">length</span> to <span class="hljs-number">1</span><br>    tmp = A[i] + B[i] + tmp;<br>  <span class="hljs-keyword">if</span> tmp &gt; <span class="hljs-number">1</span><br>    C[i+<span class="hljs-number">1</span>] = tmp - <span class="hljs-number">2</span><br>    tmp = <span class="hljs-number">1</span><br>  <span class="hljs-keyword">else</span> C[i+<span class="hljs-number">1</span>] = tmp<br>        tmp = <span class="hljs-number">0</span><br>C[<span class="hljs-number">1</span>] = tmp      <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">binary_add</span>(<span class="hljs-params">arr1, arr2</span>) &#123;<br>  <span class="hljs-keyword">var</span> arr3 = [];<br>  <span class="hljs-keyword">var</span> tmp = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = arr1.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>    tmp = arr1[i] + arr2[i] + tmp;<br>    <span class="hljs-keyword">if</span> (tmp &gt; <span class="hljs-number">1</span>) &#123;<br>      arr3[i+<span class="hljs-number">1</span>] = tmp - <span class="hljs-number">2</span>;<br>      tmp = <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>      arr3[i+<span class="hljs-number">1</span>] = tmp;<br>      tmp = <span class="hljs-number">0</span>;<br>    &#125;<br>  &#125;<br>  arr3[<span class="hljs-number">0</span>] = tmp;<br>  <span class="hljs-keyword">return</span> arr3;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.2-1 用Θ记号表示函数n^3&#x2F;1000-100n^2-100n+3<br>Θ(n^3)</p>
+<p>2.2-2 考虑排序存储在数组A中的n个数：首先找出A中的最小元素并将其与A[1]中的元素进行交换。接着，找出A中的次最小元素并将其与A[2]中的元素进行交换。对A中前n-1个元素按该方式继续。这算法称为<em>选择算法</em>，写出其伪代码。该算法维持的循环不变式是什么？为什么它只需要对前n-1个元素，而不是对所有n个元素运行？用Θ记号给出选择排序的最好情况与最坏情况运行时间</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">SELECTION</span>(A)<br><span class="hljs-keyword">for</span> j=<span class="hljs-number">1</span> to A.<span class="hljs-property">length</span>-<span class="hljs-number">1</span><br>  min = A[j]<br>  pointer = j<br>  <span class="hljs-keyword">for</span> i=j to A.<span class="hljs-property">length</span><br>    <span class="hljs-keyword">if</span> A[i] &lt; min<br>      min = A[i]<br>      pointer = i<br>  A[pointer] = A[j]<br>  A[j] = min    <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">selection</span>(<span class="hljs-params">arr</span>) &#123;<br>  <span class="hljs-keyword">var</span> min = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">var</span> pointer = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; arr.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>; j++) &#123;<br>    min = arr[j];<br>    pointer = j;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = j; i &lt;arr.<span class="hljs-property">length</span>; i++) &#123;<br>      <span class="hljs-keyword">if</span> (arr[i] &lt; min) &#123;<br>        min = arr[i];<br>        pointer = i;<br>      &#125;<br>    &#125;<br>    arr[pointer] = arr[j];<br>    arr[j] = min;<br>  &#125;  <br>  <span class="hljs-keyword">return</span> arr;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>因为第n个元素在进过前n-1个循环后一定是最大的，所以不需要对它在进行操作。<br>Θbest &#x3D; Θ(n^2)<br>Θworest &#x3D; <del>Θ(n^3)</del>  Θ(n^2)</p>
+<p>2.2-3 再次考虑<em>线性查找</em>问题（参见练习2.1-3）。假定要查找的元素等可能地为数组中的任意元素，平均需要检查的输入序列的多少元素？最坏情况又如何？用Θ记号给出线性查找的平均情况和最坏情况运行时间。证明你的答案<br><strong>平均情况</strong> T(n) &#x3D; 1&#x2F;(n+1) + 2&#x2F;(n+1) + 3&#x2F;(n+1) + … + n&#x2F;(n+1) + n&#x2F;(n+1)  &#x3D; (n^2 + 3n)&#x2F;2(n+1) &#x3D; Θ(n)<br><strong>最坏情况</strong> T(n) &#x3D; Θ(n) </p>
+<p>2.3-2 重写过程MERGE，使之不使用哨兵，而是一旦数组L或R的所有元素均被复制回A就立刻停止，然后把两一个数组的剩余部分复制回A</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">MERGE2</span>(A, p, q, r)<br>n1 = q - p + <span class="hljs-number">1</span><br>n2 = r - q<br><span class="hljs-keyword">let</span> L[<span class="hljs-number">1.</span>.<span class="hljs-property">n1</span>] and R[<span class="hljs-number">1.</span>. n2] be <span class="hljs-keyword">new</span> arrays<br><span class="hljs-keyword">for</span> i = <span class="hljs-number">1</span> to n1<br>  L[i] = A[p + i - <span class="hljs-number">1</span>]<br><span class="hljs-keyword">for</span> j = <span class="hljs-number">1</span> to n2<br>  R[j] = A[q + j]<br>i = <span class="hljs-number">1</span><br>j = <span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> k = p to r<br>  <span class="hljs-keyword">if</span> (L[i] &lt;= R[j] or j &gt; n2)<br>    A[k] = L[i]<br>    i = i + <span class="hljs-number">1</span><br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (L[i] &gt; R[j] or i &gt; n1)<br>    A[k] = R[j]<br>    j = j + <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">10</span>,<span class="hljs-number">7</span>,<span class="hljs-number">3</span>,<span class="hljs-number">9</span>,<span class="hljs-number">2</span>,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">11</span>];<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">merge2</span>(<span class="hljs-params">p, q, r</span>) &#123;<br>  <span class="hljs-keyword">var</span> n1 = q - p + <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">var</span> n2 = r - q;<br>  <span class="hljs-keyword">var</span> arrL = [];<br>  <span class="hljs-keyword">var</span> arrR = [];<br>  <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n1; i++) &#123;<br>    arrL[i] = arr[p + i];<br>  &#125;<br>  <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; n2; j++) &#123;<br>    arrR[j] = arr[q + j + <span class="hljs-number">1</span>];<br>  &#125;<br>  i = <span class="hljs-number">0</span>;<br>  j = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">var</span> k = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (k = p; k &lt; r + <span class="hljs-number">1</span>; k++) &#123;<br>    <span class="hljs-keyword">if</span> (arrL[i] &lt;= arrR[j] || j &gt;= n2) &#123;<br>      arr[k] = arrL[i];<br>      i = i + <span class="hljs-number">1</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arrL[i] &gt; arrR[j] || i &gt;= n1) &#123;<br>      arr[k] = arrR[j];<br>      j = j + <span class="hljs-number">1</span>;<br>    &#125;<br>  &#125;<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">merge_sort</span>(<span class="hljs-params">p, r</span>) &#123;<br>  <span class="hljs-keyword">var</span> mid = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">if</span> (p &lt; r) &#123;<br>    mid = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>((p + r)/<span class="hljs-number">2</span>);<br>    <span class="hljs-title function_">merge_sort</span>(p, mid);<br>    <span class="hljs-title function_">merge_sort</span>(mid+<span class="hljs-number">1</span>, r);<br>    <span class="hljs-title function_">merge2</span>(p, mid, r);<br>  &#125;<br>&#125;<br><span class="hljs-title function_">merge_sort</span>(<span class="hljs-number">0</span>, arr.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<br></code></pre></td></tr></table></figure>
+
+<p>2.3-4 我们可以把插入排序表示为如下的一个递归过程。为了排序A[1..n]，我们递归地排序A[1..n-1]，然后把A[n]插入到已排序的数组A[1..n-1]。为插入排序的这个递归版本的最坏情况运行时间写一个递归式<br>如果n &#x3D; 1，T(1) &#x3D; 1；<br>如果n &gt; 1，将A[n]插入A[1..n-1]需要比进行n-1次比较，所以 T(n) &#x3D; T(n-1) + c(n-1)  </p>
+<p>2.3-5 回顾<em>线性查找</em>问题，注意到，如果序列A已排好序，就可以将该序列的中点与v进行比较。根据比较的结果，原序列中有一半就可以不用再做进一步的考虑了。<em>二分查找算法</em>重复这个过程，每次都将序列剩余部分的规模减半。为二分查找写出迭代或递归的伪代码。证明：二分查找的最坏运行时间为Θ(lgn)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">BINARY</span>-<span class="hljs-title function_">SEARCH</span>(A, key)<br>start = <span class="hljs-number">1</span><br>end = A.<span class="hljs-property">length</span><br><span class="hljs-keyword">while</span> (start &lt;= end)<br>  i = └(start + end) / <span class="hljs-number">2</span>┘<br>  <span class="hljs-keyword">if</span> (A[i] == key)<br>    <span class="hljs-keyword">return</span> i<br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A[i] &gt; key)<br>    end = i - <span class="hljs-number">1</span><br>  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A[i] &lt; key)<br>    start = i + <span class="hljs-number">1</span><br><span class="hljs-keyword">return</span> <span class="hljs-string">&quot;NF&quot;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">binary_search</span>(<span class="hljs-params">array, key</span>) &#123;<br>  <span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>, end = array.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> (start &lt;= end) &#123;<br>    i = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>((start + end)/<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">if</span> (array[i] === key) &#123;<br>      <span class="hljs-keyword">return</span> i;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (array[i] &gt; key) &#123;<br>      end = i - <span class="hljs-number">1</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (array[i] &lt; key) &#123;<br>      start = i + <span class="hljs-number">1</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;NF&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>如果n &#x3D; 1，T(1) &#x3D; 1；<br>如果n &gt; 1, 最差的情况就是比较到最后一位，得出结论，所以T(n)&#x3D;lgn</p>
+<p>2.3-6 注意<em>插入排序</em>的第5~7行的while循环采用一种线性查找来（反向）扫描已排好序的子数组A[1..j-1]。我们可以使用<em>二分查找</em>来把插入排序的最坏情况运行总时间改进到Θ(nlgn)吗？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable constant_">INSERTION</span>-<span class="hljs-title class_">SORT2</span>(A)<br><span class="hljs-keyword">for</span> i=<span class="hljs-number">2</span> to A.<span class="hljs-property">length</span><br>    newA = A.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)<br>    key = A[i]<br>    answer = <span class="hljs-variable constant_">BINARY</span>-<span class="hljs-title function_">SEARCH</span>(newA, key)<br>    <span class="hljs-keyword">for</span> j=i down to answer<br>      A[j] = A[j-<span class="hljs-number">1</span>]<br>    A[answer] = key<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">binary_search</span>(<span class="hljs-params">array, key</span>) &#123;<br>  <span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>, end = array.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> (start &lt;= end) &#123;<br>    i = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>((start + end)/<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">if</span> (array[i] === key) &#123;<br>      <span class="hljs-keyword">return</span> i;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (array[i] &gt; key) &#123;<br>      end = i - <span class="hljs-number">1</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (array[i] &lt; key) &#123;<br>      start = i + <span class="hljs-number">1</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> (start &lt; end)? <span class="hljs-attr">end</span>: start;<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">insertion_sort2</span>(<span class="hljs-params">array</span>) &#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt; array.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-keyword">var</span> new_array = array.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, i);<br>    <span class="hljs-keyword">var</span> key = array[i];<br>    <span class="hljs-keyword">var</span> answer = <span class="hljs-title function_">binary_search</span>(new_array, key);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = i; j &gt; answer; j--) &#123;<br>      array[j] = array[j-<span class="hljs-number">1</span>];<br>    &#125;<br>    array[answer] = key;<br>  &#125;<br>  <span class="hljs-keyword">return</span> array;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>2.3-7 描述一个运行时间为Θ(nlgn)的算法，给定n个整数的集合S和另一个整数x，该算法能确定S中是否存在两个其和刚好为x的元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">determineSumX</span>(<span class="hljs-params">array, x</span>) &#123;<br>  <span class="hljs-keyword">var</span> filtered = array.<span class="hljs-title function_">filter</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) &#123;<br>    <span class="hljs-keyword">return</span> e&lt;x;<br>  &#125;);<br>  <span class="hljs-keyword">var</span> sorted = <span class="hljs-title function_">insertion_sort2</span>(filtered);<br>  <span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>, end = sorted.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span>(start &lt; end) &#123;<br>    <span class="hljs-keyword">if</span> (sorted[start] + sorted[end] === x) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sorted[start] + sorted[end] &lt; x) &#123;<br>      start = start + <span class="hljs-number">1</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sorted[start] + sorted[end] &gt; x) &#123;<br>      end = end - <span class="hljs-number">1</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">binary_search</span>(<span class="hljs-params">array, key</span>) &#123;<br>  <span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>, end = array.<span class="hljs-property">length</span>-<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> (start &lt;= end) &#123;<br>    i = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>((start + end)/<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">if</span> (array[i] === key) &#123;<br>      <span class="hljs-keyword">return</span> i;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (array[i] &gt; key) &#123;<br>      end = i - <span class="hljs-number">1</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (array[i] &lt; key) &#123;<br>      start = i + <span class="hljs-number">1</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> (start &lt; end)? <span class="hljs-attr">end</span>: start;<br>&#125;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">insertion_sort2</span>(<span class="hljs-params">array</span>) &#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt; array.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-keyword">var</span> new_array = array.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, i);<br>    <span class="hljs-keyword">var</span> key = array[i];<br>    <span class="hljs-keyword">var</span> answer = <span class="hljs-title function_">binary_search</span>(new_array, key);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = i; j &gt; answer; j--) &#123;<br>      array[j] = array[j-<span class="hljs-number">1</span>];<br>    &#125;<br>    array[answer] = key;<br>  &#125;<br>  <span class="hljs-keyword">return</span> array;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>2.1 （在归并排序中对小数组采用插入排序）虽然归并排序的最坏情况运行时间为Θ(nlgn)，而插入排序的最坏运行时间为Θ(n^2)，但是插入牌组中的常量因子可能使得它在n较小时，在许多机器上实际运行得更快。因此，在归并排序中，当子问题变得足够小时，采用插入排序来使递归的叶变粗是有意义的。考虑对归并排序的一种修改，其中使用插入排序来排序长度为k的n&#x2F;k个子表，然后使用标准的合并机制来合并这些子表，这里k是一个待定的值。<br>a. 证明：插入排序最坏的情况可以在Θ(nk)时间内排序每个长度为k的n&#x2F;k个子表。<br>b. 表明在最坏的情况下如何在Θ(nlg(n&#x2F;k))时间内合并这些子表。<br>c. 假定修改后的算法的最坏情况运行时间为Θ(nk+nlg(n&#x2F;k))，要使修改后的算法与标准的归并排序具有相同的运行时间，作为n的一个函数，借助Θ记号，k的最大值是什么？<br>d. 在实践中，我们应该如何选择k？<br>a. 因为插入排序的最坏运行时间为Θ(n^2)，所以对于长度为k的1个子表，最坏运行时间为Θ(k^2)；<br>又因为一共有n&#x2F;k个子表，所以，最坏运行时间为(n&#x2F;k)*Θ(k^2) &#x3D; Θ(nk)。<br>b. 由结果递归树可得，最小的叶子节点为cn&#x2F;k，共有k个叶子节点，所以树的高度为lg(n&#x2F;k)，又每层将贡献总代价cn，所以，总代价为cn(lg(n&#x2F;k)+1)，也就是Θ(nlog(n&#x2F;k))。<br>c. Θ(nk + nlg(n&#x2F;k)) &#x3D; Θ(nlgn)，&#x3D;&gt;Θ(k+lg(n&#x2F;k)) &#x3D; Θ(lgn)，所以k&lt;lgn，k的最大值应该是lgn。<br>d. <em>这是个实验问题，应该在k的合法范围内测试可能的k，用T-INSERTION-SORT(k)表示k个元素的插入排序时间，T-MERGE-SORT(k)表示k个元素的合并排序时间。该问题等价于测试求解T-INSERTION-SORT(k)&#x2F;T-MERGE-SORT(k)比值最小的k值。</em></p>
+<p>2.2 （冒泡排序算法的正确性）<em>冒泡排序</em>算法是一种流行但低效的排序算法，它的作用是反复交换相邻的未按次序排列的元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">BUBBLESORT</span>(A)<br><span class="hljs-number">1</span> <span class="hljs-keyword">for</span> i = <span class="hljs-number">1</span> to A.<span class="hljs-property">length</span> - <span class="hljs-number">1</span><br><span class="hljs-number">2</span>   <span class="hljs-keyword">for</span> j = A.<span class="hljs-property">length</span> downto i + <span class="hljs-number">1</span><br><span class="hljs-number">3</span>     <span class="hljs-keyword">if</span> A[j] &lt; A[j-<span class="hljs-number">1</span>]<br><span class="hljs-number">4</span>       exchange A[j] <span class="hljs-keyword">with</span> A[j-<span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure>
+<p>a. 假设A′表示BUBBLESORT(A)的输出。为了证明BUBBLESORT正确，我们必须证明它将终止并且有：<br>            A’[1] ≤ A’[2] ≤ … ≤ A’[n]                           (2.3)<br>其中 n&#x3D;A.length。为了证明BUBBLESORT确实完成了排序我们还需要证明什么？<br>下面两个部分将证明不等式（2.3）。<br>b. 为第2<del>4行的for循环精确地说明一个循环不变式，并证明该循环不变式成立。你的证明应该使用本章中给出的循环不变式证明的结构。<br>c. 利用在(b)部分证明的循环不变式的终止条件，为第1</del>4行的for循环说明一个循环不变式，它可以用来证明不等式(2.3)。你的证明应采用本章中给出的循环不变式的证明结构。<br>d. 冒泡排序算法的最坏情况运行时间是多少？与插入排序的运行时间相比，其性能如何？<br>a. 当n&#x3D;1时，能够正确排序。<br>b. 对第2<del>4行的for循环，循环不变式是A[j]是子数组A[j…n]中的最小值，且子数组中的元素并未改变。约定：n&#x3D;A.length。<br>初始化：开始时，j&#x3D;n，子数组中只包含A[n]，故循环不变式成立<br>保持：假设对于任意的一个j，使得A[j]是子数组A[j…n]中的最小值，在下一轮循环中，若A[j] &lt; A[j-1]，则A[j]和A[j-1]交换。使得A[j-1]是子数组A[j-1…n]中的最小值，循环不变式依然成立<br>终止：循环结束时j&#x3D;i，A[j]是子数组A[j…n]中的最小值，且子数组中的元素并未改变。<br>c. 对于1</del>4行的for循环，循环不变式是每次循环前，A[1…i-1]中包含了整个数组中前i-1小的排好序的元素，而A[i…n]中包含剩下的元素。 <br>初始化：第一次循环前i&#x3D;1，子数组为空，循环不变式成立<br>保持：假设对于任意一个i，使得A[1…i-1]中包含了整个数组中前i-1小的排好序的元素，而A[i…n]中包含剩下的元素，则内层循环保证了A[i]是子数组A[i…n]中的最小元素，则A[1…i]中包含了整个数组中前i小的排好序的元素，而A[i+1…n]中包含剩下的元素。循环不变式成立<br>终止：循环结束时i&#x3D;n+1，则A[1…n]中包含了整个数组中前n小的排好序的元素，即数组有序。<br>d. 冒泡排序最坏和最好运行时间均为Θ(n^2)<br>插入排序的最坏运行时间为Θ(n^2)，但是最好运行时间为Θ(n)<br>排序前A所有元素已经有序时，插入排序达到最好运行时间。  </p>
+<p>2.3 （霍纳(Horner)规则的正确性）给定系数a0, a1, …, an和x的值，代码片段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">1　y = 0<br>2　for i = n downto 0<br>3　　　y = ai + x·y<br></code></pre></td></tr></table></figure>
+<p>实现了用于求值多项式<br><img   class="lazyload" data-original="http://upload-images.jianshu.io/upload_images/916567-8a4207f83a46e6a3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" > <br>的霍纳规则。<br>a. 借助Θ记号，实现霍纳规则的以上代码片段的运行时间是多少？<br>b. 编写伪代码来实现朴素的多项式求值算法，该算法从头开始计算多项式的每个项。该算法的运行时间是多少？与霍纳规则相比，其性能如何？<br>c. 考虑以下循环不变式：<br>在第2～3行for循环每次迭代的开始有<img   class="lazyload" data-original="http://upload-images.jianshu.io/upload_images/916567-c916945818cbbd02.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" > 把没有项的和式解释为等于0。遵照本章中给出的循环不变式证明的结构，使用该循环不变式来证明终止时有<img   class="lazyload" data-original="http://upload-images.jianshu.io/upload_images/916567-36a22821ffb8a3d9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" ><br>d. 最后证明上面给出的代码片段将正确地求由系数a0, a1, …, an刻画的多项式的值。<br>Answer:<br>a. Θ(n)<br>b. 伪代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">MERGE</span>(A, p, q, r)<br>n1 = q - p + <span class="hljs-number">1</span><br>n2 = r - q<br><span class="hljs-title class_">Let</span> L[<span class="hljs-number">1.</span>.<span class="hljs-property">n1</span>+<span class="hljs-number">1</span>] and R[<span class="hljs-number">1.</span>.<span class="hljs-property">n2</span>+<span class="hljs-number">1</span>] be <span class="hljs-keyword">new</span> arrays<br><span class="hljs-keyword">for</span> i = <span class="hljs-number">1</span> to n1<br>    L[i] = A[p + i - <span class="hljs-number">1</span>]<br><span class="hljs-keyword">for</span> j = <span class="hljs-number">1</span> to n2<br>    R[j] = A[q+j]<br><span class="hljs-comment">//插入哨兵牌</span><br>L[n1 + <span class="hljs-number">1</span>] = ∞<br>R[n2 + <span class="hljs-number">1</span>] = ∞<br>i = <span class="hljs-number">1</span><br>j = <span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> k = p to r<br>    <span class="hljs-keyword">if</span> L[i] &lt;= R[j]<br>        A[k] = L[i]<br>        i = i + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">else</span> A[k] = R[j]<br>        j = j + <span class="hljs-number">1</span><br>        count = count + <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/reading/how-to-read-a-book/"><i class="iconfont iconleft"></i>How to Read a Book</a>
+    <a href="/reading/the-life-changing-magic-of-tidying-up/">断舍离<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">插入排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E4%B8%8D%E5%8F%98%E5%BC%8F"><span class="toc-text">循环不变式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-text">算法分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95"><span class="toc-text">归并排序算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%B2%BB%E6%A8%A1%E5%BC%8F"><span class="toc-text">分治模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95"><span class="toc-text">分析分治算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-text">练习</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

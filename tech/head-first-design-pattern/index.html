@@ -1,0 +1,618 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>设计模式笔记 - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="面向对象的特点
+可维护
+可复用
+可扩展
+灵活性好
+
+随...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">设计模式笔记</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">设计模式笔记</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>November 14, 2022</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/tech/head-first-design-pattern/" class="leancloud-counter" data-flag-title="设计模式笔记"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/tech/head-first-design-pattern/" class="leancloud-like" data-flag-title="设计模式笔记"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>7239</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sytem-design/" rel="tag">Sytem design</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <h1 id="面向对象的特点"><a href="#面向对象的特点" class="headerlink" title="面向对象的特点"></a>面向对象的特点</h1><ul>
+<li>可维护</li>
+<li>可复用</li>
+<li>可扩展</li>
+<li>灵活性好</li>
+</ul>
+<p>随着业务变得越来越复杂，面向对象依然能够使得程序结构良好，而面向过程却会导致程序越来越臃肿。</p>
+<h1 id="设计模式的六大原则"><a href="#设计模式的六大原则" class="headerlink" title="设计模式的六大原则"></a>设计模式的六大原则</h1><ul>
+<li>开闭原则：一个软件实体如类、模块和函数应该对修改封闭，对扩展开放</li>
+<li>单一职责原则：一个类只做一件事，一个类应该只有一个引起它修改的原因</li>
+<li>里氏替换原则：子类应该可以完全替换父类。也就是说在使用继承时，只扩展新功能，而不要破坏父类原有的功能</li>
+<li>依赖倒置原则：细节应该依赖于抽象，抽象不应依赖于细节。把抽象层放在程序设计的高层，并保持稳定，程序的细节变化由低层的实现层来完成</li>
+<li>迪米特法则：又名“最少知道原则”，一个类不应知道自己操作的类的细节，换言之，只和朋友谈话，不和朋友的朋友谈话</li>
+<li>接口隔离原则：客户端不应依赖它不需要的接口。如果一个接口在实现时，部分方法由于冗余被客户端空实现，则应该将接口拆分，让实现类只需依赖自己需要的接口方法</li>
+</ul>
+<h1 id="构建型模式-Creational-Patterns"><a href="#构建型模式-Creational-Patterns" class="headerlink" title="构建型模式 Creational Patterns"></a>构建型模式 Creational Patterns</h1><h2 id="工厂模式-Factory"><a href="#工厂模式-Factory" class="headerlink" title="工厂模式 Factory"></a>工厂模式 Factory</h2><p>封装对象的设计模式，隐藏通用的实现细节和操作<br>可以降低耦合和减少代码重复<br>详细分类：</p>
+<ul>
+<li>简单工厂模式<br>让一个工厂类承担构建所有对象的职责<br>弊端：<ul>
+<li>如果需要生产的产品过多，此模式会导致工厂类过于庞大，承担过多的职责，变成超级类</li>
+<li>当要生产新的产品时，必须在工厂类中添加新的分支，违背了开闭原则</li>
+</ul>
+</li>
+<li>工厂方法模式<br>为每个产品创建专属工厂，降低了产品间的互相依赖</li>
+<li>抽象工厂模式 Abstract factory<br>在工厂方法模式的基础上，将公共的工厂接口提取到<code>Interface</code>中，然后产品工厂实现接口<br>抽象工厂弱化了产品工厂的存在感，统一了方法签名，使得实现替换更加容易<br>抽象工厂模式很好的发挥了开闭原则、依赖倒置原则，但缺点是抽象工厂模式太重了，如果 IFactory 接口需要新增功能，则会影响到所有的具体工厂类<br>因此，抽象工厂模式适用于增加同类工厂这样的横向扩展需求，不适合新增功能这样的纵向扩展</li>
+</ul>
+<h2 id="单例模式-Singleton"><a href="#单例模式-Singleton" class="headerlink" title="单例模式 Singleton"></a>单例模式 Singleton</h2><p>单例模式非常常见，某个对象全局只需要一个实例时，就可以使用单例模式。它的优点也显而易见：</p>
+<ul>
+<li>它能够避免对象重复创建，节约空间并提升效率</li>
+<li>避免由于操作不同实例导致的逻辑错误</li>
+</ul>
+<p>单例模式有两种实现方式：</p>
+<ul>
+<li><p>饿汉式<br>在声明时初始化，构造方法通常定义为 private，保证了其他类无法实例化此类，必须通过<code>getInstance</code>方法才能获取到唯一的<code>instance</code>实例<br>弊端：即使这个单例不需要使用，它也会在类加载之后立即创建出来，占用一块内存，并增加类初始化时间</p>
+</li>
+<li><p>懒汉式<br>先声明一个空变量，需要用时才初始化，在<code>getInstance</code>方法中判空创建，<br>好处：按需加载，避免了内存浪费，减少了类初始化时间<br>弊端：1. 非线程安全; 2. 将程序加载时间从启动时延后到了运行时，没有做到构建与使用分离，解耦<br>解决方案一：给判空过程加上锁，</p>
+<ol>
+<li>双检锁方式，程序效率更高  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Singleton</span> &#123;<br>    <br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Singleton</span> <span class="hljs-variable">instance</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-title function_">Singleton</span><span class="hljs-params">()</span> &#123;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title function_">getInstance</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-keyword">if</span> (instance == <span class="hljs-literal">null</span>) &#123;<br>          <span class="hljs-keyword">synchronized</span> (Singleton.class) &#123;<br>              <span class="hljs-keyword">if</span> (instance == <span class="hljs-literal">null</span>) &#123;<br>                  instance = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Singleton</span>();<br>              &#125;<br>          &#125;<br>      &#125;<br>      <span class="hljs-keyword">return</span> instance;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+  JVM 底层为了优化程序运行效率，可能会对代码进行指令重排序，在一些特殊情况下会导致出现空指针，更进一步的优化是给 instance 变量加上 volatile 关键字</li>
+<li>方法级别加锁，有一说双重检测法，低版本的JVM无法保证线程安全  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Singleton</span> &#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Singleton</span> <span class="hljs-variable">instance</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>  <span class="hljs-keyword">private</span> <span class="hljs-title function_">Singleton</span><span class="hljs-params">()</span> &#123;<br>  &#125;<br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> Singleton <span class="hljs-title function_">getInstance</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-keyword">if</span> (instance == <span class="hljs-literal">null</span>) &#123;<br>          instance = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Singleton</span>();<br>      &#125;<br>      <span class="hljs-keyword">return</span> instance;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>解决方案二：静态内部类方式保证懒汉式单例的线程安全<br>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Singleton</span> &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SingletonHolder</span> &#123;<br>      <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">Singleton</span> <span class="hljs-variable">instance</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Singleton</span>();<br>  &#125;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-title function_">Singleton</span><span class="hljs-params">()</span> &#123;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title function_">getInstance</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-keyword">return</span> SingletonHolder.instance;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<ol>
+<li>静态内部类方式是怎么实现懒加载的<br>Java 类的加载过程包括：加载、验证、准备、解析、初始化。初始化阶段即执行类的 clinit 方法（clinit &#x3D; class + initialize），包括为类的静态变量赋初始值和执行静态代码块中的内容。但不会立即加载内部类，内部类会在使用时才加载。所以当此 Singleton 类加载时，SingletonHolder 并不会被立即加载，所以不会像饿汉式那样占用内存。<br>另外，Java 虚拟机规定，当访问一个类的静态字段时，如果该类尚未初始化，则立即初始化此类。当调用Singleton 的 getInstance 方法时，由于其使用了 SingletonHolder 的静态变量 instance，所以这时才会去初始化 SingletonHolder，在 SingletonHolder 中 new 出 Singleton 对象。这就实现了懒加载。</li>
+<li>静态内部类方式是怎么保证线程安全的<br>Java 虚拟机的设计是非常稳定的，早已经考虑到了多线程并发执行的情况。虚拟机在加载类的 clinit 方法时，会保证 clinit 在多线程中被正确的加锁、同步。即使有多个线程同时去初始化一个类，一次也只有一个线程可以执行 clinit 方法，其他线程都需要阻塞等待，从而保证了线程安全。</li>
+</ol>
+<p>对于构建不复杂，加载完成后会立即使用的单例对象，推荐使用饿汉式。对于构建过程耗时较长，并不是所有使用此类都会用到的单例对象，推荐使用懒汉式。</p>
+</li>
+</ul>
+<h2 id="建造者模式-Builder"><a href="#建造者模式-Builder" class="headerlink" title="建造者模式 Builder"></a>建造者模式 Builder</h2><p>建造者模式用于创建过程稳定，但配置多变的对象，将一个复杂的构建与其表示相分离，使得同样的构建过程可以创建不同的表示，不用担心忘了指定某个配置，保证了构建过程是稳定的<br>通过链式调用生成不同的配置<br>Lombok’s @Builder</p>
+<h2 id="原型模式-Prototype"><a href="#原型模式-Prototype" class="headerlink" title="原型模式 Prototype"></a>原型模式 Prototype</h2><p>用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象<br>比如：Object 的 clone()</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>工厂方法模式：为每一类对象建立工厂，将对象交由工厂创建，客户端只和工厂打交道。</li>
+<li>抽象工厂模式：为每一类工厂提取出抽象接口，使得新增工厂、替换工厂变得非常容易。</li>
+<li>建造者模式：用于创建构造过程稳定的对象，不同的 Builder 可以定义不同的配置。</li>
+<li>单例模式：全局使用同一个对象，分为饿汉式和懒汉式。懒汉式有双检锁和内部类两种实现方式。</li>
+<li>原型模式：为一个类定义 clone 方法，使得创建相同的对象更方便。</li>
+</ul>
+<h1 id="结构型模式-Structural-Patterns"><a href="#结构型模式-Structural-Patterns" class="headerlink" title="结构型模式 Structural Patterns"></a>结构型模式 Structural Patterns</h1><h2 id="适配器模式-Adapter"><a href="#适配器模式-Adapter" class="headerlink" title="适配器模式 Adapter"></a>适配器模式 Adapter</h2><p>适用于有相关性但不兼容的结构，源接口通过一个中间件转换后才可以适用于目标接口，这个转换过程就是适配，这个中间件就称之为适配器<br>将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类能一起工作</p>
+<h2 id="桥接模式-Bridge"><a href="#桥接模式-Bridge" class="headerlink" title="桥接模式 Bridge"></a>桥接模式 Bridge</h2><p>将抽象部分与它的实现部分分离，使它们都可以独立地变化。它是一种对象结构型模式，又称为柄体模式或接口模式</p>
+<h2 id="组合模式-Composite"><a href="#组合模式-Composite" class="headerlink" title="组合模式 Composite"></a>组合模式 Composite</h2><p>用于整体与部分的结构，当整体与部分有相似的结构，在操作时可以被一致对待时，就可以使用组合模式<br>又叫部分整体模式，是用于把一组相似的对象当作一个单一的对象。组合模式依据树形结构来组合对象，用来表示部分以及整体层次。这种类型的设计模式属于结构型模式，它创建了对象组的树形结构</p>
+<h4 id="组合模式中的安全方式与透明方式"><a href="#组合模式中的安全方式与透明方式" class="headerlink" title="组合模式中的安全方式与透明方式"></a>组合模式中的安全方式与透明方式</h4><p>透明方式：在 Component 中声明所有管理子对象的方法，包括 add 、remove 等，这样继承自 Component 的子类都具备了 add、remove 方法。对于外界来说叶节点和枝节点是透明的，它们具备完全一致的接口<br>安全方式：在 Component 中不声明 add 和 remove 等管理子对象的方法，这样叶节点就无需实现它，只需在枝节点中实现管理子对象的方法即可</p>
+<h2 id="装饰模式-Decorator"><a href="#装饰模式-Decorator" class="headerlink" title="装饰模式 Decorator"></a>装饰模式 Decorator</h2><p>动态地给一个对象增加一些额外的职责，又称为包装器&#x2F;“油漆工模式”<br>Java I&#x2F;O<br>主要作用:</p>
+<ul>
+<li>增强一个类原有的功能 - 透明装饰模式 - 可以无限装饰</li>
+<li>为一个类添加新的功能 - 半透明装饰模式 - 无法多次装饰<br>可以说，装饰模式是继承的一种替代方案，比生成子类实现更为灵活</li>
+</ul>
+<h2 id="外观模式-Facade"><a href="#外观模式-Facade" class="headerlink" title="外观模式 Facade"></a>外观模式 Facade</h2><p>体现Java封装思想，将多个子系统封装起来，提供一个更简洁的接口供外部调用<br>外部与一个子系统的通信必须通过一个统一的外观对象进行，外观模式定义了一个高层接口，为子系统中的一组接口提供一个一致的界面，使得子系统更加容易使用，又称为门面模式</p>
+<h2 id="享元模式-Flyweight"><a href="#享元模式-Flyweight" class="headerlink" title="享元模式 Flyweight"></a>享元模式 Flyweight</h2><p>共享对象，提高复用性，DRY(Don’t repeat yourself)</p>
+<h2 id="代理模式-Proxy"><a href="#代理模式-Proxy" class="headerlink" title="代理模式 Proxy"></a>代理模式 Proxy</h2><p>给某一个对象提供一个代理，并由代理对象<strong>控制</strong>对原对象的引用<br>分为：</p>
+<ul>
+<li>静态代理</li>
+<li>动态代理：优势，节省代码量，只需实现需要控制的方法，通过方法名对被代理类进行动态的控制</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>适配器模式：用于有相关性但不兼容的接口</li>
+<li>桥接模式：用于同等级的接口互相组合</li>
+<li>组合模式：用于整体与部分的结构</li>
+<li>外观模式：体现封装的思想</li>
+<li>享元模式：体现面向对象的可复用性</li>
+<li>代理模式：主要用于对某个对象加以控制</li>
+</ul>
+<h1 id="行为型模式-Behavioral-Pattern"><a href="#行为型模式-Behavioral-Pattern" class="headerlink" title="行为型模式 Behavioral Pattern"></a>行为型模式 Behavioral Pattern</h1><h2 id="责任链模式-Chain-of-responsibility"><a href="#责任链模式-Chain-of-responsibility" class="headerlink" title="责任链模式 Chain of responsibility"></a>责任链模式 Chain of responsibility</h2><p>处理职责相同，程度不同的类<br>优点：</p>
+<ul>
+<li>降低对象之间的耦合，发送者无须关心处理细节和传递过程，和处理者解耦</li>
+<li>扩展性强，满足开闭原则，可以根据需要增加新的请求处理类</li>
+<li>灵活性强。可以动态地改变链内的成员或者改变链的次序来适应流程的变化</li>
+<li>简化对象之间的连接。每个对象只需保持一个指向其后继者的引用</li>
+<li>责任分担。每个类只需要处理自己该处理的工作，不该处理的传递给下一个对象完成，明确各类的责任范围，符合单一职责原则<br>缺点：</li>
+<li>不能保证每个请求一定被处理，该请求可能一直传到链的末端都得不到处理</li>
+<li>如果责任链过长，请求的处理可能涉及多个处理对象，系统性能将受到一定影响</li>
+<li>责任链建立的合理性要靠客户端来保证，增加了客户端的复杂性，可能会由于责任链拼接次序错误而导致系统出错，比如循环调用</li>
+</ul>
+<h2 id="命令模式-Command"><a href="#命令模式-Command" class="headerlink" title="命令模式 Command"></a>命令模式 Command</h2><p>通过execute去调用方法，封装 “方法调用”<br>优点：</p>
+<ul>
+<li>降低系统的耦合度，将 “行为请求者” 和 ”行为实现者“ 解耦</li>
+<li>扩展性强。增加或删除命令非常方便，并且不会影响其他类</li>
+<li>封装 “方法调用”，方便实现 Undo 和 Redo 操作</li>
+<li>灵活性强，可以实现宏命令<br>缺点：</li>
+<li>会产生大量命令类。增加了系统的复杂性</li>
+</ul>
+<h2 id="解释器模式-Interpreter"><a href="#解释器模式-Interpreter" class="headerlink" title="解释器模式 Interpreter"></a>解释器模式 Interpreter</h2><p>部分：<br>1.抽象表达式（Abstract Expression）：定义解释器的接口，约定解释器的解释操作，主要包含解释方法 interpret()<br>2.终结符表达式（Terminal Expression）：是抽象表达式的子类，用来实现文法中与终结符相关的操作，不可拆分的最小单元<br>3.非终结符表达式（Nonterminal Expression）：也是抽象表达式的子类，用来实现文法中与非终结符相关的操作，可被拆分的表达式<br>4.环境（Context）：通常包含各个解释器需要的数据或是公共的功能，一般用来传递被所有解释器共享的数据<br>5.客户端（Client）：将需要分析的句子或表达式转换成使用解释器对象描述的抽象语法树，然后调用解释器的解释方法，当然也可以通过环境角色间接访问解释器的解释方法</p>
+<h2 id="迭代器模式-Iterator"><a href="#迭代器模式-Iterator" class="headerlink" title="迭代器模式 Iterator"></a>迭代器模式 Iterator</h2><p>提供一种方法访问一个容器对象中各个元素，而又不需暴露该对象的内部细节</p>
+<h2 id="中介者模式-Mediator"><a href="#中介者模式-Mediator" class="headerlink" title="中介者模式 Mediator"></a>中介者模式 Mediator</h2><p>定义一个中介对象来封装一系列对象之间的交互，使原有对象之间的耦合松散，且可以独立地改变它们之间的交互<br>当类与类之间的关系呈现网状时，引入一个中介者，可以使类与类之间的关系变成星形。将每个类与多个类的耦合关系简化为每个类与中介者的耦合关系，将多对多关系简化成多对一、一对多关系的设计模式<br>缺点：中介类需要处理所有类之间的协调工作，这可能会使中介者演变成一个超级类</p>
+<h2 id="备忘录模式-Memento"><a href="#备忘录模式-Memento" class="headerlink" title="备忘录模式 Memento"></a>备忘录模式 Memento</h2><p>在不破坏封装的条件下，通过备忘录对象存储另外一个对象内部状态的快照，在将来合适的时候把这个对象还原到存储起来的状态<br>优点：</p>
+<ul>
+<li>提供一种可恢复状态的机制，使用户能够比较方便的回到某个历史的状态</li>
+<li>实现了信息的封装，用户不需要关心状态的保存细节<br>缺点：</li>
+<li>消耗资源，如果类的成员变量过多，会占用比较大的资源，而且每一次保存都会消耗一定的内存</li>
+</ul>
+<h2 id="观察者模式-Observer"><a href="#观察者模式-Observer" class="headerlink" title="观察者模式 Observer"></a>观察者模式 Observer</h2><p>定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新<br>Observer, Observable, subscribe &#x2F; register, update</p>
+<h2 id="状态模式-State"><a href="#状态模式-State" class="headerlink" title="状态模式 State"></a>状态模式 State</h2><p>关于多态的设计模式，如果一个对象有多种状态，并且每种状态下的行为不同，可以为每种状态创建一个状态对象，使用状态对象，使得状态控制更加灵活，扩展性也更好<br>当一个对象的内在状态改变时允许改变其行为，这个对象看起来像是改变了其类<br>优点：将与特定状态相关的行为封装到一个状态对象中，使用多态代替 if-else 或者 switch-case 状态判断<br>缺点：导致类增加，这也是使用多态不可避免的缺点</p>
+<h2 id="策略模式-Strategy"><a href="#策略模式-Strategy" class="headerlink" title="策略模式 Strategy"></a>策略模式 Strategy</h2><p>定义了一系列算法，并将每一个算法封装起来，而且使它们还可以相互替换。策略模式让算法独立于使用它的客户而独立变化<br>优点：扩展性和灵活性。当有新的策略时，只需要增加一个策略类；要修改某个策略时，只需要更改具体的策略类，其他地方的代码都无需做任何调整<br>缺点：调用者需要了解策略类，增加了类与类之间的耦合 &#x3D;&gt; 可以通过简单工厂模式与策略模式的结合，将不同的策略对象封装到工厂类中，用户只需要传递不同的策略类型，然后从工厂中拿到对应的策略对象即可</p>
+<h2 id="模板方法模式-Template-method"><a href="#模板方法模式-Template-method" class="headerlink" title="模板方法模式 Template method"></a>模板方法模式 Template method</h2><p>关于继承的设计模式，被继承的父类是模板，它的某些步骤是稳定的，某些步骤被延迟到子类中实现<br>定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤<br>可以用方法的作用域控制权限：final - 不希望子类覆写；abstract - 子类必须覆写；protected 或 public - 没有特殊要求</p>
+<h2 id="访问者模式-Visitor"><a href="#访问者模式-Visitor" class="headerlink" title="访问者模式 Visitor"></a>访问者模式 Visitor</h2><p>核心思想：将数据的结构和对数据的操作分离<br>访问者模式（Visitor Pattern）表示一个作用于某对象结构中的各元素的操作。它使你可以在不改变各元素的类的前提下定义作用于这些元素的新操作<br>方法的接收者和方法的参数统称为方法的宗量。 根据分派基于多少个宗量，可以将分派分为单分派和多分派。单分派是指根据一个宗量就可以知道应该调用哪个方法，多分派是指需要根据多个宗量才能确定调用目标</p>
+<h2 id="小结-Summary"><a href="#小结-Summary" class="headerlink" title="小结 Summary"></a>小结 Summary</h2><ul>
+<li>责任链模式：处理职责相同，程度不同的对象，使其在一条链上传递</li>
+<li>命令模式：封装“方法调用”，将行为请求者和行为实现者解耦</li>
+<li>解释器模式：定义自己的语法规则</li>
+<li>迭代器模式：定义 next() 方法和 hasNext() 方法，让外部类使用这两个方法来遍历列表，以达到隐藏列表内部细节的目的</li>
+<li>中介者模式：通过引入中介者，将网状耦合结构变成星型结构</li>
+<li>备忘录模式：存储对象的状态，以便恢复</li>
+<li>观察者模式：处理一对多的依赖关系，被观察的对象改变时，多个观察者都能收到通知</li>
+<li>状态模式：关于多态的设计模式，每个状态类处理对象的一种状态</li>
+<li>策略模式：殊途同归，用多种方法做同一件事</li>
+<li>模板方法模式：关于继承的设计模式，父类是子类的模板</li>
+<li>访问者模式：将数据的结构和对数据的操作分离</li>
+</ul>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/design-patterns/9ew9uc/">LeetBook 深入浅出设计模式</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.baeldung.com/creational-design-patterns">Creational Design Pattern by Baeldung</a></li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/tech/leetcode-132-pattern/"><i class="iconfont iconleft"></i>【Leetcode】456. 132 Pattern</a>
+    <a href="/tech/monotonic-stack-and-monotonic-queue/">Monotonic Stack, Monotonic Queue 单调队列，单调栈【ING/太难了/求指导】<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">面向对象的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99"><span class="toc-text">设计模式的六大原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F-Creational-Patterns"><span class="toc-text">构建型模式 Creational Patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F-Factory"><span class="toc-text">工厂模式 Factory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-Singleton"><span class="toc-text">单例模式 Singleton</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F-Builder"><span class="toc-text">建造者模式 Builder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F-Prototype"><span class="toc-text">原型模式 Prototype</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F-Structural-Patterns"><span class="toc-text">结构型模式 Structural Patterns</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F-Adapter"><span class="toc-text">适配器模式 Adapter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F-Bridge"><span class="toc-text">桥接模式 Bridge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F-Composite"><span class="toc-text">组合模式 Composite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F-Decorator"><span class="toc-text">装饰模式 Decorator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F-Facade"><span class="toc-text">外观模式 Facade</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F-Flyweight"><span class="toc-text">享元模式 Flyweight</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F-Proxy"><span class="toc-text">代理模式 Proxy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F-Behavioral-Pattern"><span class="toc-text">行为型模式 Behavioral Pattern</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F-Chain-of-responsibility"><span class="toc-text">责任链模式 Chain of responsibility</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-Command"><span class="toc-text">命令模式 Command</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F-Interpreter"><span class="toc-text">解释器模式 Interpreter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F-Iterator"><span class="toc-text">迭代器模式 Iterator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F-Mediator"><span class="toc-text">中介者模式 Mediator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F-Memento"><span class="toc-text">备忘录模式 Memento</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F-Observer"><span class="toc-text">观察者模式 Observer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F-State"><span class="toc-text">状态模式 State</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F-Strategy"><span class="toc-text">策略模式 Strategy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F-Template-method"><span class="toc-text">模板方法模式 Template method</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F-Visitor"><span class="toc-text">访问者模式 Visitor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93-Summary"><span class="toc-text">小结 Summary</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B5%84%E6%BA%90"><span class="toc-text">资源</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

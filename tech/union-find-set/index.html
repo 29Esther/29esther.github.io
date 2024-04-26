@@ -1,0 +1,587 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Union-Find Set / Disjoint Set Union 并查集介绍 - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="开篇废话数据结构「并查集」（Union-Find），也...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Union-Find Set / Disjoint Set Union 并查集介绍</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">Union-Find Set / Disjoint Set Union 并查集介绍</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>December 02, 2021</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/tech/union-find-set/" class="leancloud-counter" data-flag-title="Union-Find Set / Disjoint Set Union 并查集介绍"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/tech/union-find-set/" class="leancloud-like" data-flag-title="Union-Find Set / Disjoint Set Union 并查集介绍"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>8153</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <h1 id="开篇废话"><a href="#开篇废话" class="headerlink" title="开篇废话"></a>开篇废话</h1><p>数据结构「并查集」（Union-Find），也称「不相交集合」（Disjoin-Sets）挺火的，刷题的时候一直遇到，刷到必是medium以上。本身原理并不复杂，就是实现代码稍微多了点。</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p><img    class="lazyload" data-original="/../../../../../pics/tech/ufs/union-find.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">并查集主要知识点导图</span></p>
+<h1 id="主要操作"><a href="#主要操作" class="headerlink" title="主要操作"></a>主要操作</h1><h2 id="并-Union"><a href="#并-Union" class="headerlink" title="并 Union"></a>并 Union</h2><p>把两个集合合并成一个集合，表示这两个集合之间产生连接</p>
+<h2 id="查-Find"><a href="#查-Find" class="headerlink" title="查 Find"></a>查 Find</h2><p>查询元素属于哪个集合</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><h2 id="代码框架"><a href="#代码框架" class="headerlink" title="代码框架"></a>代码框架</h2><p>代码基本框架如下，对于<code>find</code>和<code>union</code>下面会介绍不同的实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UnionFind</span> &#123;<br>    <span class="hljs-type">int</span>[] root;<br><br>    UnionFind(<span class="hljs-type">int</span> size) &#123;<br>        root = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[size];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>            root[i] = i;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-type">int</span> <span class="hljs-title function_">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-keyword">return</span> root[x];<br>    &#125;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">union</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>        <span class="hljs-comment">// join x and y</span><br>    &#125;<br><br>    <span class="hljs-type">boolean</span> <span class="hljs-title function_">connected</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>        <span class="hljs-keyword">return</span> find(x) == find(y);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Quick-Find-实现"><a href="#Quick-Find-实现" class="headerlink" title="Quick Find 实现"></a>Quick Find 实现</h2><p>此实现重点在于超快速<code>find</code>方法，时间复杂度在O(1)，而对于<code>union</code>时间复杂度是O(n)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UnionFindQuickFind</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">UnionFind</span> &#123;<br>    UnionFindQuickFind(<span class="hljs-type">int</span> size) &#123;<br>        <span class="hljs-built_in">super</span>(size);<br>    &#125;<br><br>    <span class="hljs-type">int</span> <span class="hljs-title function_">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-keyword">return</span> root[x];<br>    &#125;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">union</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">rootX</span> <span class="hljs-operator">=</span> find(x), rootY = find(y);<br>        <span class="hljs-keyword">if</span> (rootX != rootY) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; root.length; i++) &#123;<br>                <span class="hljs-keyword">if</span> (root[i] == rootY) &#123;<br>                    root[i] = rootX;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="Quick-Union-实现"><a href="#Quick-Union-实现" class="headerlink" title="Quick Union 实现"></a>Quick Union 实现</h2><p>此实现是最常用的版本，其他的优化也是基于此版本<br>虽然提高了<code>find</code>方法的时间复杂度，但平均了<code>union</code>的时间复杂度，总体效率会高于<em>Quick Find</em>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UnionFindQuickUnion</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">UnionFind</span> &#123;<br>    UnionFindQuickUnion(<span class="hljs-type">int</span> size) &#123;<br>        <span class="hljs-built_in">super</span>(size);<br>    &#125;<br><br>    <span class="hljs-type">int</span> <span class="hljs-title function_">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-keyword">while</span> (x != root[x]) &#123;<br>            x = root[x];<br>        &#125;<br>        <span class="hljs-keyword">return</span> x;<br>    &#125;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">union</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">rootX</span> <span class="hljs-operator">=</span> find(x), rootY = find(y);<br>        <span class="hljs-keyword">if</span> (rootX != rootY) &#123;<br>            root[rootY] = rootX;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="按秩合并优化-实现"><a href="#按秩合并优化-实现" class="headerlink" title="按秩合并优化 实现"></a>按秩合并优化 实现</h2><p>针对<code>union</code>操作的优化，在<code>union</code>操作时，根据约定的秩序从两个根节点中选择新的根结点</p>
+<h3 id="标准按秩，按当前树的高度合并"><a href="#标准按秩，按当前树的高度合并" class="headerlink" title="标准按秩，按当前树的高度合并"></a>标准按秩，按当前树的高度合并</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UnionFindOptimizationByRank</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">UnionFindQuickUnion</span> &#123;<br>    <span class="hljs-type">int</span>[] rank; <span class="hljs-comment">// 新增rank数组， 存放当前root树的高度</span><br>    UnionFindOptimizationByRank(<span class="hljs-type">int</span> size) &#123;<br>        <span class="hljs-built_in">super</span>(size);<br>        rank = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[size];<br>        Arrays.fill(rank, <span class="hljs-number">1</span>); <span class="hljs-comment">// 初始化，人人平等</span><br>    &#125;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">union</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">rootX</span> <span class="hljs-operator">=</span> find(x), rootY = find(y);<br>        <span class="hljs-keyword">if</span> (rootX == rootY) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (rank[rootX] &gt; rank[rootY]) &#123;<br>            root[rootY] = rootX;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (rank[rootY] &gt; rank[rootX]) &#123;<br>            root[rootX] = rootY;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            root[rootY] = rootX;<br>            rank[rootX]++; <span class="hljs-comment">// 增加高度</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="人多势众，按当前集合元素数量合并"><a href="#人多势众，按当前集合元素数量合并" class="headerlink" title="人多势众，按当前集合元素数量合并"></a>人多势众，按当前集合元素数量合并</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UnionFindOptimizationByCount</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">UnionFindQuickUnion</span> &#123;<br>    <span class="hljs-type">int</span>[] count;<br>    UnionFindOptimizationByCount(<span class="hljs-type">int</span> size) &#123;<br>        <span class="hljs-built_in">super</span>(size);<br>        count = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[size];<br>        Arrays.fill(count, <span class="hljs-number">1</span>); <span class="hljs-comment">// 初始化，人人平等</span><br>    &#125;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">union</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">rootX</span> <span class="hljs-operator">=</span> find(x), rootY = find(y);<br>        <span class="hljs-keyword">if</span> (rootX == rootY) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">newCount</span> <span class="hljs-operator">=</span> count[rootX] + count[rootY];<br>        <span class="hljs-keyword">if</span> (count[rootX] &gt; count[rootY]) &#123;<br>            root[rootY] = rootX;<br>            count[rootX] = newCount;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            root[rootX] = rootY;<br>            count[rootY] = newCount;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="路径压缩优化-实现"><a href="#路径压缩优化-实现" class="headerlink" title="路径压缩优化 实现"></a>路径压缩优化 实现</h2><p>针对<code>find</code>操作的优化，在<code>find</code>操作时，压缩已查找的路径，具体实现有两种，差距不大</p>
+<h3 id="完全压缩（递归）"><a href="#完全压缩（递归）" class="headerlink" title="完全压缩（递归）"></a>完全压缩（递归）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UnionFindOptimizationPathUpdateComplete</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">UnionFindQuickUnion</span> &#123;<br>    UnionFindOptimizationPathUpdateComplete(<span class="hljs-type">int</span> size) &#123;<br>        <span class="hljs-built_in">super</span>(size);<br>    &#125;<br><br>    <span class="hljs-type">int</span> <span class="hljs-title function_">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-keyword">if</span> (x == root[x]) &#123;<br>            <span class="hljs-keyword">return</span> x;<br>        &#125;<br>        <span class="hljs-keyword">return</span> root[x] = find(root[x]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="隔代压缩（循环）"><a href="#隔代压缩（循环）" class="headerlink" title="隔代压缩（循环）"></a>隔代压缩（循环）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UnionFindOptimizationPathUpdateGap</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">UnionFindQuickUnion</span> &#123;<br>    UnionFindOptimizationPathUpdateGap(<span class="hljs-type">int</span> size) &#123;<br>        <span class="hljs-built_in">super</span>(size);<br>    &#125;<br><br>    <span class="hljs-type">int</span> <span class="hljs-title function_">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-keyword">while</span> (x != root[x]) &#123;<br>            root[x] = root[root[x]];<br>            x = root[x];<br>        &#125;<br>        <span class="hljs-keyword">return</span> x;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="终极优化-版本"><a href="#终极优化-版本" class="headerlink" title="终极优化 版本"></a>终极优化 版本</h2><p>注：这里存在个人偏见<br>路径压缩优化后是否还需要按秩合并存在一丢丢的争议，读者可自行斟酌</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UnionFindFinal</span> &#123;<br>    <span class="hljs-type">int</span>[] root;<br>    <span class="hljs-type">int</span>[] count;<br>    UnionFindFinal(<span class="hljs-type">int</span> size) &#123;<br>        count = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[size];<br>        Arrays.fill(count, <span class="hljs-number">1</span>);<br>        root = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[size];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>            root[i] = i;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-type">int</span> <span class="hljs-title function_">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-keyword">while</span> (x != root[x]) &#123;<br>            root[x] = root[root[x]];<br>            x = root[x];<br>        &#125;<br>        <span class="hljs-keyword">return</span> x;<br>    &#125;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">union</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">rootX</span> <span class="hljs-operator">=</span> find(x), rootY = find(y);<br>        <span class="hljs-keyword">if</span> (rootX == rootY) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">newCount</span> <span class="hljs-operator">=</span> count[rootX] + count[rootY];<br>        <span class="hljs-keyword">if</span> (count[rootX] &gt; count[rootY]) &#123;<br>            root[rootY] = rootX;<br>            count[rootX] = newCount;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            root[rootX] = rootY;<br>            count[rootY] = newCount;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-type">boolean</span> <span class="hljs-title function_">connected</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>        <span class="hljs-keyword">return</span> find(x) == find(y);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><p>Time Complexity:  O(Nα(N)) ≈ O(N), where N is the number of vertices (and also the number of edges) in the graph, and α(N) is the Inverse-Ackermann function. We make up to N queries of dsu.union, which takes (amortized) O(α(N)) time.</p>
+<p>Space Complexity: O(N)</p>
+<h1 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h1><h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><ol>
+<li>通过一些方法将自定义类型转为整型后使用并查集（e.g. 生成哈希值；二维变一维）</li>
+<li>使用链表 + 映射（Map）</li>
+<li>使用桩，stub</li>
+</ol>
+<h2 id="My-Favorite"><a href="#My-Favorite" class="headerlink" title="My Favorite"></a>My Favorite</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/count-servers-that-communicate/">1267. Count Servers that Communicate</a> (这题特别好，开眼界了，除了基本的使用方法，点和点join之外，还可以自己和自己join)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/">947. Most Stones Removed with Same Row or Column</a> (同理上一题)</li>
+</ul>
+<h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-provinces/">547. Number of Provinces</a> (加岛屿计数器)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/redundant-connection/">684. Redundant Connection</a> (<code>unique</code>二用)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-consecutive-sequence/">128. Longest Consecutive Sequence</a> (+size数组)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/graph-valid-tree/">261. Graph Valid Tree</a> (+count)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph">323. Number of Connected Components in an Undirected Graph</a> (+count)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/max-area-of-island/">695. Max Area of Island</a> (+size数组)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sentence-similarity-ii">737. Sentence Similarity II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/similar-string-groups/">839. Similar String Groups</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/satisfiability-of-equality-equations/">990. Satisfiability of Equality Equations</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/lexicographically-smallest-equivalent-string/">1061. Lexicographically Smallest Equivalent String</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-enclaves">1020. Number of Enclaves</a> (+stub)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/the-earliest-moment-when-everyone-become-friends/">1101. The Earliest Moment When Everyone Become Friends</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/synonymous-sentences/">1258. Synonymous Sentences</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/graph-connectivity-with-threshold/">1627. Graph Connectivity With Threshold</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/validate-binary-tree-nodes/">1361. Validate Binary Tree Nodes</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-operations-to-make-network-connected/">1319. Number of Operations to Make Network Connected</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/detect-cycles-in-2d-grid/">1559. Detect Cycles in 2D Grid</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-max-number-of-edges-to-keep-graph-fully-traversable/">1579. Remove Max Number of Edges to Keep Graph Fully Traversable</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/count-sub-islands/">1905. Count Sub Islands</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/YesdPw/">LCS 03. 主题空间</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/connecting-cities-with-minimum-cost/">1135. Connecting Cities With Minimum Cost</a></li>
+</ul>
+<h2 id="变体"><a href="#变体" class="headerlink" title="变体"></a>变体</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-islands/">200. Number of Islands</a> (扁平化，降维，2D变1D)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/surrounded-regions/">130. Surrounded Regions</a> (扁平化; 特殊占位)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/accounts-merge/">721. Accounts Merge</a> (Map?)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/making-a-large-island/">827. Making A Large Island</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/possible-bipartition">886. Possible Bipartition</a> (Map? 算是一种变体吧？想解法还是想了一会儿的)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimize-malware-spread/">924. Minimize Malware Spread</a> (难的是计算的部分，ufs本身还是很straightforward的)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimize-malware-spread-ii/">928. Minimize Malware Spread II</a> (上一题的变体)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/smallest-string-with-swaps/">1202. Smallest String With Swaps</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-closed-islands/">1254. Number of Closed Islands</a> (54SB, 很拙劣地做出了这道题，双%5，战五渣)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/min-cost-to-connect-all-points">1584. Min Cost to Connect All Points</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/path-with-minimum-effort/">1631. Path With Minimum Effort</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimize-hamming-distance-after-swap-operations/">1722. Minimize Hamming Distance After Swap Operations</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/last-day-where-you-can-still-cross/">1970. Last Day Where You Can Still Cross</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/process-restricted-friend-requests/">2076. Process Restricted Friend Requests</a> (加一个restrictions map)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-all-people-with-secret/">2092. Find All People With Secret</a> (思考isolate)</li>
+</ul>
+<h2 id="魔鬼"><a href="#魔鬼" class="headerlink" title="魔鬼"></a>魔鬼</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-islands-ii">305. Number of Islands II</a> (corner cases折磨人：数组元素重复；land count有增有减)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/evaluate-division/">399. Evaluate Division</a> (数学题)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/redundant-connection-ii/">685. Redundant Connection II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/largest-component-size-by-common-factor/">952. Largest Component Size by Common Factor</a> </li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/regions-cut-by-slashes/">959. Regions Cut By Slashes</a></li>
+</ul>
+<h2 id="偷看答案"><a href="#偷看答案" class="headerlink" title="偷看答案"></a>偷看答案</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/is-graph-bipartite/">785. Is Graph Bipartite?</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/bricks-falling-when-hit/">803. Bricks Falling When Hit</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/optimize-water-distribution-in-a-village/">1168. Optimize Water Distribution in a Village</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths/">1697. Checking Existence of Edge Length Limited Paths</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/checking-existence-of-edge-length-limited-paths-ii/">1724. Checking Existence of Edge Length Limited Paths II</a></li>
+</ul>
+<h2 id="未解之谜"><a href="#未解之谜" class="headerlink" title="未解之谜"></a>未解之谜</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-distinct-islands/">694. Number of Distinct Islands</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/number-of-distinct-islands-ii/">711. Number of Distinct Islands II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/couples-holding-hands/">765. Couples Holding Hands</a> (我想不明白，玄学)</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/swim-in-rising-water/">778. Swim in Rising Water</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/path-with-maximum-minimum-value/">1102. Path With Maximum Minimum Value</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/check-if-there-is-a-valid-path-in-a-grid/">1391. Check if There is a Valid Path in a Grid</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/rank-transform-of-a-matrix/">1632. Rank Transform of a Matrix</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/gcd-sort-of-an-array">1998. GCD Sort of an Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/smallest-missing-genetic-value-in-each-subtree/">2003. Smallest Missing Genetic Value in Each Subtree</a></li>
+</ul>
+<h4 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/">1489. Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst/">1569. Number of Ways to Reorder Array to Get Same BST</a></li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/leetbook/read/graph/r340gv/">LeetBook《图》</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Liu821218213/LeetCode-Orust/blob/master/%E5%B9%B6%E6%9F%A5%E9%9B%86%E6%80%BB%E7%BB%93.md">Liu821218213的并查集总结</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022952886">HYN的技术笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.liwei.party/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/page/2/">liweiwei的网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/tag/union-find/problemset/">Leetcode题目合集</a></li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/reading/average-score/"><i class="iconfont iconleft"></i>平均分</a>
+    <a href="/reading/ready-for-anything/">搞定II:提升工作与生活效率的52项原则<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E7%AF%87%E5%BA%9F%E8%AF%9D"><span class="toc-text">开篇废话</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%93%8D%E4%BD%9C"><span class="toc-text">主要操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6-Union"><span class="toc-text">并 Union</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5-Find"><span class="toc-text">查 Find</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%A1%86%E6%9E%B6"><span class="toc-text">代码框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Find-%E5%AE%9E%E7%8E%B0"><span class="toc-text">Quick Find 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Union-%E5%AE%9E%E7%8E%B0"><span class="toc-text">Quick Union 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E7%A7%A9%E5%90%88%E5%B9%B6%E4%BC%98%E5%8C%96-%E5%AE%9E%E7%8E%B0"><span class="toc-text">按秩合并优化 实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E6%8C%89%E7%A7%A9%EF%BC%8C%E6%8C%89%E5%BD%93%E5%89%8D%E6%A0%91%E7%9A%84%E9%AB%98%E5%BA%A6%E5%90%88%E5%B9%B6"><span class="toc-text">标准按秩，按当前树的高度合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%BA%E5%A4%9A%E5%8A%BF%E4%BC%97%EF%BC%8C%E6%8C%89%E5%BD%93%E5%89%8D%E9%9B%86%E5%90%88%E5%85%83%E7%B4%A0%E6%95%B0%E9%87%8F%E5%90%88%E5%B9%B6"><span class="toc-text">人多势众，按当前集合元素数量合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9%E4%BC%98%E5%8C%96-%E5%AE%9E%E7%8E%B0"><span class="toc-text">路径压缩优化 实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%85%A8%E5%8E%8B%E7%BC%A9%EF%BC%88%E9%80%92%E5%BD%92%EF%BC%89"><span class="toc-text">完全压缩（递归）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%94%E4%BB%A3%E5%8E%8B%E7%BC%A9%EF%BC%88%E5%BE%AA%E7%8E%AF%EF%BC%89"><span class="toc-text">隔代压缩（循环）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E6%9E%81%E4%BC%98%E5%8C%96-%E7%89%88%E6%9C%AC"><span class="toc-text">终极优化 版本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">复杂度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%B7%E9%A2%98"><span class="toc-text">刷题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#My-Favorite"><span class="toc-text">My Favorite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC"><span class="toc-text">基本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E4%BD%93"><span class="toc-text">变体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E9%AC%BC"><span class="toc-text">魔鬼</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%B7%E7%9C%8B%E7%AD%94%E6%A1%88"><span class="toc-text">偷看答案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AA%E8%A7%A3%E4%B9%8B%E8%B0%9C"><span class="toc-text">未解之谜</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

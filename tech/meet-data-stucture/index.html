@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数据结构浅谈 - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="结构的分类逻辑结构
+集合结构：每个元素平等，相互之间没...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">数据结构浅谈</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">数据结构浅谈</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>April 12, 2020</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/tech/meet-data-stucture/" class="leancloud-counter" data-flag-title="数据结构浅谈"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/tech/meet-data-stucture/" class="leancloud-like" data-flag-title="数据结构浅谈"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>4989</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Fundation/" rel="tag">Fundation</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <h2 id="结构的分类"><a href="#结构的分类" class="headerlink" title="结构的分类"></a>结构的分类</h2><h4 id="逻辑结构"><a href="#逻辑结构" class="headerlink" title="逻辑结构"></a>逻辑结构</h4><ol>
+<li>集合结构：每个元素平等，相互之间没有关系</li>
+<li>线性结构：元素之间，一对一的关系</li>
+<li>树形结构：一对多</li>
+<li>图形结构：多对多</li>
+</ol>
+<h4 id="物理结构"><a href="#物理结构" class="headerlink" title="物理结构"></a>物理结构</h4><ol>
+<li>顺序存储结构：地址连续的存储单元</li>
+<li>链式存储结构</li>
+</ol>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h4 id="五大特性"><a href="#五大特性" class="headerlink" title="五大特性"></a>五大特性</h4><p>输入、输出、有穷性、确定性和可行性</p>
+<h4 id="设计要求"><a href="#设计要求" class="headerlink" title="设计要求"></a>设计要求</h4><ul>
+<li>正确性：没有语法错误（基本）-&gt; 合法输入得到输出结构（核心）-&gt; 非法输入、异常捕捉（优秀）-&gt; 对特殊情况的处理（bonus）</li>
+<li>可读性</li>
+<li>健壮性</li>
+<li>时间、空间效率高</li>
+</ul>
+<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>O(1) &lt; O(logN) 对数阶，二分法&lt; O(n) &lt; O(NlogN) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n) 指数阶&lt; O(n!) &lt; O(n^n)</p>
+<h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h4 id="定义和特性"><a href="#定义和特性" class="headerlink" title="定义和特性"></a>定义和特性</h4><p>0个或多个数据元素的<em>有限</em>序列<br>第一个元素无前驱，最后一个元素无后继，其余每个元素都有且仅有一个前驱和一个后继</p>
+<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><ul>
+<li>创建和初始化</li>
+<li>检查是否为空</li>
+<li>清空</li>
+<li>根据索引取元素</li>
+<li>查找元素</li>
+<li>插入元素</li>
+<li>删除制定索引的元素</li>
+<li>返回当前长度</li>
+</ul>
+<h4 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h4><ol>
+<li>顺序存储<br>用一段地址连续的存储单元一次存储线性表的数据元素<br>优点：</li>
+</ol>
+<ul>
+<li>存取元素方便</li>
+<li>无须空间存储元素间的关系<br>缺点：</li>
+<li>插入和删除操作需要移动大量元素</li>
+<li>当线性表长度变化较大时，难以确定存储空间容量</li>
+<li>造成存储空间的“碎片”</li>
+</ul>
+<ol start="2">
+<li>链式存储<br>优点：</li>
+</ol>
+<ul>
+<li>插入、删除方便</li>
+<li>个数灵活不受限<br>缺点：</li>
+<li>存取不易</li>
+</ul>
+<h4 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h4><p>用一组任意的存储单元存放线性表的元素</p>
+<h4 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h4><p>用数组描述链表，又称游标实现法<br>优点：插入删除快<br>缺点：内存分配问题没有解决，存取不易</p>
+<h4 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h4><p>终端节点的指针端由空指针改为头节点，使整个单链表形成一个头尾相接的环。</p>
+<h4 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h4><p>在每个结点再设置一个指向其前驱节点的指针域</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h4 id="定义和特性-1"><a href="#定义和特性-1" class="headerlink" title="定义和特性"></a>定义和特性</h4><p>仅在表尾进行插入和删除操作的线性表<br>**先进后出(last in first out, LIFO)**，栈顶(top, 操作端，表尾)，栈低(bottom，表头，固定的)<br>插入，进栈<br>删除，出栈</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">数字<span class="hljs-number">1</span>，<span class="hljs-number">2</span>，<span class="hljs-number">3</span>依此进栈，会有几种出栈次序？<br><span class="hljs-number">1.</span> <span class="hljs-number">123</span>进，<span class="hljs-number">321</span>出 -&gt; <span class="hljs-number">321</span><br><span class="hljs-number">2.</span> <span class="hljs-number">12</span>进，<span class="hljs-number">21</span>出，<span class="hljs-number">3</span>进，<span class="hljs-number">3</span>出 -&gt; <span class="hljs-number">213</span><br><span class="hljs-number">3.</span> <span class="hljs-number">12</span>进，<span class="hljs-number">2</span>出，<span class="hljs-number">3</span>进，<span class="hljs-number">31</span>出 -&gt; <span class="hljs-number">231</span><br><span class="hljs-number">4.</span> <span class="hljs-number">1</span>进，<span class="hljs-number">1</span>出，<span class="hljs-number">23</span>进，<span class="hljs-number">32</span>出 -&gt; <span class="hljs-number">132</span><br><span class="hljs-number">5.</span> <span class="hljs-number">1</span>进，<span class="hljs-number">1</span>出，<span class="hljs-number">2</span>进，<span class="hljs-number">2</span>出，<span class="hljs-number">3</span>进，<span class="hljs-number">3</span>出 -&gt; <span class="hljs-number">123</span><br></code></pre></td></tr></table></figure>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><ul>
+<li>顺序存储结构，用数组实现</li>
+<li>两栈共享空间</li>
+<li>链式存储</li>
+</ul>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><ol>
+<li>实现递归</li>
+<li>四则运算表达式求值<br> 后缀（逆波兰）表示法：一种不需要括号的算式表达法<ol>
+<li>将中缀表达式转为后缀表达式<br> 从左到右遍历表达式中缀表达式中的每个数字和符号，若是数字就输出，即成为后缀表达式的一部分；若是符号，则判断其与栈顶符号的优先级，是右括号或优先级不高于栈顶符号，则栈顶元素依次出栈并输出，将当前符号进栈，直到最终输出后缀表达式为止</li>
+<li>计算值<br> 从左到右遍历表达式后缀表达式中的每个数字和符号，遇到数字就进栈，遇到符号将栈顶两个数字出栈进行运算，结果进栈，一直到获得最终结果 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">9</span>+(<span class="hljs-number">3</span>-<span class="hljs-number">1</span>)*<span class="hljs-number">3</span>+<span class="hljs-number">10</span>/<span class="hljs-number">2</span><br><span class="hljs-number">1.</span> <span class="hljs-number">9</span> <span class="hljs-number">3</span> <span class="hljs-number">1</span> - <span class="hljs-number">3</span> * + <span class="hljs-number">10</span> <span class="hljs-number">2</span> / +<br><span class="hljs-number">2.</span> <span class="hljs-number">20</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h4 id="定义和特性-2"><a href="#定义和特性-2" class="headerlink" title="定义和特性"></a>定义和特性</h4><p>只允许一端进行插入操作、另一端进行删除操作的线性表<br>**先进先出(first in first out,FIFO)**，队头（允许删除），队尾（允许插入）<br>插入，入队<br>删除，出队</p>
+<h4 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h4><ol>
+<li>顺序存储，采用循环队列，用两个指针front和rear实现</li>
+<li>链式存储</li>
+</ol>
+<h2 id="串"><a href="#串" class="headerlink" title="串"></a>串</h2><p>KMP模式匹配算法了解一下？</p>
+<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>n (n&gt;&#x3D;0) 个结点的有限集<br>n &#x3D; 0，空树<br>根只有一个<br>子树互不交叉</p>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><p>度(Degree)：结点拥有的子树数<br>度 &#x3D; 0，叶结点(Leaf) &#x2F; 终端结点<br>度 !&#x3D; 0，分支结点 &#x3D; 根结点 + 内部结点<br>树的度 &#x3D; 树内各结点的度的最大值</p>
+<h4 id="结点之间的关系"><a href="#结点之间的关系" class="headerlink" title="结点之间的关系"></a>结点之间的关系</h4><p>父(Parent)、子(Child)、兄弟(Sibling)</p>
+<h4 id="其他概念"><a href="#其他概念" class="headerlink" title="其他概念"></a>其他概念</h4><ul>
+<li>层次 (Level)</li>
+<li>深度 (Depth) &#x2F; 高度</li>
+<li>次序 &#x3D; 有序树 + 无序树</li>
+</ul>
+<h4 id="表示法"><a href="#表示法" class="headerlink" title="表示法"></a>表示法</h4><ol>
+<li>双亲表示法<ul>
+<li>每个结点存储当前值和父亲的位置</li>
+<li>查找父亲很方便，但是查找子很麻烦</li>
+</ul>
+</li>
+<li>多重链表表示法<ul>
+<li>每个结点有多个指针域，每个指针指向一个子树的根结点</li>
+<li>方案一：指针域的个数 &#x3D; 树的度</li>
+<li>方案二：当前结点指针域的个数 &#x3D; 当前结点的度</li>
+</ul>
+</li>
+<li>孩子表示法<ul>
+<li>把每个结点的子结点排列起来，以单链表作存储结构</li>
+</ul>
+</li>
+<li>兄弟姐妹表示法<ul>
+<li>每个结点存储第一个孩子和它的右兄弟</li>
+<li>找子结点方便</li>
+<li>优化：加parent指针域来查找父亲</li>
+</ul>
+</li>
+</ol>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li>每个结点最多两棵子树</li>
+<li>子树是有序的，左右不同</li>
+</ul>
+<h4 id="基本形态"><a href="#基本形态" class="headerlink" title="基本形态"></a>基本形态</h4><ul>
+<li>空树</li>
+<li>只有一个根结点</li>
+<li>根结点只有左子树</li>
+<li>根结点只有右子树</li>
+<li>根结点既有左子树又有右子树</li>
+</ul>
+<h4 id="特殊二叉树"><a href="#特殊二叉树" class="headerlink" title="特殊二叉树"></a>特殊二叉树</h4><ul>
+<li>斜树：所有结点都只有左&#x2F;右子树</li>
+<li>满二叉树：所有的分支结点都存在左子树和右子树，且所有的叶子结点都在同一层上。（叶子结点只出现在最下一层；非叶子结点的度 &#x3D; 2；同样深度的二叉树，满二叉树的结点个数最多，叶子树最多）</li>
+<li>完全二叉树：对一棵具有n个结点的二叉树按层序编号，如果编号为i的结点与同样深度的满二叉树中编号为i的结点在二叉树中位置完全相同。（叶子结点只出现在最下<strong>两</strong>层；最下层的叶子一定集中在左部连续位置；倒数二层，若有叶子结点，一定在右部连续位置；(结点度 &#x3D;&#x3D; 1) &#x3D;&gt; 该结点只有左子树；同样结点的二叉树，完全二叉树的深度最小）</li>
+</ul>
+<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>二叉树的第i层，至多有2^(i-1)个结点</li>
+<li>深度为k的二叉树至多有2^k-1个结点</li>
+<li>对任一二叉树，given其终端结点数n0，度为2的结点数n2 &#x3D;&gt; n0 &#x3D; n2 + 1<br>—————- 完全二叉树 —————-</li>
+<li>具有n个结点的完全二叉树的深度 &#x3D; floor(lnN) + 1</li>
+<li>如果对一棵有n个结点的完全二叉树的结点按层序编号，对任一结点i有：<ul>
+<li>i &#x3D;&#x3D; 1 &#x3D;&gt; i &#x3D;&#x3D; root || i &gt; 1 &#x3D;&gt; parent of i &#x3D;&#x3D; floor(i&#x2F;2)</li>
+<li>2i &gt; n &#x3D;&gt; i &#x3D;&#x3D; leaf || left child of i &#x3D;&#x3D; 2i</li>
+<li>2i + 1 &gt; n &#x3D;&gt; i has no right child || right child of i &#x3D;&#x3D; 2i + 1</li>
+</ul>
+</li>
+</ul>
+<h4 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h4><ol>
+<li>顺序存储</li>
+<li>二叉链表</li>
+</ol>
+<h4 id="遍历方法"><a href="#遍历方法" class="headerlink" title="遍历方法"></a>遍历方法</h4><ol>
+<li>前序遍历：根 -&gt; 左 -&gt; 右</li>
+<li>中序遍历：左 -&gt; 根 -&gt; 右</li>
+<li>后序遍历：左 -&gt; 右 -&gt; 根</li>
+<li>层序遍历</li>
+</ol>
+<p><em>已知前序遍历序列和中序遍历序列 &#x3D;&#x3D;&#x3D;&gt; 唯一确定一棵二叉树</em><br><em>已知后序遍历序列和中序遍历序列 &#x3D;&#x3D;&#x3D;&gt; 唯一确定一棵二叉树</em><br><em>已知前序遍历序列和后序遍历序列 &#x3D;X&#x3D;&gt; 唯一确定一棵二叉树</em></p>
+<h4 id="赫夫曼树"><a href="#赫夫曼树" class="headerlink" title="赫夫曼树"></a>赫夫曼树</h4><h4 id="赫夫曼编码"><a href="#赫夫曼编码" class="headerlink" title="赫夫曼编码"></a>赫夫曼编码</h4><h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p>由顶点的有穷非空集合和顶点之间边的集合组成，通常表示为 G(V,E)，其中，G表示一个图，V是图G中顶点的集合，E是图G中边的集合</p>
+<p>图中数据元素称为顶点（Vertex）</p>
+<p>顶点集合V有穷非空</p>
+<p>顶点之间的逻辑关系用边来表示，边集可以为空</p>
+<p><strong>无向边</strong>：若顶点vi, vj之间的边没有方向，则称这条边为无向边（Edge），用无序偶对<code> (vi, vj)</code> 来表示</p>
+<p><strong>无向图</strong>：图中任意两个顶点之间的边都是无向边</p>
+<p><strong>有向边</strong>：若从顶点vi到 vj的边有方向，则称这条边为有向边，也称为弧（Arc），用<code>&lt;A,D&gt;</code>来表示，A是弧尾，D是弧头，弧从A指向D</p>
+<p><strong>有向图</strong>：图中任意两个顶点之间的边都是有向边</p>
+<p><strong>简单图</strong>：图中不存在顶点到其自身的边，且同一条边不重复出现</p>
+<p><strong>无向完全图</strong>：任意两个顶点之间都存在边的无向图，含有n个顶点的无向完全图有n*(n-1)&#x2F;2条边</p>
+<p><strong>有向完全图</strong>：任意两个顶点之间都存在方向互为相反的两条弧的有向图，含有n个顶点的有向完全图有n*(n-1)条弧</p>
+<p><strong>权</strong>：与图的边或弧相关的数</p>
+<p><strong>网</strong>：带权的图</p>
+<p><strong>子图</strong>：假设有两个图G&#x3D;(V,{E})和G’&#x3D;(V’,{E’})，如果V’⊆V，E’⊆E，则称G’为G的子图</p>
+<p><strong>图的顶点与边间关系</strong></p>
+<p>对于无向图G&#x3D;(V,{E})，如果边(v,v’)∊E，则称顶点v和v’互为**邻接点(Adjacent)<strong>，即v和v’相邻接。边(v,v’)依附(incident)于顶点v和v’，或者说(v,v’)与顶点v和v’相关联。顶点v的</strong>度(Degree)**是和v相关联的边的数目，记为TD(v)。图的边数其实就是各顶点度数和的一半，e&#x3D;∑TD(v)&#x2F;2。</p>
+<p>对于有向图G&#x3D;(V,{E})，如果弧&lt;v,v’&gt;∊E，则称顶点v邻接到顶点v’，顶点v’邻接自顶点v。弧&lt;v,v’&gt;和顶点v，v’相关联。以顶点v为头的弧的数目称为v的**入度(InDegree)<strong>，记为ID(v)；以v为尾的弧的数目称为v的</strong>出度(OutDegree)**，记为OD(v)；顶点v的度为TD(v)&#x3D;ID(v)+OD(v)。有向图的弧数等于各顶点的出度，也等于各顶点的入度，e&#x3D;∑ID(v)&#x3D;∑OD(v)。<br>无向图G·(V.{E》)中从顶点v到顶点V的路径(Path)是一个顶点序列。</p>
+<p>路径的长度是路径上的边或弧的数目。</p>
+<p><strong>环</strong>&#x2F;<strong>回路</strong>：第一个顶点到最后一个顶点相同的路径。</p>
+<p><strong>简单路径</strong>：序列中顶点不重复出现</p>
+<p><strong>简单环</strong>&#x2F;<strong>简单回路</strong>：除了第一个顶点和最后一个顶点之外，其余顶点不重复出现的回路。</p>
+<p><strong>连通</strong>：在无向图种，两个顶点之间有路径，则称它们是连通的。如果任意两个顶点都连通，则该图为连通图。</p>
+<p><strong>连通分量</strong>：无向图中的<em>极大</em>_<em>连通</em>_<em>子图</em>。</p>
+<p><strong>强连通图</strong>：有向图中，两两顶点之间存在路径。</p>
+<p><strong>强连通分量</strong>：有向图中的<em>极大</em>_<em>强连通</em>_<em>子图</em>。</p>
+<p><strong>连通图的生成树</strong>：一个极小的连通子图，它还有图中的全部n个顶点，但只有足以构成一棵树的n-1条边。</p>
+<p><strong>有向树</strong>：一个有向图，恰有一个顶点的入度为0，其余顶点的入度均为1。</p>
+<p><strong>有向图的生成森林</strong>：由若干棵有向树组成，含有图中全部顶点，但只有足以构成若干棵不相交的有向树的弧。</p>
+<h4 id="图的表示方式"><a href="#图的表示方式" class="headerlink" title="图的表示方式"></a>图的表示方式</h4><ol>
+<li>矩阵 2[n][n]</li>
+<li>二维数组 2[n][0-n]<br>…</li>
+</ol>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h4 id="查找的方法"><a href="#查找的方法" class="headerlink" title="查找的方法"></a>查找的方法</h4><ol>
+<li>折半查找, mid &#x3D; (low + high) &#x2F; 2</li>
+<li>插值查找, mid &#x3D; low + (high - low) * (key - a[low])&#x2F; (a[high] - a [low])</li>
+<li>斐波那契查找, mid &#x3D; low + F[k-1] - 1</li>
+</ol>
+<h4 id="线性索引查找"><a href="#线性索引查找" class="headerlink" title="线性索引查找"></a>线性索引查找</h4><ol>
+<li>稠密索引，一一对应</li>
+<li>分块索引，块内无序，块间有序</li>
+<li>倒排索引，次关键码为key，序号为值</li>
+</ol>
+<h4 id="二叉排序树-二叉查找树"><a href="#二叉排序树-二叉查找树" class="headerlink" title="二叉排序树 &#x2F; 二叉查找树"></a>二叉排序树 &#x2F; 二叉查找树</h4><p>若左子树不空，则左子树上所有结点的值均小于它的根结构的值；<br>若右子树不空，则右子树上所有结点的值均大于它的根结构的值；<br>左、右子树都为二叉排序树。<br><strong>平衡二叉树</strong>：每一个节点的左子树和右子树的高度差至多&#x3D;1</p>
+<h4 id="多路查找树"><a href="#多路查找树" class="headerlink" title="多路查找树"></a>多路查找树</h4><p>每一个结点的孩子数 &gt; 2，每一个结点可以存储多个元素</p>
+<ol>
+<li>2-3树：每一个结点都具有两个孩子（2结点）或三个孩子（3结点），2结点包含一个元素和两个孩子，左子树所有元素小于此元素，右子树所有元素大于此元素，3结点包含两个元素和三个孩子，左子树所有元素小于较小元素，右子树所有元素大于较大元素，中间树包含介于两者之间的元素</li>
+<li>2-3-4树：有2结点，3结点和4结点</li>
+</ol>
+<h4 id="B树"><a href="#B树" class="headerlink" title="B树"></a>B树</h4><p>B树是一种平衡的多路查找树，结点最大的孩子数目称为B树的阶（Order）</p>
+
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/reading/journaling-and-notes-4/"><i class="iconfont iconleft"></i>聪明人用方格笔记本</a>
+    <a href="/reading/nju-readings-part1/">南大读本-社会/自然科学卷<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-text">结构的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-text">算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-text">线性表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text">栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97"><span class="toc-text">队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2"><span class="toc-text">串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91"><span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">二叉树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-text">图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-text">查找</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

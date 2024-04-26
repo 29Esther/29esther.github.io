@@ -1,0 +1,719 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bloomberg 高频面试题 - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="Top Questions in 6 months i...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Bloomberg 高频面试题</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">Bloomberg 高频面试题</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>August 30, 2022</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/tech/bloomberg-coding-questions/" class="leancloud-counter" data-flag-title="Bloomberg 高频面试题"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/tech/bloomberg-coding-questions/" class="leancloud-like" data-flag-title="Bloomberg 高频面试题"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>7071</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <h1 id="Top-Questions-in-6-months-in-2022-Aug"><a href="#Top-Questions-in-6-months-in-2022-Aug" class="headerlink" title="Top Questions in 6 months in 2022 Aug"></a>Top Questions in 6 months in 2022 Aug</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/design-underground-system">1396.Design Underground System</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/design-an-ordered-stream">1656.Design an Ordered Stream</a> &#x2F;&#x2F; todo</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/insert-delete-getrandom-o1/">380.Insert Delete GetRandom O(1)</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/decode-string">394.Decode String</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list">430.Flatten a Multilevel Doubly Linked List</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/invalid-transactions">1169.Invalid Transactions</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii">1209.Remove All Adjacent Duplicates in String II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/two-city-scheduling">1029.Two City Scheduling</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/design-a-leaderboard">1244.Design A Leaderboard</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-ships-in-a-rectangle">1274.Number of Ships in a Rectangle</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/candy-crush">723.Candy Crush</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/design-browser-history">1472.Design Browser History</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/meeting-rooms-ii">253.Meeting Rooms II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/knight-dialer">935.Knight Dialer</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/word-break-ii">140.Word Break II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram">1347.Minimum Number of Steps to Make Two Strings Anagram</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/all-paths-from-source-to-target">797.All Paths From Source to Target</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/merge-intervals">56.Merge Intervals</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/lru-cache">146.LRU Cache</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/trapping-rain-water">42.Trapping Rain Water</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/add-two-numbers-ii">445.Add Two Numbers II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/binary-tree-vertical-order-traversal">314.Binary Tree Vertical Order Traversal</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/serialize-and-deserialize-n-ary-tree">428.Serialize and Deserialize N-ary Tree</a>difficulty&#x3D;2</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-number-of-days-to-eat-n-oranges">1553.Minimum Number of Days to Eat N Oranges</a>difficulty&#x3D;2</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/word-search">79.Word Search</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/max-stack">716.Max Stack</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/count-unhappy-friends">1583.Count Unhappy Friends</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/construct-target-array-with-multiple-sums">1354.Construct Target Array With Multiple Sums</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-substring-without-repeating-characters">3.Longest Substring Without Repeating Characters</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/valid-triangle-number">611.Valid Triangle Number</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/dot-product-of-two-sparse-vectors">1570.Dot Product of Two Sparse Vectors</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-palindromic-subsequences">1332.Remove Palindromic Subsequences</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii">117.Populating Next Right Pointers in Each Node II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-distinct-substrings-in-a-string">1698.Number of Distinct Substrings in a String</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses">1249.Minimum Remove to Make Valid Parentheses</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sparse-matrix-multiplication">311.Sparse Matrix Multiplication</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree">987.Vertical Order Traversal of a Binary Tree</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/rank-transform-of-an-array">1331.Rank Transform of an Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/mirror-reflection">858.Mirror Reflection</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal">1790.Check if One String Swap Can Make Strings Equal</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/game-of-life">289.Game of Life</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/count-integers-in-intervals">2276.Count Integers in Intervals</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/valid-parentheses">20.Valid Parentheses</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/strong-password-checker">420.Strong Password Checker</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/meeting-scheduler">1229.Meeting Scheduler</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/string-compression">443.String Compression</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses">1614.Maximum Nesting Depth of the Parentheses</a>difficulty&#x3D;0</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/burst-balloons">312.Burst Balloons</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/largest-bst-subtree">333.Largest BST Subtree</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/add-two-numbers">2.Add Two Numbers</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock">121.Best Time to Buy and Sell Stock</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/valid-anagram">242.Valid Anagram</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/insert-delete-getrandom-o(1)---duplicates-allowed">381.Insert Delete GetRandom O(1) - Duplicates allowed</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/elimination-game">390.Elimination Game</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/move-zeroes">283.Move Zeroes</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-population-year">1854.Maximum Population Year</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/score-of-parentheses">856.Score of Parentheses</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/first-unique-character-in-a-string">387.First Unique Character in a String</a>difficulty&#x3D;0</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/combination-sum">39.Combination Sum</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/construct-the-rectangle">492.Construct the Rectangle</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/binary-tree-paths">257.Binary Tree Paths</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/toeplitz-matrix">766.Toeplitz Matrix</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/next-permutation">31.Next Permutation</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-substrings-containing-all-three-characters">1358.Number of Substrings Containing All Three Characters</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/non-decreasing-array">665.Non-decreasing Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/median-of-two-sorted-arrays">4.Median of Two Sorted Arrays</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/generate-parentheses">22.Generate Parentheses</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/intersection-of-multiple-arrays">2248.Intersection of Multiple Arrays</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/roman-to-integer">13.Roman to Integer</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/boundary-of-binary-tree">545.Boundary of Binary Tree</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/evaluate-division">399.Evaluate Division</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-smallest-letter-greater-than-target">744.Find Smallest Letter Greater Than Target</a>difficulty&#x3D;0</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/split-array-into-consecutive-subsequences">659.Split Array into Consecutive Subsequences</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-frequency-stack">895.Maximum Frequency Stack</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/boats-to-save-people">881.Boats to Save People</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/subsets">78.Subsets</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-palindromic-substring">5.Longest Palindromic Substring</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-cost-to-cut-a-stick">1547.Minimum Cost to Cut a Stick</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/copy-list-with-random-pointer">138.Copy List with Random Pointer</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximize-distance-to-closest-person">849.Maximize Distance to Closest Person</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/degree-of-an-array">697.Degree of an Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/critical-connections-in-a-network">1192.Critical Connections in a Network</a>difficulty&#x3D;2</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/dungeon-game">174.Dungeon Game</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/n-queens">51.N-Queens</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/custom-sort-string">791.Custom Sort String</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique">1647.Minimum Deletions to Make Character Frequencies Unique</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-islands">200.Number of Islands</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/recover-binary-search-tree">99.Recover Binary Search Tree</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sort-array-by-increasing-frequency">1636.Sort Array by Increasing Frequency</a>difficulty&#x3D;0</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/clone-graph">133.Clone Graph</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-the-winner-of-the-circular-game">1823.Find the Winner of the Circular Game</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reduce-array-size-to-the-half">1338.Reduce Array Size to The Half</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/product-of-array-except-self">238.Product of Array Except Self</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree">863.All Nodes Distance K in Binary Tree</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-palindromic-subsequence">516.Longest Palindromic Subsequence</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/unique-number-of-occurrences">1207.Unique Number of Occurrences</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node">116.Populating Next Right Pointers in Each Node</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/max-area-of-island">695.Max Area of Island</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/shortest-bridge">934.Shortest Bridge</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/coin-change">322.Coin Change</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum">1.Two Sum</a>difficulty&#x3D;0</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/next-greater-element-i">496.Next Greater Element I</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/intersection-of-two-arrays">349.Intersection of Two Arrays</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/min-stack">155.Min Stack</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/flatten-nested-list-iterator">341.Flatten Nested List Iterator</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/delete-operation-for-two-strings">583.Delete Operation for Two Strings</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array">34.Find First and Last Position of Element in Sorted Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/arithmetic-slices">413.Arithmetic Slices</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reshape-the-matrix">566.Reshape the Matrix</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/text-justification">68.Text Justification</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/alien-dictionary">269.Alien Dictionary</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/word-break">139.Word Break</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/count-of-smaller-numbers-after-self">315.Count of Smaller Numbers After Self</a>difficulty&#x3D;2</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii">123.Best Time to Buy and Sell Stock III</a>difficulty&#x3D;2</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/path-sum-ii">113.Path Sum II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/divide-two-integers">29.Divide Two Integers</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/koko-eating-bananas">875.Koko Eating Bananas</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/4sum">18.4Sum</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/validate-binary-search-tree">98.Validate Binary Search Tree</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/transpose-matrix">867.Transpose Matrix</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/path-sum-iii">437.Path Sum III</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/interval-list-intersections">986.Interval List Intersections</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/word-ladder-ii">126.Word Ladder II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sort-an-array">912.Sort an Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reconstruct-itinerary">332.Reconstruct Itinerary</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-leaves-of-binary-tree">366.Find Leaves of Binary Tree</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/partition-to-k-equal-sum-subsets">698.Partition to K Equal Sum Subsets</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/edit-distance">72.Edit Distance</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-consecutive-sequence">128.Longest Consecutive Sequence</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/customers-who-never-order">183.Customers Who Never Order</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reorganize-string">767.Reorganize String</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/partition-list">86.Partition List</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/ugly-number-ii">264.Ugly Number II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/pacific-atlantic-water-flow">417.Pacific Atlantic Water Flow</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/search-a-2d-matrix-ii">240.Search a 2D Matrix II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/permutation-sequence">60.Permutation Sequence</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii">122.Best Time to Buy and Sell Stock II</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree">236.Lowest Common Ancestor of a Binary Tree</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/candy">135.Candy</a>difficulty&#x3D;2</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/arranging-coins">441.Arranging Coins</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/search-in-rotated-sorted-array">33.Search in Rotated Sorted Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-pairs">493.Reverse Pairs</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/word-ladder">127.Word Ladder</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/meeting-rooms">252.Meeting Rooms</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/counting-bits">338.Counting Bits</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-units-on-a-truck">1710.Maximum Units on a Truck</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/3sum">15.3Sum</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-path-sum">64.Minimum Path Sum</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/set-matrix-zeroes">73.Set Matrix Zeroes</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sort-characters-by-frequency">451.Sort Characters By Frequency</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-increasing-subsequence">300.Longest Increasing Subsequence</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/add-digits">258.Add Digits</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/regular-expression-matching">10.Regular Expression Matching</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/contains-duplicate">217.Contains Duplicate</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/largest-number">179.Largest Number</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/delete-node-in-a-bst">450.Delete Node in a BST</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sum-of-left-leaves">404.Sum of Left Leaves</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/kth-largest-element-in-an-array">215.Kth Largest Element in an Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/next-greater-element-ii">503.Next Greater Element II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/largest-rectangle-in-histogram">84.Largest Rectangle in Histogram</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/nth-highest-salary">177.Nth Highest Salary</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/combination-sum-ii">40.Combination Sum II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/integer-to-roman">12.Integer to Roman</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/pow(x,-n)">50.Pow(x, n)</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/intersection-of-two-arrays-ii">350.Intersection of Two Arrays II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/guess-number-higher-or-lower">374.Guess Number Higher or Lower</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/add-binary">67.Add Binary</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/final-value-of-variable-after-performing-operations">2011.Final Value of Variable After Performing Operations</a>difficulty&#x3D;0</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sliding-window-maximum">239.Sliding Window Maximum</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/jump-game-ii">45.Jump Game II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/merge-two-sorted-lists">21.Merge Two Sorted Lists</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/game-play-analysis-i">511.Game Play Analysis I</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-common-subsequence">1143.Longest Common Subsequence</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/wildcard-matching">44.Wildcard Matching</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/gas-station">134.Gas Station</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/house-robber">198.House Robber</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/employees-earning-more-than-their-managers">181.Employees Earning More Than Their Managers</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/min-cost-climbing-stairs">746.Min Cost Climbing Stairs</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/coin-change-2">518.Coin Change 2</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-valid-parentheses">32.Longest Valid Parentheses</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/shuffle-the-array">1470.Shuffle the Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/flood-fill">733.Flood Fill</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/permutations-ii">47.Permutations II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/word-search-ii">212.Word Search II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/letter-combinations-of-a-phone-number">17.Letter Combinations of a Phone Number</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-linked-list">206.Reverse Linked List</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/top-k-frequent-words">692.Top K Frequent Words</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/pascal's-triangle">118.Pascal’s Triangle</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/diameter-of-binary-tree">543.Diameter of Binary Tree</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/01-matrix">542.01 Matrix</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/permutations">46.Permutations</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-median-from-data-stream">295.Find Median from Data Stream</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/backspace-string-compare">844.Backspace String Compare</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/multiply-strings">43.Multiply Strings</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-size-subarray-sum">209.Minimum Size Subarray Sum</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/power-of-three">326.Power of Three</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/palindrome-linked-list">234.Palindrome Linked List</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/top-k-frequent-elements">347.Top K Frequent Elements</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/subsets-ii">90.Subsets II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/house-robber-ii">213.House Robber II</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/delete-node-in-a-linked-list">237.Delete Node in a Linked List</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/3sum-closest">16.3Sum Closest</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-subarray">53.Maximum Subarray</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/binary-tree-postorder-traversal">145.Binary Tree Postorder Traversal</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/group-anagrams">49.Group Anagrams</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/palindrome-number">9.Palindrome Number</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-peak-element">162.Find Peak Element</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-pivot-index">724.Find Pivot Index</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/intersection-of-two-linked-lists">160.Intersection of Two Linked Lists</a>difficulty&#x3D;0</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/binary-tree-right-side-view">199.Binary Tree Right Side View</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/search-insert-position">35.Search Insert Position</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/power-of-two">231.Power of Two</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/valid-palindrome">125.Valid Palindrome</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-duplicates-from-sorted-list">83.Remove Duplicates from Sorted List</a>difficulty&#x3D;0</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reverse-integer">7.Reverse Integer</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/happy-number">202.Happy Number</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/spiral-matrix">54.Spiral Matrix</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-1-bits">191.Number of 1 Bits</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/is-subsequence">392.Is Subsequence</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree">235.Lowest Common Ancestor of a Binary Search Tree</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/missing-number">268.Missing Number</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/course-schedule">207.Course Schedule</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/unique-paths">62.Unique Paths</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/two-sum-ii---input-array-is-sorted">167.Two Sum II - Input Array Is Sorted</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/majority-element">169.Majority Element</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/search-a-2d-matrix">74.Search a 2D Matrix</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/fibonacci-number">509.Fibonacci Number</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/invert-binary-tree">226.Invert Binary Tree</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/binary-tree-level-order-traversal">102.Binary Tree Level Order Traversal</a>difficulty&#x3D;1</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/merge-sorted-array">88.Merge Sorted Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-nth-node-from-end-of-list">19.Remove Nth Node From End of List</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/container-with-most-water">11.Container With Most Water</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-duplicates-from-sorted-array">26.Remove Duplicates from Sorted Array</a>difficulty&#x3D;0</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-common-prefix">14.Longest Common Prefix</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/binary-search">704.Binary Search</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/rotate-image">48.Rotate Image</a></li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/tech/dp/"><i class="iconfont iconleft"></i>Dynamic Programming 动态规划</a>
+    <a href="/tech/python-corner-questions/">Python边角知识问答<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Top-Questions-in-6-months-in-2022-Aug"><span class="toc-text">Top Questions in 6 months in 2022 Aug</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

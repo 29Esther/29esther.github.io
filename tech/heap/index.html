@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE html>
+<html lang="en" color-mode=light>
+<head>
+  
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Heap 堆（优先队列） - HELLO_E$THER</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="A heap:
+
+Stores elements, a...">
+  <meta name="author" content="Esther Li">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-light.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/atom-one-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: true,
+        alipay: '/images/donation/alipay.png',
+        wechat: '/images/donation/wechat.png'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: false,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: 'HELLO_E$THER',
+          typing: true,
+          api: '',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: false,
+        type: 'url',
+        image: '',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: true,
+        path: 'search.xml'
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+        <i class="iconfont iconsearch j-navbar-search"></i>
+      
+    </div>
+    <div class="center">Heap 堆（优先队列）</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> Home</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> Writing</a>
+      </li><li class="menu-item">
+        <a href="/books/ " class="underline "> 📚</a>
+      </li><li class="menu-item">
+        <a href="/media/ " class="underline "> 📺</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> Tags</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> About</a>
+      </li></ul>
+    
+      <div class="menu-copyright">Copyright &copy; 2024 Esther Li</div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-9"><article class="article">
+  <div class="wrap">
+    <section class="head-title">
+  <div class="head-mask">
+    <h1 class="head-title">Heap 堆（优先队列）</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>December 18, 2021</span>
+      
+        <span class="post-info-item">
+          <i class="iconfont iconeye"></i><span id="/tech/heap/" class="leancloud-counter" data-flag-title="Heap 堆（优先队列）"></span>
+        </span>
+        <span class="post-info-item">
+          <i class="iconfont iconheart icon-like"></i><span id="/tech/heap/" class="leancloud-like" data-flag-title="Heap 堆（优先队列）"></span>
+        </span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>3084</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="article_tags">
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/" rel="tag">Algorithms</a></li></ul>
+
+      </section>
+      <section class="content">
+        
+        <p>A heap:</p>
+<ul>
+<li>Stores elements, and can find the smallest (min-heap) or largest (max-heap) element stored in O(1).</li>
+<li>Can add elements and remove the smallest (min-heap) or largest (max-heap) element in O(log(n)).</li>
+<li>Can perform insertions and removals while always maintaining the first property.</li>
+</ul>
+<h1 id="PriorityQueue-in-Java"><a href="#PriorityQueue-in-Java" class="headerlink" title="PriorityQueue in Java"></a>PriorityQueue in Java</h1><p>An unbounded priority queue based on a priority heap. The elements of the priority queue are ordered according to their natural ordering, or by a Comparator provided at queue construction time, depending on which constructor is used.<br>The head of this queue is the least element with respect to the specified ordering</p>
+<h2 id="Opeartions"><a href="#Opeartions" class="headerlink" title="Opeartions"></a>Opeartions</h2><ul>
+<li>void offer()</li>
+<li>Object poll()</li>
+<li>int size()</li>
+<li>boolean isEmpty()</li>
+</ul>
+<h1 id="TreeSet-in-Java"><a href="#TreeSet-in-Java" class="headerlink" title="TreeSet in Java"></a>TreeSet in Java</h1><p>A NavigableSet implementation based on a TreeMap. The elements are ordered using their natural ordering, or by a Comparator provided at set creation time, depending on which constructor is used.<br>This implementation provides guaranteed log(n) time cost for the basic operations (add, remove and contains).<br>Note that the ordering maintained by a set (whether or not an explicit comparator is provided) must be consistent with equals if it is to correctly implement the Set interface.</p>
+<h2 id="Opeartions-1"><a href="#Opeartions-1" class="headerlink" title="Opeartions"></a>Opeartions</h2><ul>
+<li>void add()</li>
+<li>E lower(E e)</li>
+<li>E floor(E e)</li>
+<li>E ceiling(E e)</li>
+<li>E higher(E e)</li>
+</ul>
+<h1 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h1><ol>
+<li>直接，当作排序数组</li>
+<li>Dijkstra，求单源最短路径</li>
+<li>一边压入，比较另一边</li>
+</ol>
+<h1 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/kth-largest-element-in-an-array/">215. Kth Largest Element in an Array</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/merge-k-sorted-lists/">23. Merge k Sorted Lists</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/top-k-frequent-elements/">347. Top K Frequent Elements</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/avoid-flood-in-the-city/submissions/">1488. Avoid Flood in The City</a>（treeset）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/">1337. The K Weakest Rows in a Matrix</a>（Easy, inituitive，但是用二分查找更快）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/kth-largest-element-in-a-stream/">703. Kth Largest Element in a Stream</a>（Easy, 不能更简单粗暴的heap）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/relative-ranks/">506. Relative Ranks</a>（Easy, 任意排序）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/last-stone-weight/">1046. Last Stone Weight</a>（Easy, heap直接上）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum/">2099. Find Subsequence of Length K With the Largest Sum</a>（Easy, 有点意思，理解了，好像又不太理解）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/sort-characters-by-frequency/">451. Sort Characters By Frequency</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/reorganize-string/">767. Reorganize String</a>（这题没做出来，着实伤心了！！）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/network-delay-time/">743. Network Delay Time</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/ugly-number-ii/">264. Ugly Number II</a>（做到这里，还是没有总结出技巧，要继续努力QwQ）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/super-ugly-number/">313. Super Ugly Number</a>（上一题的升级版）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/">378. Kth Smallest Element in a Sorted Matrix</a>（与前面的同一类型）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/car-pooling/">1094. Car Pooling</a>（和下面235很像）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/top-k-frequent-words/">692. Top K Frequent Words</a>（Easy，直接）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-average-pass-ratio/">1792. Maximum Average Pass Ratio</a>（基础操作）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/design-twitter/">355. Design Twitter</a>（简单应用题）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/remove-stones-to-minimize-the-total/">1962. Remove Stones to Minimize the Total</a>（算是常规操作）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-happy-string/">1405. Longest Happy String</a>（贪心算法）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/path-with-maximum-probability/">1514. Path with Maximum Probability</a>（Dijkstra）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/process-tasks-using-servers/">1882. Process Tasks Using Servers</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-orders-in-the-backlog/">1801. Number of Orders in the Backlog</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/the-maze-ii">505. The Maze II</a>（Dijkstra 练到吐）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/single-threaded-cpu/">1834. Single-Threaded CPU</a></li>
+</ul>
+<h2 id="三思"><a href="#三思" class="headerlink" title="三思"></a>三思</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/the-skyline-problem/">218. The Skyline Problem</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/cheapest-flights-within-k-stops/">787. Cheapest Flights Within K Stops</a>（<a href="../graph/">Graph</a>里的同题，再战，依旧铩羽而归，惭愧惭愧 QwQ，这题可以1. BellBellman-Ford: Map + queue；2. Dijkstra: array + priority queue；升级版<a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-cost-to-reach-destination-in-time/">1928. Minimum Cost to Reach Destination in Time</a>，我还是不会QwQ）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/">1353. Maximum Number of Events That Can Be Attended</a>（还需修炼！pq的经典用法）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-k-pairs-with-smallest-sums/">373. Find K Pairs with Smallest Sums</a>（这题为啥没做出来？？？？反省！！！！！）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/path-with-minimum-effort/">1631. Path With Minimum Effort</a>（Dijikstra）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/">1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/jump-game-vi/">1696. Jump Game VI</a>（很好玩的跳跃游戏，总是能把愚蠢的我打回原型🐟）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/number-of-restricted-paths-from-first-to-last-node/">1786. Number of Restricted Paths From First to Last Node</a>（需要每天复习一遍的Dijkstra）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/find-median-from-data-stream/">295. Find Median from Data Stream</a>（经典的两队配合）</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/task-scheduler/">621. Task Scheduler</a>（是很tricky的一题，知道怎么做了，但不知道为啥和怎么想出来的）</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.com/problems/meeting-rooms-ii">253. Meeting Rooms II</a>（被shuxian剧透了，生气）</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Heap_%28data_structure%29#Implementation">Heap Wikipedia</a></li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+          <section class="donate">
+  <div id="qrcode-donate">
+    <img   class="lazyload" data-original="/images/donation/alipay.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <nav class="nav">
+    <a href="/tech/graph/"><i class="iconfont iconleft"></i>Graph 图</a>
+    <a href="/reading/average-score/">平均分<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+        <section class="comments">
+  
+<div id="valine"></div>
+<script defer src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  window.onload = function () {
+    var loadValine = function () {
+      new Valine({
+        el: '#valine',
+        app_id: "LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz",
+        app_key: "QgDzi8p6RWJYvOSHQeGCjBnH",
+        placeholder: "让我猜猜你在想什么",
+        avatar: "mp",
+        pageSize: "10",
+        lang: "zh-CN",
+      });
+    }
+    loadValine();
+  };
+</script>
+
+</section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">Content:</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PriorityQueue-in-Java"><span class="toc-text">PriorityQueue in Java</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Opeartions"><span class="toc-text">Opeartions</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TreeSet-in-Java"><span class="toc-text">TreeSet in Java</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Opeartions-1"><span class="toc-text">Opeartions</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%B3%95"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%B7%E9%A2%98"><span class="toc-text">刷题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E6%80%9D"><span class="toc-text">三思</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+    
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://www.linkedin.com/in/lizhixuan "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#2b65bc'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconlinkedin "></i>
+      </a><a 
+        href="https://github.com/29Esther "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/estherlzx/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="http://weibo.com/2249721655/profile?topnav=1&wvr=6 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#c43d35'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconweibo "></i>
+      </a><a 
+        href="mailto:esther_lzx@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail "></i>
+      </a></div>
+  <div class="footer-copyright">Copyright &copy; 2024 Esther Li</div>
+</footer>
+  
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+    <div class="search">
+  <div class="search-container">
+    <div class="search-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <div class="search-input-wrapper">
+      <i class="search-input-icon iconfont iconsearch"></i>
+      <input class="search-input" type="search" id="search-input" placeholder="Search..." autofocus autocomplete="off"
+        autocorrect="off" autocapitalize="off">
+    </div>
+    <div class="search-output" id="search-output"></div>
+  </div>
+</div>
+  
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+  <script>
+  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+
+    AV.init({
+      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
+      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
+      serverURLs: 'https://leancloud.cn/',
+    });
+
+    const Counter = AV.Object.extend("Counter");
+    const Like = AV.Object.extend("Like");
+
+    const showCount = (Counter) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-counter").each(async (e) => {
+        const url = $(".leancloud-counter").eq(e).attr('id').trim();
+        const query = new AV.Query("Counter");
+        query.equalTo("words", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addCount = (Counter) => {
+      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
+      var query = new Counter;
+      query.save({
+        words: url
+      });
+    }
+
+    const showLike = (Like) => {
+      const asyncLimit = new AsyncLimit(2);
+      $(".leancloud-like").each(async (e) => {
+        const url = $(".leancloud-like").eq(e).attr('id').trim();
+        const query = new AV.Query("Like");
+        query.equalTo("path", url);
+        let count = await asyncLimit.run(() => query.count());
+        $(".leancloud-like").eq(e).text(count ? count : 0);
+      });
+    }
+
+    const addLike = (Like) => {
+      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
+      var query = new Like;
+      query.save({
+        path: url,
+        nickName: 'Anonymous'
+      });
+      $(".leancloud-like").addClass('islike');
+      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+      setTimeout(() => showLike(Like), 1000);
+    }
+
+    const handleLikeClick = () => {
+      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      if (isLike) {
+        ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
+      } else {
+        addLike(Like);
+      }
+    }
+
+    $(function () {
+      addCount(Counter);
+      showCount(Counter);
+      showLike(Like);
+      $(".icon-like").on("click", function () {
+        handleLikeClick();
+      });
+    });
+
+  });
+</script>
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
