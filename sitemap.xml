@@ -56,141 +56,6 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/media/index.html</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/average-score/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/ba-qi-zi-di-de-shi-jie/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/everything-i-never-told-you/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/ha-ma-xian-sheng-qu-kan-xin-li-yi-sheng/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/how-to-read-a-book/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/in-this-complicated-world/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/ji-xian-lin-tan-ren-shen/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/journaling-and-notes-0/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/journaling-and-notes-1/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/journaling-and-notes-2/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/journaling-and-notes-3/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/journaling-and-notes-4/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/my-life/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/nju-readings-part1/</loc>
-    
-    <lastmod>2024-04-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://esther.fun/reading/poor-charlies-almanack/</loc>
     
     <lastmod>2024-04-26</lastmod>
@@ -479,6 +344,15 @@
   </url>
   
   <url>
+    <loc>https://esther.fun/media/index.html</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://esther.fun/hello-everyone/</loc>
     
     <lastmod>2024-04-26</lastmod>
@@ -498,6 +372,132 @@
   
   <url>
     <loc>https://esther.fun/notes/change-ci-from-travis-to-github-actions/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/average-score/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/ba-qi-zi-di-de-shi-jie/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/everything-i-never-told-you/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/ha-ma-xian-sheng-qu-kan-xin-li-yi-sheng/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/how-to-read-a-book/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/in-this-complicated-world/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/ji-xian-lin-tan-ren-shen/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/journaling-and-notes-0/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/journaling-and-notes-1/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/journaling-and-notes-2/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/journaling-and-notes-3/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/journaling-and-notes-4/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/my-life/</loc>
+    
+    <lastmod>2024-04-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/nju-readings-part1/</loc>
     
     <lastmod>2024-04-26</lastmod>
     
