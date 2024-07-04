@@ -56,213 +56,6 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/reading/nju-readings-part1/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/poor-charlies-almanack/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/ready-for-anything/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/the-life-changing-magic-of-tidying-up/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/xue-xiao-mei-jiao-dan-yi-ding-yao-dong-de-jin-qian-guan/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/skills/pitch-building-blocks/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/skills/sap01/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/skills/texas-hold%E2%80%99em/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/binary-search/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/bloomberg-coding-questions/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/build-bolg-in-github-and-connect-to-your-website/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/dp/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/graph/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/head-first-design-pattern/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/heap/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/interesting-series/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/leetcode-132-pattern/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/meet-data-stucture/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/meta-coding-questions/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/monotonic-stack-and-monotonic-queue/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/python-corner-questions/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/quickselect/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/segment-tree/</loc>
-    
-    <lastmod>2024-07-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://esther.fun/tech/understanding-bitwise-operators/</loc>
     
     <lastmod>2024-07-04</lastmod>
@@ -507,6 +300,213 @@
   
   <url>
     <loc>https://esther.fun/reading/my-life/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/nju-readings-part1/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/poor-charlies-almanack/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/ready-for-anything/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/the-life-changing-magic-of-tidying-up/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/xue-xiao-mei-jiao-dan-yi-ding-yao-dong-de-jin-qian-guan/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/skills/pitch-building-blocks/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/skills/sap01/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/skills/texas-hold%E2%80%99em/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/binary-search/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/bloomberg-coding-questions/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/build-bolg-in-github-and-connect-to-your-website/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/dp/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/graph/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/head-first-design-pattern/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/heap/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/interesting-series/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/leetcode-132-pattern/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/meet-data-stucture/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/meta-coding-questions/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/monotonic-stack-and-monotonic-queue/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/python-corner-questions/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/quickselect/</loc>
+    
+    <lastmod>2024-07-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/segment-tree/</loc>
     
     <lastmod>2024-07-04</lastmod>
     
