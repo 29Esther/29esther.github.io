@@ -4,7 +4,6 @@ https://esther.fun/tech.html
 https://esther.fun/thinking.html
 https://esther.fun/tags/index.html
 https://esther.fun/websites/index.html
-https://esther.fun/tech/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/
 https://esther.fun/thinking/reflection-on-an-internal-interview/
 https://esther.fun/index.html
 https://esther.fun/life.html
@@ -55,6 +54,7 @@ https://esther.fun/tech/quickselect/
 https://esther.fun/tech/segment-tree/
 https://esther.fun/tech/understanding-bitwise-operators/
 https://esther.fun/tech/union-find-set/
+https://esther.fun/tech/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/
 https://esther.fun/404.html
 https://esther.fun/
 https://esther.fun/tags/Life/
