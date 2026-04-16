@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,22 +7,36 @@
     <title>宝宝辅食专家</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         [v-cloak] { display: none; }
         body { -webkit-tap-highlight-color: transparent; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        .toast { position: fixed; top: 80px; left: 50%; transform: translateX(-50%); z-index: 999; padding: 8px 20px; border-radius: 12px; font-size: 13px; font-weight: 600; transition: all .3s; pointer-events: none; }
+        .toast-success { background: #d1fae5; color: #065f46; }
+        .toast-error { background: #fee2e2; color: #991b1b; }
+        .toast-info { background: #dbeafe; color: #1e40af; }
+        .sync-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+        .sync-dot.online { background: #34d399; }
+        .sync-dot.offline { background: #fbbf24; }
+        .sync-dot.syncing { background: #60a5fa; animation: pulse 1s infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
-
     <div id="app" v-cloak class="min-h-screen pb-28">
-        
+
+        <div v-if="toast.show" :class="['toast', 'toast-' + toast.type]">{{ toast.msg }}</div>
+
         <header class="bg-teal-600 text-white p-4 sticky top-0 z-50 shadow-md flex justify-between items-center">
             <h1 class="text-lg font-bold">🍲 宝宝辅食管理</h1>
-            <span class="text-xs bg-teal-500 px-2 py-1 rounded">{{ currentTabName }}</span>
+            <span class="text-xs bg-teal-500 px-2 py-1 rounded flex items-center">
+                <span :class="['sync-dot', syncStatus]"></span>
+                {{ currentTabName }}
+            </span>
         </header>
 
         <main class="p-4 max-w-md mx-auto space-y-4">
-            
+
             <section v-show="currentTab === 'db'" class="space-y-4">
                 <div v-for="(list, category) in ingredients" :key="category" class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
                     <h2 class="font-bold text-teal-800 mb-3 flex items-center">
@@ -29,9 +44,9 @@
                         {{ categoryNames[category] }}
                     </h2>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span v-for="(item, index) in list" :key="index" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-sm flex items-center shadow-sm">
-                            {{ item }}
-                            <button @click="removeIngredient(category, index)" class="ml-2 text-slate-400 p-1">&times;</button>
+                        <span v-for="item in list" :key="item.id" class="bg-slate-100 text-slate-700 px-3 py-1.5 rounded-xl text-sm flex items-center shadow-sm">
+                            {{ item.name }}
+                            <button @click="removeIngredient(item.id, category)" class="ml-2 text-slate-400 p-1">&times;</button>
                         </span>
                     </div>
                     <div class="flex gap-2">
@@ -43,8 +58,13 @@
 
             <section v-show="currentTab === 'menu'" class="space-y-4">
                 <div class="flex justify-between items-center mb-2 px-1">
-                    <h2 class="font-bold text-lg text-slate-700">本周排期</h2>
-                    <button @click="generateMenu" class="bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg active:scale-95 transition">✨ 智能排餐</button>
+                    <h2 class="font-bold text-lg text-slate-700">排期表</h2>
+                    <div class="flex items-center gap-2">
+                        <select v-model="menuDayCount" class="text-xs bg-slate-100 border-none rounded-xl px-2 py-2.5 font-bold text-slate-500">
+                            <option v-for="n in 7" :key="n" :value="n">{{ n }}天</option>
+                        </select>
+                        <button @click="generateMenu" class="bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg active:scale-95 transition">✨ 智能排餐</button>
+                    </div>
                 </div>
 
                 <div v-for="day in weeklyMenu" :key="day.date" class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
@@ -53,24 +73,24 @@
                         <span class="text-teal-600 font-bold text-sm">{{ getDayOfWeek(day.date) }}</span>
                     </div>
                     <div class="grid grid-cols-2 gap-3 text-sm">
-                        <div class="bg-orange-50 p-2.5 rounded-xl border border-orange-100"><p class="text-[10px] text-orange-400 font-black mb-1">早</p><p class="text-slate-700 leading-tight">{{ day.breakfast }}</p></div>
-                        <div class="bg-blue-50 p-2.5 rounded-xl border border-blue-100"><p class="text-[10px] text-blue-400 font-black mb-1">午</p><p class="text-slate-700 leading-tight">{{ day.lunch }}</p></div>
-                        <div class="bg-indigo-50 p-2.5 rounded-xl border border-indigo-100"><p class="text-[10px] text-indigo-400 font-black mb-1">晚</p><p class="text-slate-700 leading-tight">{{ day.dinner }}</p></div>
-                        <div class="bg-rose-50 p-2.5 rounded-xl border border-rose-100"><p class="text-[10px] text-rose-400 font-black mb-1">果</p><p class="text-slate-700 leading-tight">{{ day.fruit }}</p></div>
+                        <div class="bg-orange-50 p-2.5 rounded-xl border border-orange-100"><p class="text-[10px] text-orange-400 font-black mb-1">早</p><p class="text-slate-700 leading-tight">{{ formatMealDisplay(day.breakfast) }}</p></div>
+                        <div class="bg-blue-50 p-2.5 rounded-xl border border-blue-100"><p class="text-[10px] text-blue-400 font-black mb-1">午</p><p class="text-slate-700 leading-tight">{{ formatMealDisplay(day.lunch) }}</p></div>
+                        <div class="bg-indigo-50 p-2.5 rounded-xl border border-indigo-100"><p class="text-[10px] text-indigo-400 font-black mb-1">晚</p><p class="text-slate-700 leading-tight">{{ formatMealDisplay(day.dinner) }}</p></div>
+                        <div class="bg-rose-50 p-2.5 rounded-xl border border-rose-100"><p class="text-[10px] text-rose-400 font-black mb-1">果</p><p class="text-slate-700 leading-tight">{{ formatMealDisplay(day.fruit) }}</p></div>
                     </div>
                 </div>
 
                 <div v-if="weeklyMenu.length > 0" class="mt-8">
-                    <h2 class="font-bold text-lg mb-4 text-slate-700 px-1">本周待采购</h2>
+                    <h2 class="font-bold text-lg mb-4 text-slate-700 px-1">采购清单</h2>
                     <div v-for="(items, cat) in shoppingList" :key="cat" class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 mb-4">
                         <h3 class="font-bold text-teal-600 text-xs mb-4 flex items-center uppercase tracking-widest">{{ categoryNames[cat] }}</h3>
                         <div class="space-y-4">
-                            <div v-for="item in items" :key="item.name" class="flex items-center justify-between">
+                            <div v-for="item in items" :key="item.ingredient_id" class="flex items-center justify-between">
                                 <label class="flex items-center flex-1">
-                                    <input type="checkbox" v-model="item.checked" class="w-5 h-5 rounded-full border-slate-300 text-teal-600 focus:ring-teal-500 transition-all">
+                                    <input type="checkbox" :checked="item.checked" @change="toggleGroceryCheck(item)" class="w-5 h-5 rounded-full border-slate-300 text-teal-600 focus:ring-teal-500 transition-all">
                                     <span :class="['ml-3 text-sm transition-all font-medium', item.checked ? 'line-through text-slate-300' : 'text-slate-700']">{{ item.name }}</span>
                                 </label>
-                                <button @click="triggerManualReplace(item.name, cat)" class="text-[10px] bg-slate-100 text-slate-500 px-3 py-1.5 rounded-lg active:bg-slate-200">替换</button>
+                                <button @click="triggerGroceryReplace(item)" class="text-[10px] bg-slate-100 text-slate-500 px-3 py-1.5 rounded-lg active:bg-slate-200">替换</button>
                             </div>
                         </div>
                     </div>
@@ -83,7 +103,7 @@
                         <p class="text-xs text-slate-400 font-bold tracking-widest mb-2 uppercase">记录日期</p>
                         <input type="date" v-model="recordForm.date" @change="loadRecordByDate" class="w-full bg-slate-100 border-none rounded-2xl p-4 text-center font-black text-teal-700 text-xl focus:ring-2 focus:ring-teal-500">
                     </div>
-                    
+
                     <button @click="importFromMenu" class="w-full bg-orange-50 text-orange-600 py-3 rounded-2xl font-bold text-sm border border-orange-100 active:scale-95 transition">
                         📥 导入当日排餐计划
                     </button>
@@ -100,9 +120,35 @@
                                     <span v-else>已保存</span>
                                 </button>
                             </div>
-                            <textarea rows="2" v-model="recordForm[meal.key]" 
-                                class="w-full bg-slate-50 border border-slate-100 rounded-2xl p-3 text-sm focus:ring-2 focus:ring-teal-500 focus:bg-white transition-all" 
-                                :placeholder="'输入' + meal.label + '内容...'"></textarea>
+                            <!-- Selected tags -->
+                            <div class="flex flex-wrap gap-1.5 mb-2 min-h-[28px]">
+                                <span v-for="ing in recordForm[meal.key]" :key="ing.id" class="bg-teal-500 text-white px-2 py-0.5 rounded-lg text-xs font-medium flex items-center">
+                                    {{ ing.name }}
+                                    <button @click="toggleRecordIngredient(meal.key, ing)" class="ml-1 opacity-70 hover:opacity-100">&times;</button>
+                                </span>
+                                <span v-if="!recordForm[meal.key].length" class="text-slate-300 text-xs py-0.5">点击下方分类选择食材</span>
+                            </div>
+                            <!-- Category accordion picker -->
+                            <div class="space-y-1">
+                                <div v-for="(catKey, catIdx) in (meal.key === 'fruit' ? ['fruits'] : ['vegetables', 'staples', 'meats'])" :key="catKey">
+                                    <button @click="togglePickerCat(meal.key, catKey)"
+                                        class="w-full text-left flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-bold transition-all"
+                                        :class="openPicker[meal.key] === catKey ? 'bg-teal-50 text-teal-700' : 'bg-slate-50 text-slate-500'">
+                                        <span>{{ categoryIcons[catKey] }} {{ categoryNames[catKey] }}</span>
+                                        <span class="text-[10px]">{{ openPicker[meal.key] === catKey ? '▲' : '▼' }}</span>
+                                    </button>
+                                    <div v-show="openPicker[meal.key] === catKey" class="flex flex-wrap gap-1.5 px-1 py-2">
+                                        <button v-for="ing in ingredients[catKey]" :key="ing.id"
+                                            @click="toggleRecordIngredient(meal.key, ing)"
+                                            :class="['px-2.5 py-1 rounded-lg text-xs font-medium border transition-all',
+                                                recordForm[meal.key].some(i => i.id === ing.id)
+                                                ? 'bg-teal-500 text-white border-teal-500'
+                                                : 'bg-white text-slate-500 border-slate-200']">
+                                            {{ ing.name }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -118,45 +164,75 @@
                 <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="font-black text-slate-700 tracking-tight">食材频率榜</h2>
-                        <select v-model="statsRange" class="text-xs bg-slate-100 border-none rounded-xl px-3 py-2 font-bold text-slate-500">
+                        <select v-model="statsRange" @change="loadStats" class="text-xs bg-slate-100 border-none rounded-xl px-3 py-2 font-bold text-slate-500">
                             <option value="week">本周</option>
                             <option value="month">本月</option>
                             <option value="year">今年</option>
                         </select>
                     </div>
+                    <div v-if="visibleStats.length === 0 && !statsLoading" class="text-center text-slate-300 py-6 text-sm">暂无数据</div>
                     <div class="space-y-4">
-                        <div v-for="(count, item) in ingredientStats" :key="item" class="flex items-center gap-4">
-                            <span class="text-sm w-20 truncate text-slate-600 font-bold">{{ item }}</span>
+                        <div v-for="stat in visibleStats" :key="stat.name" class="flex items-center gap-4">
+                            <span class="text-sm w-20 truncate text-slate-600 font-bold">{{ stat.name }}</span>
                             <div class="flex-1 h-3 bg-slate-50 rounded-full overflow-hidden border border-slate-50">
-                                <div class="h-full bg-teal-400 transition-all duration-700 shadow-[0_0_8px_rgba(45,212,191,0.5)]" :style="{ width: Math.min(count * 15, 100) + '%' }"></div>
+                                <div class="h-full bg-teal-400 transition-all duration-700 shadow-[0_0_8px_rgba(45,212,191,0.5)]" :style="{ width: Math.min(stat.count * 15, 100) + '%' }"></div>
                             </div>
-                            <span class="text-xs font-black text-teal-600 bg-teal-50 px-2 py-1 rounded-lg">{{ count }}次</span>
+                            <span class="text-xs font-black text-teal-600 bg-teal-50 px-2 py-1 rounded-lg">{{ stat.count }}次</span>
                         </div>
+                    </div>
+                    <div v-if="hasMoreStats" class="flex justify-center mt-4">
+                        <button @click="showMoreStats" class="text-teal-600 text-xs font-bold px-4 py-2 rounded-full border border-teal-200 active:scale-95 transition">
+                            加载更多
+                        </button>
                     </div>
                 </div>
 
                 <div class="px-1 mt-6 mb-2 flex items-center text-slate-400 font-black text-xs uppercase tracking-widest">
                     <span class="mr-2">🕒</span> 历史长河
                 </div>
-                <div v-for="record in sortedHistory" :key="record.date" class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative group overflow-hidden">
+                <div v-if="historyRecords.length === 0 && !historyLoading" class="text-center text-slate-300 py-8 text-sm">暂无记录</div>
+                <div v-for="record in sortedHistory" :key="record.id" class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative group overflow-hidden">
                     <div class="absolute left-0 top-0 w-1 h-full bg-teal-500"></div>
-                    <button @click="deleteRecord(record.date)" class="absolute top-4 right-4 text-slate-300 hover:text-red-400 transition-colors p-1">&times;</button>
+                    <button @click="deleteRecord(record)" class="absolute top-4 right-4 text-slate-300 hover:text-red-400 transition-colors p-1">&times;</button>
                     <div class="flex items-center mb-3">
                         <span class="font-black text-slate-800 mr-2">{{ record.date }}</span>
                         <span class="text-[10px] bg-slate-100 text-slate-400 px-2 py-0.5 rounded-full font-bold">{{ getDayOfWeek(record.date) }}</span>
                     </div>
                     <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-xs text-slate-500">
-                        <p class="flex items-center"><span class="mr-2">早</span><span class="text-slate-800 truncate" v-if="record.breakfast">{{ record.breakfast }}</span><span class="text-slate-800 truncate" v-else>未录入</span></p>
-                        <p class="flex items-center"><span class="mr-2">午</span><span class="text-slate-800 truncate" v-if="record.lunch">{{ record.lunch }}</span><span class="text-slate-800 truncate" v-else>未录入</span></p>
-                        <p class="flex items-center"><span class="mr-2">晚</span><span class="text-slate-800 truncate" v-if="record.dinner">{{ record.dinner }}</span><span class="text-slate-800 truncate" v-else>未录入</span></p>
-                        <p class="flex items-center"><span class="mr-2">果</span><span class="text-slate-800 truncate" v-if="record.fruit">{{ record.fruit }}</span><span class="text-slate-800 truncate" v-else>未录入</span></p>
+                        <p class="flex items-center"><span class="mr-2">早</span><span class="text-slate-800 truncate" v-if="record.breakfastNames">{{ record.breakfastNames }}</span><span class="text-slate-800 truncate" v-else>未录入</span></p>
+                        <p class="flex items-center"><span class="mr-2">午</span><span class="text-slate-800 truncate" v-if="record.lunchNames">{{ record.lunchNames }}</span><span class="text-slate-800 truncate" v-else>未录入</span></p>
+                        <p class="flex items-center"><span class="mr-2">晚</span><span class="text-slate-800 truncate" v-if="record.dinnerNames">{{ record.dinnerNames }}</span><span class="text-slate-800 truncate" v-else>未录入</span></p>
+                        <p class="flex items-center"><span class="mr-2">果</span><span class="text-slate-800 truncate" v-if="record.fruitNames">{{ record.fruitNames }}</span><span class="text-slate-800 truncate" v-else>未录入</span></p>
                     </div>
+                </div>
+                <div v-if="hasMoreHistory" class="flex justify-center mt-4">
+                    <button @click="loadMoreHistory" :disabled="historyLoading" class="bg-white text-teal-600 border border-teal-200 px-6 py-2.5 rounded-full text-sm font-bold shadow-sm active:scale-95 transition disabled:opacity-50">
+                        <span v-if="historyLoading">加载中...</span>
+                        <span v-else>加载更多</span>
+                    </button>
                 </div>
             </section>
         </main>
 
+        <!-- Replace modal -->
+        <div v-if="replaceModal.show" class="fixed inset-0 z-[100] bg-black/40 flex items-end justify-center" @click.self="replaceModal.show = false">
+            <div class="bg-white rounded-t-3xl w-full max-w-md p-6 pb-10 max-h-[60vh] overflow-y-auto">
+                <div class="text-center mb-4">
+                    <p class="text-sm text-slate-400">将 <span class="font-bold text-slate-700">{{ replaceModal.oldName }}</span> 替换为</p>
+                </div>
+                <div class="flex flex-wrap gap-2 justify-center">
+                    <button v-for="ing in replaceModal.candidates" :key="ing.id" @click="confirmGroceryReplace(ing)"
+                        class="px-4 py-2.5 rounded-xl text-sm font-medium border border-slate-200 bg-white text-slate-700 active:bg-teal-500 active:text-white transition shadow-sm">
+                        {{ ing.name }}
+                    </button>
+                </div>
+                <div v-if="replaceModal.candidates.length === 0" class="text-center text-slate-300 text-sm py-4">该分类下无其他食材</div>
+                <button @click="replaceModal.show = false" class="w-full mt-6 text-slate-400 text-sm py-2 border-t border-slate-100 pt-4">取消</button>
+            </div>
+        </div>
+
         <nav class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-lg border-t border-slate-100 px-8 py-4 flex justify-between items-center z-50 rounded-t-[32px] shadow-[0_-10px_25px_rgba(0,0,0,0.03)]">
-            <button v-for="tab in tabs" :key="tab.id" @click="currentTab = tab.id"
+            <button v-for="tab in tabs" :key="tab.id" @click="switchTab(tab.id)"
                 :class="['flex flex-col items-center transition-all duration-300', currentTab === tab.id ? 'text-teal-600 -translate-y-1' : 'text-slate-300 hover:text-slate-400']">
                 <span class="text-2xl mb-1">{{ tab.icon }}</span>
                 <span class="text-[10px] font-black uppercase tracking-tighter">{{ tab.name }}</span>
@@ -167,18 +243,52 @@
     </div>
 
     <script>
-        const { createApp, ref, reactive, computed, watch, onMounted } = Vue;
+        // ========== Supabase Config ==========
+        const SUPABASE_URL = 'https://qnqtvyoygcxcfoucmwol.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_jG_qxny9Mwq_ePl_B5BM2Q_TIjL2koN';
+
+        const { createApp, ref, reactive, computed, watch, onMounted, nextTick } = Vue;
 
         createApp({
             setup() {
+                // --- Supabase client ---
+                let db = null;
+                const syncStatus = ref('offline');
+
+                const initSupabase = () => {
+                    if (!SUPABASE_URL || SUPABASE_URL === 'https://qnqtvyoygcxcfoucmwol.supabase.co' || !window.supabase) {
+                        console.warn('Supabase not configured, using localStorage fallback');
+                        return false;
+                    }
+                    db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                    syncStatus.value = 'online';
+                    return true;
+                };
+
+                // --- Toast ---
+                const toast = reactive({ show: false, msg: '', type: 'info' });
+                let toastTimer = null;
+                const showToast = (msg, type = 'info') => {
+                    clearTimeout(toastTimer);
+                    toast.show = true; toast.msg = msg; toast.type = type;
+                    toastTimer = setTimeout(() => toast.show = false, 2000);
+                };
+
+                // --- Tabs ---
                 const tabs = [
-                    { id: 'db', name: '食材库', icon: '🥦' },
                     { id: 'menu', name: '排期表', icon: '📅' },
                     { id: 'record', name: '记一笔', icon: '✍️' },
-                    { id: 'history', name: '趋势表', icon: '📊' }
+                    { id: 'history', name: '趋势表', icon: '📊' },
+                    { id: 'db', name: '食材库', icon: '🥦' }
                 ];
-                const currentTab = ref('db');
+                const currentTab = ref('menu');
                 const currentTabName = computed(() => tabs.find(t => t.id === currentTab.value).name);
+                const switchTab = (id) => {
+                    currentTab.value = id;
+                    if (id === 'history') { loadHistory(); loadStats(); }
+                    if (id === 'record') loadRecordByDate();
+                    if (id === 'menu') loadMenus();
+                };
 
                 const mealConfig = [
                     { key: 'breakfast', label: '早餐', icon: '🍳' },
@@ -186,186 +296,515 @@
                     { key: 'dinner', label: '晚餐', icon: '🍚' },
                     { key: 'fruit', label: '水果加餐', icon: '🍎' }
                 ];
+                const mealTypes = ['breakfast', 'lunch', 'dinner', 'fruit'];
 
                 const categoryNames = { vegetables: '蔬菜类', fruits: '水果类', staples: '主食类', meats: '肉蛋海鲜' };
                 const categoryIcons = { vegetables: '🥕', fruits: '🍓', staples: '🌾', meats: '🍗' };
 
-                const ingredients = reactive({
-                    vegetables: ['西兰花', '胡萝卜', '南瓜', '菠菜', '番茄'],
-                    fruits: ['苹果', '香蕉', '蓝莓', '牛油果'],
-                    staples: ['米粉', '意面', '红薯', '土豆'],
-                    meats: ['鸡腿肉', '三文鱼', '牛肉', '蛋黄', '猪肝粉']
-                });
-
+                // ========== State ==========
+                const ingredients = reactive({ vegetables: [], fruits: [], staples: [], meats: [] });
+                const allIngredientsList = computed(() => Object.values(ingredients).flat());
                 const newIngredients = reactive({ vegetables: '', fruits: '', staples: '', meats: '' });
                 const weeklyMenu = ref([]);
-                const history = ref([]);
-                const recordForm = reactive({ date: new Date().toISOString().split('T')[0], breakfast: '', lunch: '', dinner: '', fruit: '' });
+                const menuDayCount = ref(7);
+                const historyRecords = ref([]);
+                const historyLoading = ref(false);
+                const hasMoreHistory = ref(true);
+                const historyPageSize = 5;
+                const recordForm = reactive({
+                    date: new Date().toISOString().split('T')[0],
+                    breakfast: [], lunch: [], dinner: [], fruit: []
+                });
                 const statsRange = ref('week');
-                
-                // 用于比对变化，实现单餐保存逻辑
+                const ingredientStats = ref([]);
+                const statsVisibleCount = ref(5);
+                const statsLoading = ref(false);
+                const visibleStats = computed(() => ingredientStats.value.slice(0, statsVisibleCount.value));
+                const hasMoreStats = computed(() => statsVisibleCount.value < ingredientStats.value.length);
+                const showMoreStats = () => { statsVisibleCount.value += 5; };
                 const lastSavedRecord = ref(null);
+                const openPicker = reactive({ breakfast: null, lunch: null, dinner: null, fruit: null });
+                const replaceModal = reactive({ show: false, item: null, oldName: '', candidates: [] });
+                const togglePickerCat = (mealKey, catKey) => {
+                    openPicker[mealKey] = openPicker[mealKey] === catKey ? null : catKey;
+                };
 
-                onMounted(() => {
-                    const keys = ['ingredients', 'menu', 'history'];
-                    keys.forEach(k => {
-                        const saved = localStorage.getItem(`babyApp_v3_${k}`);
-                        if (saved) {
-                            if (k === 'ingredients') Object.assign(ingredients, JSON.parse(saved));
-                            else if (k === 'menu') weeklyMenu.value = JSON.parse(saved);
-                            else if (k === 'history') history.value = JSON.parse(saved);
-                        }
+                // ========== Ingredients CRUD ==========
+                const loadIngredients = async () => {
+                    if (!db) return;
+                    syncStatus.value = 'syncing';
+                    const { data, error } = await db.from('baby_ingredients').select('*').order('id');
+                    if (error) { showToast('加载食材失败', 'error'); syncStatus.value = 'online'; return; }
+                    ingredients.vegetables = []; ingredients.fruits = []; ingredients.staples = []; ingredients.meats = [];
+                    data.forEach(row => {
+                        if (ingredients[row.category]) ingredients[row.category].push({ id: row.id, name: row.name });
                     });
-                    loadRecordByDate();
-                });
+                    syncStatus.value = 'online';
+                };
 
-                watch(ingredients, (v) => localStorage.setItem('babyApp_v3_ingredients', JSON.stringify(v)), { deep: true });
-                watch(weeklyMenu, (v) => localStorage.setItem('babyApp_v3_menu', JSON.stringify(v)), { deep: true });
-                watch(history, (v) => localStorage.setItem('babyApp_v3_history', JSON.stringify(v)), { deep: true });
-
-                const addIngredient = (cat) => {
+                const addIngredient = async (cat) => {
                     const val = newIngredients[cat].trim();
-                    if (val && !ingredients[cat].includes(val)) {
-                        ingredients[cat].push(val);
-                        newIngredients[cat] = '';
-                    }
+                    if (!val) return;
+                    if (allIngredientsList.value.some(i => i.name === val)) { showToast('食材已存在', 'error'); return; }
+                    if (!db) return;
+                    syncStatus.value = 'syncing';
+                    const { data, error } = await db.from('baby_ingredients').insert({ category: cat, name: val }).select().single();
+                    if (error) { showToast('添加失败: ' + error.message, 'error'); syncStatus.value = 'online'; return; }
+                    ingredients[cat].push({ id: data.id, name: data.name });
+                    newIngredients[cat] = '';
+                    showToast('已添加 ' + val, 'success');
+                    syncStatus.value = 'online';
                 };
-                const removeIngredient = (cat, idx) => ingredients[cat].splice(idx, 1);
 
-                const generateMenu = () => {
-                    const last10Days = history.value.sort((a,b) => new Date(b.date)-new Date(a.date)).slice(0, 10);
-                    const usedText = last10Days.map(h => `${h.breakfast}${h.lunch}${h.dinner}${h.fruit}`).join('');
-                    const getSmartItem = (cat) => {
-                        const fresh = ingredients[cat].filter(i => !usedText.includes(i));
-                        const pool = fresh.length > 0 ? fresh : ingredients[cat];
-                        return pool[Math.floor(Math.random() * pool.length)];
-                    };
-                    const newMenu = [];
+                const removeIngredient = async (id, cat) => {
+                    if (!db) return;
+                    syncStatus.value = 'syncing';
+                    const { error } = await db.from('baby_ingredients').delete().eq('id', id);
+                    if (error) { showToast('删除失败', 'error'); syncStatus.value = 'online'; return; }
+                    ingredients[cat] = ingredients[cat].filter(i => i.id !== id);
+                    showToast('已删除', 'success');
+                    syncStatus.value = 'online';
+                };
+
+                // ========== Menu ==========
+                const loadMenus = async () => {
+                    if (!db) return;
+                    syncStatus.value = 'syncing';
                     const today = new Date();
-                    for (let i = 0; i < 7; i++) {
+                    const startDate = today.toISOString().split('T')[0];
+                    const endDate = new Date(today.getTime() + (menuDayCount.value - 1) * 86400000).toISOString().split('T')[0];
+                    const { data, error } = await db
+                        .from('baby_menus')
+                        .select('*, baby_menu_items(meal_type, ingredient_id, baby_ingredients(name))')
+                        .gte('date', startDate)
+                        .lte('date', endDate)
+                        .order('date');
+                    if (error) { showToast('加载菜单失败', 'error'); syncStatus.value = 'online'; return; }
+                    const catOrder = { meats: 0, vegetables: 1, staples: 2, fruits: 3 };
+                    weeklyMenu.value = data.map(m => {
+                        const grouped = { breakfast: [], lunch: [], dinner: [], fruit: [] };
+                        (m.baby_menu_items || []).forEach(item => {
+                            if (grouped[item.meal_type]) grouped[item.meal_type].push({
+                                name: item.baby_ingredients.name,
+                                ingredient_id: item.ingredient_id,
+                                category: (allIngredientsList.value.find(ig => ig.name === item.baby_ingredients.name) || {})._cat || ''
+                            });
+                        });
+                        // Sort each meal: meats -> vegetables -> staples
+                        const sortMeal = (arr) => {
+                            return arr.sort((a, b) => {
+                                const ingA = allIngredientsList.value.find(ig => ig.name === a.name);
+                                const ingB = allIngredientsList.value.find(ig => ig.name === b.name);
+                                const catA = ingA ? Object.keys(ingredients).find(k => ingredients[k].some(x => x.id === ingA.id)) : '';
+                                const catB = ingB ? Object.keys(ingredients).find(k => ingredients[k].some(x => x.id === ingB.id)) : '';
+                                return (catOrder[catA] ?? 99) - (catOrder[catB] ?? 99);
+                            });
+                        };
+                        return {
+                            id: m.id, date: m.date,
+                            breakfast: sortMeal(grouped.breakfast),
+                            lunch: sortMeal(grouped.lunch),
+                            dinner: sortMeal(grouped.dinner),
+                            fruit: grouped.fruit
+                        };
+                    });
+                    syncStatus.value = 'online';
+                };
+
+                const formatMealDisplay = (items) => {
+                    if (!items || items.length === 0) return '-';
+                    return items.map(i => typeof i === 'object' ? i.name : i).join(', ');
+                };
+
+                const generateMenu = async () => {
+                    if (!db) return;
+                    syncStatus.value = 'syncing';
+
+                    // Shuffle helper
+                    const shuffle = (arr) => {
+                        const a = [...arr];
+                        for (let i = a.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [a[i], a[j]] = [a[j], a[i]];
+                        }
+                        return a;
+                    };
+
+                    // Create rotating pools for each category - ensures variety
+                    const pools = {};
+                    ['vegetables', 'staples', 'meats', 'fruits'].forEach(cat => {
+                        pools[cat] = shuffle(ingredients[cat]);
+                        pools[cat]._idx = 0;
+                    });
+                    const getRotatedItem = (cat) => {
+                        const pool = pools[cat];
+                        if (!pool || pool.length === 0) return null;
+                        const item = pool[pool._idx % pool.length];
+                        pool._idx++;
+                        return item;
+                    };
+
+                    const today = new Date();
+                    const menuDays = [];
+                    for (let i = 0; i < menuDayCount.value; i++) {
                         const d = new Date(today); d.setDate(today.getDate() + i);
-                        newMenu.push({
-                            date: d.toISOString().split('T')[0],
-                            breakfast: `${getSmartItem('staples')} + ${getSmartItem('fruits')}`,
-                            lunch: `${getSmartItem('staples')} + ${getSmartItem('meats')} + ${getSmartItem('vegetables')}`,
-                            dinner: `软粥 + ${getSmartItem('vegetables')}`,
-                            fruit: getSmartItem('fruits')
-                        });
+                        const dateStr = d.toISOString().split('T')[0];
+                        // 早/午/晚: 1肉 + 1蔬菜 + 1主食; 水果: 1水果
+                        const b = [getRotatedItem('meats'), getRotatedItem('vegetables'), getRotatedItem('staples')].filter(Boolean);
+                        const l = [getRotatedItem('meats'), getRotatedItem('vegetables'), getRotatedItem('staples')].filter(Boolean);
+                        const din = [getRotatedItem('meats'), getRotatedItem('vegetables'), getRotatedItem('staples')].filter(Boolean);
+                        const f = [getRotatedItem('fruits')].filter(Boolean);
+                        menuDays.push({ date: dateStr, breakfast: b, lunch: l, dinner: din, fruit: f });
                     }
-                    weeklyMenu.value = newMenu;
+
+                    // Delete existing menus in range, then insert new
+                    const dates = menuDays.map(m => m.date);
+                    await db.from('baby_menus').delete().in('date', dates);
+
+                    for (const day of menuDays) {
+                        const { data: menu, error } = await db.from('baby_menus').insert({ date: day.date }).select().single();
+                        if (error) continue;
+                        const items = [];
+                        mealTypes.forEach(mt => {
+                            (day[mt] || []).forEach(ing => {
+                                items.push({ menu_id: menu.id, meal_type: mt, ingredient_id: ing.id });
+                            });
+                        });
+                        if (items.length) await db.from('baby_menu_items').insert(items);
+                    }
+
+                    await loadMenus();
+                    // Auto-generate grocery list
+                    await generateGroceryList(dates[0]);
+                    showToast('排餐完成！', 'success');
+                    syncStatus.value = 'online';
                 };
 
-                const shoppingList = computed(() => {
+                // ========== Grocery ==========
+                const shoppingList = ref({ vegetables: [], fruits: [], staples: [], meats: [] });
+
+                const generateGroceryList = async (weekStart) => {
+                    if (!db) return;
+                    // Collect all ingredient_ids from current menu (items are objects with ingredient_id)
+                    const ingMap = {};
+                    weeklyMenu.value.forEach(day => {
+                        mealTypes.forEach(mt => {
+                            (day[mt] || []).forEach(item => {
+                                if (typeof item === 'object' && item.ingredient_id) {
+                                    ingMap[item.ingredient_id] = item;
+                                } else {
+                                    const found = allIngredientsList.value.find(i => i.name === (typeof item === 'string' ? item : item.name));
+                                    if (found) ingMap[found.id] = found;
+                                }
+                            });
+                        });
+                    });
+
+                    // Delete old grocery for this week, then insert only menu ingredients
+                    await db.from('baby_grocery').delete().eq('date', weekStart);
+                    const rows = Object.keys(ingMap).map(id => ({
+                        date: weekStart, ingredient_id: parseInt(id), checked: false
+                    }));
+                    if (rows.length) {
+                        await db.from('baby_grocery').insert(rows);
+                    }
+                    await loadGrocery(weekStart);
+                };
+
+                const loadGrocery = async (weekStart) => {
+                    if (!db || !weekStart) return;
+                    const { data } = await db
+                        .from('baby_grocery')
+                        .select('*, baby_ingredients(name, category)')
+                        .eq('date', weekStart)
+                        .order('id');
                     const list = { vegetables: [], fruits: [], staples: [], meats: [] };
-                    const menuText = weeklyMenu.value.map(d => `${d.breakfast}${d.lunch}${d.dinner}${d.fruit}`).join('');
-                    for (const cat in ingredients) {
-                        ingredients[cat].forEach(ing => {
-                            if (menuText.includes(ing)) list[cat].push({ name: ing, checked: false });
+                    (data || []).forEach(row => {
+                        const cat = row.baby_ingredients.category;
+                        if (list[cat]) list[cat].push({
+                            id: row.id, ingredient_id: row.ingredient_id,
+                            name: row.baby_ingredients.name, checked: row.checked
                         });
-                    }
-                    return list;
-                });
+                    });
+                    shoppingList.value = list;
+                };
 
-                const triggerManualReplace = (oldItem, cat) => {
-                    const newItem = prompt(`把 [${oldItem}] 替换成：`, "");
-                    if (newItem && newItem.trim()) {
-                        weeklyMenu.value = weeklyMenu.value.map(d => ({
-                            ...d,
-                            breakfast: d.breakfast.replace(new RegExp(oldItem, 'g'), newItem),
-                            lunch: d.lunch.replace(new RegExp(oldItem, 'g'), newItem),
-                            dinner: d.dinner.replace(new RegExp(oldItem, 'g'), newItem),
-                            fruit: d.fruit.replace(new RegExp(oldItem, 'g'), newItem),
-                        }));
-                        if (!ingredients[cat].includes(newItem)) ingredients[cat].push(newItem);
+                const toggleGroceryCheck = async (item) => {
+                    if (!db) return;
+                    item.checked = !item.checked;
+                    await db.from('baby_grocery').update({ checked: item.checked }).eq('id', item.id);
+                };
+
+                const triggerGroceryReplace = (item) => {
+                    const cat = Object.keys(ingredients).find(k => ingredients[k].some(i => i.id === item.ingredient_id));
+                    replaceModal.candidates = (ingredients[cat] || []).filter(i => i.id !== item.ingredient_id);
+                    replaceModal.item = item;
+                    replaceModal.oldName = item.name;
+                    replaceModal.show = true;
+                };
+
+                const confirmGroceryReplace = async (newIng) => {
+                    if (!db) return;
+                    const item = replaceModal.item;
+                    replaceModal.show = false;
+                    syncStatus.value = 'syncing';
+                    const oldIngId = item.ingredient_id;
+                    // Update all menu_items referencing old ingredient in current menus
+                    const menuIds = weeklyMenu.value.map(m => m.id);
+                    await db.from('baby_menu_items').update({ ingredient_id: newIng.id }).in('menu_id', menuIds).eq('ingredient_id', oldIngId);
+                    // Update grocery item
+                    await db.from('baby_grocery').update({ ingredient_id: newIng.id }).eq('id', item.id);
+                    // Reload menus and grocery
+                    await loadMenus();
+                    if (weeklyMenu.value.length > 0) await loadGrocery(weeklyMenu.value[0].date);
+                    showToast(`已将 ${item.name} 替换为 ${newIng.name}`, 'success');
+                    syncStatus.value = 'online';
+                };
+
+                // ========== Records ==========
+                const loadRecordByDate = async () => {
+                    if (!db) return;
+                    const { data: rec } = await db
+                        .from('baby_records')
+                        .select('*, baby_record_items(meal_type, ingredient_id, baby_ingredients(id, name))')
+                        .eq('date', recordForm.date)
+                        .maybeSingle();
+
+                    mealTypes.forEach(mt => { recordForm[mt] = []; });
+
+                    if (rec) {
+                        (rec.baby_record_items || []).forEach(item => {
+                            if (recordForm[item.meal_type]) {
+                                recordForm[item.meal_type].push({ id: item.baby_ingredients.id, name: item.baby_ingredients.name });
+                            }
+                        });
+                        lastSavedRecord.value = {
+                            id: rec.id,
+                            breakfast: [...recordForm.breakfast],
+                            lunch: [...recordForm.lunch],
+                            dinner: [...recordForm.dinner],
+                            fruit: [...recordForm.fruit]
+                        };
+                    } else {
+                        lastSavedRecord.value = { id: null, breakfast: [], lunch: [], dinner: [], fruit: [] };
                     }
                 };
 
-                // --- 记录核心逻辑 ---
-                const loadRecordByDate = () => {
-                    const found = history.value.find(h => h.date === recordForm.date);
-                    if (found) {
-                        recordForm.breakfast = found.breakfast;
-                        recordForm.lunch = found.lunch;
-                        recordForm.dinner = found.dinner;
-                        recordForm.fruit = found.fruit;
-                        lastSavedRecord.value = { ...found };
-                    } else {
-                        recordForm.breakfast = ''; recordForm.lunch = ''; recordForm.dinner = ''; recordForm.fruit = '';
-                        lastSavedRecord.value = { breakfast: '', lunch: '', dinner: '', fruit: '' };
-                    }
+                const toggleRecordIngredient = (mealKey, ing) => {
+                    const list = recordForm[mealKey];
+                    const idx = list.findIndex(i => i.id === ing.id);
+                    if (idx >= 0) list.splice(idx, 1);
+                    else list.push({ id: ing.id, name: ing.name });
                 };
 
                 const hasMealChanged = (mealKey) => {
                     if (!lastSavedRecord.value) return false;
-                    return recordForm[mealKey] !== lastSavedRecord.value[mealKey];
+                    const curr = recordForm[mealKey].map(i => i.id).sort().join(',');
+                    const saved = (lastSavedRecord.value[mealKey] || []).map(i => i.id).sort().join(',');
+                    return curr !== saved;
                 };
 
-                const saveSingleMeal = (mealKey) => {
-                    if (!hasMealChanged(mealKey)) return;
-                    const existingIdx = history.value.findIndex(h => h.date === recordForm.date);
-                    if (existingIdx >= 0) {
-                        history.value[existingIdx][mealKey] = recordForm[mealKey];
-                    } else {
-                        const newRec = { date: recordForm.date, breakfast: '', lunch: '', dinner: '', fruit: '' };
-                        newRec[mealKey] = recordForm[mealKey];
-                        history.value.push(newRec);
+                const saveSingleMeal = async (mealKey) => {
+                    if (!hasMealChanged(mealKey) || !db) return;
+                    syncStatus.value = 'syncing';
+
+                    let recordId = lastSavedRecord.value?.id;
+                    if (!recordId) {
+                        const { data, error } = await db.from('baby_records').insert({ date: recordForm.date }).select().single();
+                        if (error) { showToast('保存失败', 'error'); syncStatus.value = 'online'; return; }
+                        recordId = data.id;
+                        lastSavedRecord.value.id = recordId;
                     }
-                    lastSavedRecord.value[mealKey] = recordForm[mealKey];
-                    // 触发展示层刷新
-                    history.value = [...history.value];
+
+                    // Delete old items for this meal_type, then insert new
+                    await db.from('baby_record_items').delete().eq('record_id', recordId).eq('meal_type', mealKey);
+                    const items = recordForm[mealKey].map(ing => ({
+                        record_id: recordId, meal_type: mealKey, ingredient_id: ing.id
+                    }));
+                    if (items.length) {
+                        const { error } = await db.from('baby_record_items').insert(items);
+                        if (error) { showToast('保存失败', 'error'); syncStatus.value = 'online'; return; }
+                    }
+
+                    lastSavedRecord.value[mealKey] = [...recordForm[mealKey]];
+                    showToast(mealConfig.find(m => m.key === mealKey).label + ' 已保存', 'success');
+                    syncStatus.value = 'online';
                 };
 
-                const saveRecord = () => {
-                    const existingIdx = history.value.findIndex(h => h.date === recordForm.date);
-                    const fullData = { ...recordForm };
-                    if (existingIdx >= 0) history.value[existingIdx] = fullData;
-                    else history.value.push(fullData);
-                    lastSavedRecord.value = { ...fullData };
-                    alert('全天记录已更新');
+                const saveRecord = async () => {
+                    if (!db) return;
+                    syncStatus.value = 'syncing';
+
+                    let recordId = lastSavedRecord.value?.id;
+                    if (!recordId) {
+                        const { data, error } = await db.from('baby_records').upsert({ date: recordForm.date }, { onConflict: 'date' }).select().single();
+                        if (error) { showToast('保存失败', 'error'); syncStatus.value = 'online'; return; }
+                        recordId = data.id;
+                    }
+
+                    // Clear all items for this record and re-insert
+                    await db.from('baby_record_items').delete().eq('record_id', recordId);
+                    const items = [];
+                    mealTypes.forEach(mt => {
+                        recordForm[mt].forEach(ing => {
+                            items.push({ record_id: recordId, meal_type: mt, ingredient_id: ing.id });
+                        });
+                    });
+                    if (items.length) {
+                        const { error } = await db.from('baby_record_items').insert(items);
+                        if (error) { showToast('保存失败', 'error'); syncStatus.value = 'online'; return; }
+                    }
+
+                    lastSavedRecord.value = {
+                        id: recordId,
+                        breakfast: [...recordForm.breakfast], lunch: [...recordForm.lunch],
+                        dinner: [...recordForm.dinner], fruit: [...recordForm.fruit]
+                    };
+                    showToast('全天记录已保存', 'success');
+                    syncStatus.value = 'online';
                 };
 
                 const importFromMenu = () => {
                     const plan = weeklyMenu.value.find(m => m.date === recordForm.date);
-                    if (plan) {
-                        recordForm.breakfast = plan.breakfast;
-                        recordForm.lunch = plan.lunch;
-                        recordForm.dinner = plan.dinner;
-                        recordForm.fruit = plan.fruit;
-                    } else alert('未找到当日计划');
+                    if (!plan) { showToast('未找到当日计划', 'error'); return; }
+                    mealTypes.forEach(mt => {
+                        recordForm[mt] = (plan[mt] || []).map(item => {
+                            const name = typeof item === 'object' ? item.name : item;
+                            const found = allIngredientsList.value.find(i => i.name === name);
+                            return found ? { id: found.id, name: found.name } : null;
+                        }).filter(Boolean);
+                    });
+                    showToast('已导入排餐计划', 'success');
                 };
 
+                // ========== History (lazy loading) ==========
+                const parseRecords = (data) => (data || []).map(rec => {
+                    const grouped = { breakfast: [], lunch: [], dinner: [], fruit: [] };
+                    (rec.baby_record_items || []).forEach(item => {
+                        if (grouped[item.meal_type]) grouped[item.meal_type].push(item.baby_ingredients.name);
+                    });
+                    return {
+                        id: rec.id, date: rec.date,
+                        breakfastNames: grouped.breakfast.join(', '),
+                        lunchNames: grouped.lunch.join(', '),
+                        dinnerNames: grouped.dinner.join(', '),
+                        fruitNames: grouped.fruit.join(', ')
+                    };
+                });
+
+                const loadHistory = async () => {
+                    if (!db) return;
+                    historyLoading.value = true;
+                    syncStatus.value = 'syncing';
+                    historyRecords.value = [];
+                    const { data, error } = await db
+                        .from('baby_records')
+                        .select('*, baby_record_items(meal_type, baby_ingredients(name))')
+                        .order('date', { ascending: false })
+                        .range(0, historyPageSize - 1);
+                    if (error) { showToast('加载历史失败', 'error'); syncStatus.value = 'online'; historyLoading.value = false; return; }
+                    historyRecords.value = parseRecords(data);
+                    hasMoreHistory.value = (data || []).length >= historyPageSize;
+                    syncStatus.value = 'online';
+                    historyLoading.value = false;
+                };
+
+                const loadMoreHistory = async () => {
+                    if (!db || historyLoading.value) return;
+                    historyLoading.value = true;
+                    syncStatus.value = 'syncing';
+                    const from = historyRecords.value.length;
+                    const { data, error } = await db
+                        .from('baby_records')
+                        .select('*, baby_record_items(meal_type, baby_ingredients(name))')
+                        .order('date', { ascending: false })
+                        .range(from, from + historyPageSize - 1);
+                    if (error) { showToast('加载失败', 'error'); syncStatus.value = 'online'; historyLoading.value = false; return; }
+                    const newRecords = parseRecords(data);
+                    historyRecords.value.push(...newRecords);
+                    hasMoreHistory.value = (data || []).length >= historyPageSize;
+                    syncStatus.value = 'online';
+                    historyLoading.value = false;
+                };
+
+                const sortedHistory = computed(() => historyRecords.value);
+
+                const deleteRecord = async (record) => {
+                    if (!confirm('确定删除？') || !db) return;
+                    syncStatus.value = 'syncing';
+                    await db.from('baby_records').delete().eq('id', record.id);
+                    historyRecords.value = historyRecords.value.filter(h => h.id !== record.id);
+                    showToast('已删除', 'success');
+                    syncStatus.value = 'online';
+                };
+
+                // ========== Stats (RPC) ==========
+                const loadStats = async () => {
+                    if (!db) return;
+                    statsLoading.value = true;
+                    statsVisibleCount.value = 5;
+                    const now = new Date();
+                    let dateFrom;
+                    if (statsRange.value === 'week') {
+                        dateFrom = new Date(now.getTime() - 7 * 86400000);
+                    } else if (statsRange.value === 'month') {
+                        dateFrom = new Date(now.getFullYear(), now.getMonth(), 1);
+                    } else {
+                        dateFrom = new Date(now.getFullYear(), 0, 1);
+                    }
+                    const { data, error } = await db.rpc('get_ingredient_stats', {
+                        date_from: dateFrom.toISOString().split('T')[0],
+                        date_to: now.toISOString().split('T')[0]
+                    });
+                    if (error) {
+                        ingredientStats.value = [];
+                        statsLoading.value = false;
+                        return;
+                    }
+                    ingredientStats.value = data || [];
+                    statsLoading.value = false;
+                };
+
+                // ========== Helpers ==========
                 const getDayOfWeek = (dateStr) => {
                     const days = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
                     return days[new Date(dateStr).getDay()];
                 };
 
-                const deleteRecord = (date) => {
-                    if(confirm('确定删除？')) history.value = history.value.filter(h => h.date !== date);
-                };
-
-                const ingredientStats = computed(() => {
-                    const counts = {};
-                    const allText = history.value.map(h => `${h.breakfast}${h.lunch}${h.dinner}${h.fruit}`).join('');
-                    Object.values(ingredients).flat().forEach(ing => {
-                        const m = allText.match(new RegExp(ing, 'g'));
-                        if (m) counts[ing] = m.length;
-                    });
-                    return Object.fromEntries(Object.entries(counts).sort(([,a],[,b]) => b - a));
+                // ========== Init ==========
+                onMounted(async () => {
+                    const ok = initSupabase();
+                    if (ok) {
+                        await loadIngredients();
+                        await loadMenus();
+                        // Load grocery for current week start
+                        if (weeklyMenu.value.length > 0) {
+                            await loadGrocery(weeklyMenu.value[0].date);
+                        }
+                        loadRecordByDate();
+                    } else {
+                        showToast('Supabase 未配置', 'error');
+                    }
                 });
 
                 return {
-                    tabs, currentTab, currentTabName, categoryNames, categoryIcons,
-                    ingredients, newIngredients, addIngredient, removeIngredient,
-                    weeklyMenu, generateMenu, getDayOfWeek,
-                    shoppingList, triggerManualReplace,
-                    recordForm, saveRecord, importFromMenu, loadRecordByDate,
-                    mealConfig, saveSingleMeal, hasMealChanged,
-                    sortedHistory: computed(() => [...history.value].sort((a,b) => new Date(b.date)-new Date(a.date))),
-                    deleteRecord, statsRange, ingredientStats
+                    tabs, currentTab, currentTabName, switchTab,
+                    categoryNames, categoryIcons, syncStatus, toast,
+                    ingredients, allIngredientsList, newIngredients, addIngredient, removeIngredient,
+                    weeklyMenu, generateMenu, getDayOfWeek, formatMealDisplay, menuDayCount,
+                    shoppingList, toggleGroceryCheck, triggerGroceryReplace,
+                    replaceModal, confirmGroceryReplace,
+                    recordForm, mealConfig, toggleRecordIngredient,
+                    openPicker, togglePickerCat,
+                    saveSingleMeal, hasMealChanged, saveRecord,
+                    importFromMenu, loadRecordByDate,
+                    sortedHistory, deleteRecord, loadMoreHistory,
+                    historyLoading, hasMoreHistory, historyRecords,
+                    statsRange, ingredientStats, loadStats,
+                    visibleStats, hasMoreStats, showMoreStats, statsLoading
                 }
             }
         }).mount('#app')
     </script>
-
 </body>
 </html>

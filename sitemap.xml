@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://esther.fun/babyfood.html</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://esther.fun/reading.html</loc>
     
     <lastmod>2026-04-16</lastmod>
@@ -20,15 +29,6 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/tech.html</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://esther.fun/thinking.html</loc>
     
     <lastmod>2026-04-16</lastmod>
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/tags/index.html</loc>
+    <loc>https://esther.fun/tech.html</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -56,7 +56,25 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/babyfood.html</loc>
+    <loc>https://esther.fun/tags/index.html</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/thinking/reflection-on-an-internal-interview/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -83,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/books/index.html</loc>
+    <loc>https://esther.fun/about/index.html</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -92,7 +110,16 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/media/index.html</loc>
+    <loc>https://esther.fun/algorithm/index.html</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/books/index.html</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -110,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/thinking/reflection-on-an-internal-interview/</loc>
+    <loc>https://esther.fun/media/index.html</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -146,15 +173,6 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/tech/git-note/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://esther.fun/tech/dp/</loc>
     
     <lastmod>2026-04-16</lastmod>
@@ -164,7 +182,16 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/tech/graph/</loc>
+    <loc>https://esther.fun/tech/git-note/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/binary-search/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -209,7 +236,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/tech/meet-data-stucture/</loc>
+    <loc>https://esther.fun/tech/graph/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -218,7 +245,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/tech/meta-coding-questions/</loc>
+    <loc>https://esther.fun/tech/meet-data-stucture/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -236,16 +263,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/tech/python-corner-questions/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/quickselect/</loc>
+    <loc>https://esther.fun/tech/meta-coding-questions/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -281,34 +299,25 @@
   </url>
   
   <url>
+    <loc>https://esther.fun/tech/python-corner-questions/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/quickselect/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://esther.fun/tech/union-find-set/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/about/index.html</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/algorithm/index.html</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -335,7 +344,70 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/tech/binary-search/</loc>
+    <loc>https://esther.fun/reading/wo-bu-shi-jiao-ni-zha/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/xue-xiao-mei-jiao-dan-yi-ding-yao-dong-de-jin-qian-guan/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/skills/pitch-building-blocks/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/hello-everyone/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/notes/change-ci-from-travis-to-github-actions/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/life/2015-life-target/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/life/hun-li-zong-jie/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/average-score/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -371,15 +443,6 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/reading/how-to-read-a-book/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://esther.fun/reading/ha-ma-xian-sheng-qu-kan-xin-li-yi-sheng/</loc>
     
     <lastmod>2026-04-16</lastmod>
@@ -389,7 +452,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/reading/ji-xian-lin-tan-ren-shen/</loc>
+    <loc>https://esther.fun/reading/how-to-read-a-book/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -407,7 +470,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/reading/journaling-and-notes-0/</loc>
+    <loc>https://esther.fun/reading/ji-xian-lin-tan-ren-shen/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -416,7 +479,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/reading/journaling-and-notes-2/</loc>
+    <loc>https://esther.fun/reading/journaling-and-notes-0/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -434,16 +497,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/reading/journaling-and-notes-3/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/journaling-and-notes-4/</loc>
+    <loc>https://esther.fun/reading/journaling-and-notes-2/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -461,16 +515,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/reading/poor-charlies-almanack/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/the-complete-software-developers-career-guide/</loc>
+    <loc>https://esther.fun/reading/journaling-and-notes-4/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -480,6 +525,24 @@
   
   <url>
     <loc>https://esther.fun/reading/nju-readings-part1/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/poor-charlies-almanack/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/journaling-and-notes-3/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -506,70 +569,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/reading/xue-xiao-mei-jiao-dan-yi-ding-yao-dong-de-jin-qian-guan/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/wo-bu-shi-jiao-ni-zha/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/skills/pitch-building-blocks/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/hello-everyone/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/life/2015-life-target/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/life/hun-li-zong-jie/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/notes/change-ci-from-travis-to-github-actions/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/reading/average-score/</loc>
+    <loc>https://esther.fun/reading/the-complete-software-developers-career-guide/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -596,13 +596,6 @@
 
   
   <url>
-    <loc>https://esther.fun/tags/Life/</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://esther.fun/tags/Notes/</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -624,6 +617,13 @@
   </url>
   
   <url>
+    <loc>https://esther.fun/tags/Life/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://esther.fun/tags/Reading/</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -639,20 +639,6 @@
   
   <url>
     <loc>https://esther.fun/tags/Journaling/</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tags/Skills/</loc>
-    <lastmod>2026-04-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tags/Thinking/</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -702,6 +688,20 @@
   
   <url>
     <loc>https://esther.fun/tags/Meaningless/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tags/Skills/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tags/Thinking/</loc>
     <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
