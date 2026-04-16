@@ -124,7 +124,7 @@
       },
       search: {
         enable: true,
-        path: 'search.xml'
+        path: 'search.json'
       }
     }
   </script>
@@ -363,81 +363,116 @@
 
 
 
-  <script>
-  $.getScript("//cdn.jsdelivr.net/npm/leancloud-storage@4.1.0/dist/av-min.js", () => {
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  (async () => {
+    const supabaseUrl = 'https://qnqtvyoygcxcfoucmwol.supabase.co';
+    const supabaseKey = 'sb_secret_x3piGUS5YppgXEOOOWRg2g_hJsrtVNQ';
+    const { createClient } = window.supabase;
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
-    AV.init({
-      appId: 'LzDvSNvJwG4yB9zo6BUOTPqv-gzGzoHsz',
-      appKey: 'QgDzi8p6RWJYvOSHQeGCjBnH',
-      serverURLs: 'https://leancloud.cn/',
-    });
-
-    const Counter = AV.Object.extend("Counter");
-    const Like = AV.Object.extend("Like");
-
-    const showCount = (Counter) => {
+    const showCount = async () => {
       const asyncLimit = new AsyncLimit(2);
-      $(".leancloud-counter").each(async (e) => {
-        const url = $(".leancloud-counter").eq(e).attr('id').trim();
-        const query = new AV.Query("Counter");
-        query.equalTo("words", url);
-        let count = await asyncLimit.run(() => query.count());
-        $(".leancloud-counter").eq(e).text(count ? count : 0);
+      $(".supabase-counter").each(async (e) => {
+        const url = $(".supabase-counter").eq(e).attr('id').trim();
+        try {
+          const { data, error } = await supabase
+            .from('counter')
+            .select('*')
+            .eq('url', url);
+          
+          const count = data && data.length > 0 ? data[0].count : 0;
+          $(".supabase-counter").eq(e).text(count);
+        } catch (err) {
+          console.error('Error fetching counter:', err);
+          $(".supabase-counter").eq(e).text(0);
+        }
       });
     }
 
-    const addCount = (Counter) => {
-      const url = $(".leancloud-counter").length === 1 ? $(".leancloud-counter").attr('id').trim() : 'https://esther.fun';
-      var query = new Counter;
-      query.save({
-        words: url
-      });
+    const addCount = async () => {
+      const url = $(".supabase-counter").length === 1 ? $(".supabase-counter").attr('id').trim() : 'https://esther.fun';
+      try {
+        const { data: existingData } = await supabase
+          .from('counter')
+          .select('count')
+          .eq('url', url)
+          .single();
+
+        if (existingData) {
+          await supabase
+            .from('counter')
+            .update({ count: existingData.count + 1 })
+            .eq('url', url);
+        } else {
+          await supabase
+            .from('counter')
+            .insert({ url: url, count: 1 });
+        }
+      } catch (err) {
+        console.error('Error updating counter:', err);
+      }
     }
 
-    const showLike = (Like) => {
+    const showLike = async () => {
       const asyncLimit = new AsyncLimit(2);
-      $(".leancloud-like").each(async (e) => {
-        const url = $(".leancloud-like").eq(e).attr('id').trim();
-        const query = new AV.Query("Like");
-        query.equalTo("path", url);
-        let count = await asyncLimit.run(() => query.count());
-        $(".leancloud-like").eq(e).text(count ? count : 0);
+      $(".supabase-like").each(async (e) => {
+        const url = $(".supabase-like").eq(e).attr('id').trim();
+        try {
+          const { data } = await supabase
+            .from('likes')
+            .select('*')
+            .eq('url', url);
+          
+          const count = data ? data.length : 0;
+          $(".supabase-like").eq(e).text(count);
+          
+          if (count > 0) {
+            $(".supabase-like").eq(e).siblings(".icon-like").addClass('islike');
+          }
+        } catch (err) {
+          console.error('Error fetching likes:', err);
+          $(".supabase-like").eq(e).text(0);
+        }
       });
     }
 
-    const addLike = (Like) => {
-      const url = $(".leancloud-like").length === 1 ? $(".leancloud-like").attr('id').trim() : 'https://esther.fun';
-      var query = new Like;
-      query.save({
-        path: url,
-        nickName: 'Anonymous'
-      });
-      $(".leancloud-like").addClass('islike');
-      $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
-      ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
-      setTimeout(() => showLike(Like), 1000);
+    const addLike = async () => {
+      const url = $(".supabase-like").length === 1 ? $(".supabase-like").attr('id').trim() : 'https://esther.fun';
+      try {
+        await supabase
+          .from('likes')
+          .insert({ url: url, timestamp: new Date().toISOString() });
+        
+        $(".supabase-like").addClass('islike');
+        $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+        ZHAOO.zui.message({ text: '谢谢赏识！', type: 'success' });
+        setTimeout(() => showLike(), 1000);
+      } catch (err) {
+        console.error('Error adding like:', err);
+      }
     }
 
     const handleLikeClick = () => {
-      const isLike = $(".leancloud-like").length === 1 && $(".leancloud-like").hasClass('islike') ? true : false;
+      const isLike = $(".supabase-like").length === 1 && $(".supabase-like").siblings(".icon-like").hasClass('islike') ? true : false;
       if (isLike) {
         ZHAOO.zui.message({ text: '小心心不可以收回呢~', type: 'warning' });
       } else {
-        addLike(Like);
+        addLike();
       }
     }
 
     $(function () {
-      addCount(Counter);
-      showCount(Counter);
-      showLike(Like);
+      addCount();
+      showCount();
+      showLike();
       $(".icon-like").on("click", function () {
         handleLikeClick();
       });
     });
-
-  });
+  })();
 </script>
+
 
 
 
