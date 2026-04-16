@@ -63,7 +63,10 @@
                         <select v-model="menuDayCount" class="text-xs bg-slate-100 border-none rounded-xl px-2 py-2.5 font-bold text-slate-500">
                             <option v-for="n in 7" :key="n" :value="n">{{ n }}天</option>
                         </select>
-                        <button @click="generateMenu" class="bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg active:scale-95 transition">✨ 智能排餐</button>
+                        <button @click="generateMenuAI" :disabled="aiGenerating" class="bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg active:scale-95 transition disabled:opacity-50">
+                            <span v-if="aiGenerating">🧠 思考中...</span>
+                            <span v-else>✨ 智能排餐</span>
+                        </button>
                     </div>
                 </div>
 
@@ -306,7 +309,8 @@
                 const allIngredientsList = computed(() => Object.values(ingredients).flat());
                 const newIngredients = reactive({ vegetables: '', fruits: '', staples: '', meats: '' });
                 const weeklyMenu = ref([]);
-                const menuDayCount = ref(7);
+                const menuDayCount = ref(5);
+                const aiGenerating = ref(false);
                 const historyRecords = ref([]);
                 const historyLoading = ref(false);
                 const hasMoreHistory = ref(true);
@@ -477,6 +481,76 @@
                     // Auto-generate grocery list
                     await generateGroceryList(dates[0]);
                     showToast('排餐完成！', 'success');
+                    syncStatus.value = 'online';
+                };
+
+                // ========== AI Menu Generation ==========
+                const generateMenuAI = async () => {
+                    if (!db) return;
+                    aiGenerating.value = true;
+                    syncStatus.value = 'syncing';
+
+                    try {
+                        const { data: aiResult, error } = await db.functions.invoke('smooth-action', {
+                            body: {
+                                days: menuDayCount.value
+                            }
+                        });
+
+                        if (error || !aiResult?.plan) {
+                            const errMsg = aiResult?.error || (error?.message) || 'AI排餐失败';
+                            showToast(errMsg, 'error');
+                            console.error('AI response:', aiResult, error);
+                            aiGenerating.value = false;
+                            syncStatus.value = 'online';
+                            return;
+                        }
+
+                        // Convert AI plan to menu format and save
+                        const today = new Date();
+                        const menuDays = aiResult.plan.slice(0, menuDayCount.value).map((day, i) => {
+                            const d = new Date(today); d.setDate(today.getDate() + i);
+                            const dateStr = d.toISOString().split('T')[0];
+                            const resolve = (name) => {
+                                const found = allIngredientsList.value.find(ig => ig.name === name);
+                                return found || null;
+                            };
+                            const makeMeal = (meal) => {
+                                if (!meal) return [];
+                                return [resolve(meal.meats), resolve(meal.vegetables), resolve(meal.staples)].filter(Boolean);
+                            };
+                            return {
+                                date: dateStr,
+                                breakfast: makeMeal(day.breakfast),
+                                lunch: makeMeal(day.lunch),
+                                dinner: makeMeal(day.dinner),
+                                fruit: [resolve(day.fruit)].filter(Boolean)
+                            };
+                        });
+
+                        // Save to DB
+                        const dates = menuDays.map(m => m.date);
+                        await db.from('baby_menus').delete().in('date', dates);
+
+                        for (const day of menuDays) {
+                            const { data: menu, error } = await db.from('baby_menus').insert({ date: day.date }).select().single();
+                            if (error) continue;
+                            const items = [];
+                            mealTypes.forEach(mt => {
+                                (day[mt] || []).forEach(ing => {
+                                    items.push({ menu_id: menu.id, meal_type: mt, ingredient_id: ing.id });
+                                });
+                            });
+                            if (items.length) await db.from('baby_menu_items').insert(items);
+                        }
+
+                        await loadMenus();
+                        await generateGroceryList(dates[0]);
+                        showToast('AI排餐完成！', 'success');
+                    } catch (e) {
+                        showToast('AI排餐出错: ' + (e.message || '网络异常'), 'error');
+                    }
+                    aiGenerating.value = false;
                     syncStatus.value = 'online';
                 };
 
@@ -768,7 +842,8 @@
                 // ========== Helpers ==========
                 const getDayOfWeek = (dateStr) => {
                     const days = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-                    return days[new Date(dateStr).getDay()];
+                    const [y, m, d] = dateStr.split('-').map(Number);
+                    return days[new Date(y, m - 1, d).getDay()];
                 };
 
                 // ========== Init ==========
@@ -791,7 +866,7 @@
                     tabs, currentTab, currentTabName, switchTab,
                     categoryNames, categoryIcons, syncStatus, toast,
                     ingredients, allIngredientsList, newIngredients, addIngredient, removeIngredient,
-                    weeklyMenu, generateMenu, getDayOfWeek, formatMealDisplay, menuDayCount,
+                    weeklyMenu, generateMenu, generateMenuAI, aiGenerating, getDayOfWeek, formatMealDisplay, menuDayCount,
                     shoppingList, toggleGroceryCheck, triggerGroceryReplace,
                     replaceModal, confirmGroceryReplace,
                     recordForm, mealConfig, toggleRecordIngredient,
