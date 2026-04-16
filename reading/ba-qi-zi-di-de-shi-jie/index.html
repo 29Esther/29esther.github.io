@@ -241,7 +241,7 @@
         
   <nav class="nav">
     <a href="/reading/ji-xian-lin-tan-ren-shen/"><i class="iconfont iconleft"></i>季羡林谈人生</a>
-    <a href="/tech/heap/">Heap 堆（优先队列）<i class="iconfont iconright"></i></a>
+    <a href="/tech/graph/">Graph 图<i class="iconfont iconright"></i></a>
   </nav>
 
       </section>
@@ -456,7 +456,7 @@
         try {
           await supabase
             .from('likes')
-            .insert({ url: url, timestamp: new Date().toISOString() });
+            .insert({ url: url });
           
           $(".supabase-like").addClass('islike');
           $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");

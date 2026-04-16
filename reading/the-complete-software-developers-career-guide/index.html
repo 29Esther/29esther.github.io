@@ -456,7 +456,7 @@
         try {
           await supabase
             .from('likes')
-            .insert({ url: url, timestamp: new Date().toISOString() });
+            .insert({ url: url });
           
           $(".supabase-like").addClass('islike');
           $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
