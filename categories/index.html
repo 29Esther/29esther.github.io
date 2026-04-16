@@ -373,7 +373,12 @@
       
       console.log('Initializing Supabase with URL:', supabaseUrl);
       
-      const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+      const supabase = window.supabase.createClient(supabaseUrl, supabaseKey, {
+        headers: {
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+        }
+      });
 
       const showCount = async () => {
         const asyncLimit = new AsyncLimit(2);
