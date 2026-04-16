@@ -351,8 +351,10 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  if (!window.SUPABASE_LOADED) {
+  (function() {
+    if (window.SUPABASE_LOADED) return;
     window.SUPABASE_LOADED = true;
+    
     const supabaseUrl = 'https://qnqtvyoygcxcfoucmwol.supabase.co';
     const supabaseKey = 'sb_secret_x3piGUS5YppgXEOOOWRg2g_hJsrtVNQ';
     const { createClient } = window.supabase;
@@ -457,7 +459,7 @@
       handleLikeClick();
     });
   });
-  }
+  })();
 </script>
 
 
