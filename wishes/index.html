@@ -450,12 +450,13 @@
         $(".supabase-counter").each(async (e) => {
           const url = $(".supabase-counter").eq(e).attr('id').trim();
           try {
-            const { count, error } = await supabase
+            const { data, error } = await supabase
               .from('counter')
-              .select('*', { count: 'exact' })
+              .select('count()', { count: 'exact' })
               .eq('url', url);
             
-            $(".supabase-counter").eq(e).text(count || 0);
+            const count = data && data.length > 0 ? data[0].count : 0;
+            $(".supabase-counter").eq(e).text(count);
           } catch (err) {
             console.error('Error fetching counter:', err);
             $(".supabase-counter").eq(e).text(0);
@@ -479,12 +480,14 @@
         $(".supabase-like").each(async (e) => {
           const url = $(".supabase-like").eq(e).attr('id').trim();
           try {
-            const { count, error } = await supabase
+            const { data, error } = await supabase
               .from('likes')
-              .select('*', { count: 'exact' })
+              .select('count()', { count: 'exact' })
               .eq('url', url);
             
-            $(".supabase-like").eq(e).text(count || 0);
+            const count = data && data.length > 0 ? data[0].count : 0;
+            $(".supabase-like").eq(e).text(count);
+            $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
             
             if (count > 0) {
               $(".supabase-like").eq(e).siblings(".icon-like").addClass('islike');
