@@ -387,13 +387,12 @@
         $(".supabase-counter").each(async (e) => {
           const url = $(".supabase-counter").eq(e).attr('id').trim();
           try {
-            const { data, error } = await supabase
+            const { count, error } = await supabase
               .from('counter')
-              .select('*')
+              .select('*', { count: 'exact' })
               .eq('url', url);
             
-            const count = data && data.length > 0 ? data[0].count : 0;
-            $(".supabase-counter").eq(e).text(count);
+            $(".supabase-counter").eq(e).text(count || 0);
           } catch (err) {
             console.error('Error fetching counter:', err);
             $(".supabase-counter").eq(e).text(0);
@@ -404,24 +403,11 @@
       const addCount = async () => {
         const url = $(".supabase-counter").length === 1 ? $(".supabase-counter").attr('id').trim() : 'https://esther.fun';
         try {
-          const { data: existingData } = await supabase
+          await supabase
             .from('counter')
-            .select('count')
-            .eq('url', url)
-            .single();
-
-          if (existingData) {
-            await supabase
-              .from('counter')
-              .update({ count: existingData.count + 1 })
-              .eq('url', url);
-          } else {
-            await supabase
-              .from('counter')
-              .insert({ url: url, count: 1 });
-          }
+            .insert({ url: url });
         } catch (err) {
-          console.error('Error updating counter:', err);
+          console.error('Error adding counter:', err);
         }
       }
 
@@ -430,13 +416,12 @@
         $(".supabase-like").each(async (e) => {
           const url = $(".supabase-like").eq(e).attr('id').trim();
           try {
-            const { data } = await supabase
+            const { count, error } = await supabase
               .from('likes')
-              .select('*')
+              .select('*', { count: 'exact' })
               .eq('url', url);
             
-            const count = data ? data.length : 0;
-            $(".supabase-like").eq(e).text(count);
+            $(".supabase-like").eq(e).text(count || 0);
             
             if (count > 0) {
               $(".supabase-like").eq(e).siblings(".icon-like").addClass('islike');
