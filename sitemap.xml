@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://esther.fun/websites/index.html</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://esther.fun/reading.html</loc>
     
     <lastmod>2026-04-16</lastmod>
@@ -39,24 +48,6 @@
   
   <url>
     <loc>https://esther.fun/tags/index.html</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/websites/index.html</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/thinking/reflection-on-an-internal-interview/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -120,33 +111,6 @@
   
   <url>
     <loc>https://esther.fun/media/index.html</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/skills/sap01/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/skills/texas-hold%E2%80%99em/</loc>
-    
-    <lastmod>2026-04-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://esther.fun/tech/binary-search/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -335,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://esther.fun/reading/nju-readings-part1/</loc>
+    <loc>https://esther.fun/thinking/reflection-on-an-internal-interview/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -399,6 +363,33 @@
   
   <url>
     <loc>https://esther.fun/skills/pitch-building-blocks/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/skills/sap01/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/skills/texas-hold%E2%80%99em/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/tech/binary-search/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
@@ -561,6 +552,15 @@
   
   <url>
     <loc>https://esther.fun/reading/my-life/</loc>
+    
+    <lastmod>2026-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://esther.fun/reading/nju-readings-part1/</loc>
     
     <lastmod>2026-04-16</lastmod>
     
