@@ -404,10 +404,11 @@
         $(".supabase-counter").each(async (e) => {
           const url = $(".supabase-counter").eq(e).attr('id').trim();
           try {
-            const { count, error } = await supabase
+            const { data, error, count } = await supabase
               .from('counter')
               .select('*', { count: 'exact' })
-              .eq('url', url);
+              .eq('url', url)
+              .range(0, 0);
             
             $(".supabase-counter").eq(e).text(count || 0);
           } catch (err) {
@@ -433,17 +434,16 @@
         $(".supabase-like").each(async (e) => {
           const url = $(".supabase-like").eq(e).attr('id').trim();
           try {
-            const { count, error } = await supabase
+            const { data, error, count } = await supabase
               .from('likes')
               .select('*', { count: 'exact' })
-              .eq('url', url);
+              .eq('url', url)
+              .range(0, 0);
             
             $(".supabase-like").eq(e).text(count || 0);
             
             if (count > 0) {
               $(".supabase-like").eq(e).siblings(".icon-like").addClass('islike');
-              $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
-
             }
           } catch (err) {
             console.error('Error fetching likes:', err);
