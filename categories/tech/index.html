@@ -266,14 +266,14 @@
             <h3 class="archive-year">2021 年</h3>
           
           <div class="archive-item">
-            <a class="archive-date" href="/tech/heap/">12/18</a>
-            <a class="archive-title" href="/tech/heap/">Heap 堆（优先队列）</a>
+            <a class="archive-date" href="/tech/graph/">12/18</a>
+            <a class="archive-title" href="/tech/graph/">Graph 图</a>
           </div>
         
           
           <div class="archive-item">
-            <a class="archive-date" href="/tech/graph/">12/18</a>
-            <a class="archive-title" href="/tech/graph/">Graph 图</a>
+            <a class="archive-date" href="/tech/heap/">12/18</a>
+            <a class="archive-title" href="/tech/heap/">Heap 堆（优先队列）</a>
           </div>
         
           
@@ -454,13 +454,12 @@
         $(".supabase-counter").each(async (e) => {
           const url = $(".supabase-counter").eq(e).attr('id').trim();
           try {
-            const { data, error } = await supabase
+            const { count, error } = await supabase
               .from('counter')
-              .select('count()', { count: 'exact' })
+              .select('*', { count: 'exact' })
               .eq('url', url);
             
-            const count = data && data.length > 0 ? data[0].count : 0;
-            $(".supabase-counter").eq(e).text(count);
+            $(".supabase-counter").eq(e).text(count || 0);
           } catch (err) {
             console.error('Error fetching counter:', err);
             $(".supabase-counter").eq(e).text(0);
@@ -484,17 +483,17 @@
         $(".supabase-like").each(async (e) => {
           const url = $(".supabase-like").eq(e).attr('id').trim();
           try {
-            const { data, error } = await supabase
+            const { count, error } = await supabase
               .from('likes')
-              .select('count()', { count: 'exact' })
+              .select('*', { count: 'exact' })
               .eq('url', url);
             
-            const count = data && data.length > 0 ? data[0].count : 0;
-            $(".supabase-like").eq(e).text(count);
-            $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+            $(".supabase-like").eq(e).text(count || 0);
             
             if (count > 0) {
               $(".supabase-like").eq(e).siblings(".icon-like").addClass('islike');
+              $(".icon-like").removeClass("iconheart").addClass("iconheart-fill").css("color", "#eb3223");
+
             }
           } catch (err) {
             console.error('Error fetching likes:', err);
