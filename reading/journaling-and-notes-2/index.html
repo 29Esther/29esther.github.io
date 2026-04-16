@@ -507,10 +507,14 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const supabaseUrl = 'https://qnqtvyoygcxcfoucmwol.supabase.co';
-  const supabaseKey = 'sb_secret_x3piGUS5YppgXEOOOWRg2g_hJsrtVNQ';
-  const { createClient } = window.supabase;
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  if (!window.SUPABASE_INSTANCE) {
+    const supabaseUrl = 'https://qnqtvyoygcxcfoucmwol.supabase.co';
+    const supabaseKey = 'sb_secret_x3piGUS5YppgXEOOOWRg2g_hJsrtVNQ';
+    const { createClient } = window.supabase;
+    window.SUPABASE_INSTANCE = createClient(supabaseUrl, supabaseKey);
+  }
+  
+  const supabase = window.SUPABASE_INSTANCE;
 
   const showCount = async () => {
     const asyncLimit = new AsyncLimit(2);

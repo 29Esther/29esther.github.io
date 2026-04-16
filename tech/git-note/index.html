@@ -205,7 +205,7 @@
           <i class="iconfont iconheart icon-like"></i><span id="/tech/git-note/" class="supabase-like" data-flag-title="Git Note"></span>
         </span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2743</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2747</span>
     </div>
   </div>
 </section>
@@ -217,7 +217,7 @@
       </section>
       <section class="content">
         
-        <p>git&#x2F;&#x2F;不知道有啥用<br>I309990@PVGN50896493A MINGW64 ~&#x2F;git<br>scp -p -P 29418 <a href="mailto:&#105;&#51;&#x30;&#x39;&#x39;&#x39;&#48;&#x40;&#x67;&#105;&#x74;&#x2e;&#119;&#x64;&#x66;&#46;&#x73;&#97;&#112;&#x2e;&#99;&#111;&#x72;&#112;">&#105;&#51;&#x30;&#x39;&#x39;&#x39;&#48;&#x40;&#x67;&#105;&#x74;&#x2e;&#119;&#x64;&#x66;&#46;&#x73;&#97;&#112;&#x2e;&#99;&#111;&#x72;&#112;</a>:hooks&#x2F;commit-msg i2d.qm.inspresults.records1&#x2F;.git&#x2F;hooks&#x2F;<br>commit-msg</p>
+        <p>git&#x2F;&#x2F;不知道有啥用<br>I309990@PVGN50896493A MINGW64 ~&#x2F;git<br>scp -p -P 29418 <a href="mailto:&#x69;&#x33;&#x30;&#x39;&#x39;&#x39;&#48;&#x40;&#x67;&#x69;&#116;&#x2e;&#119;&#x64;&#102;&#x2e;&#x73;&#x61;&#112;&#x2e;&#x63;&#x6f;&#x72;&#112;">&#x69;&#x33;&#x30;&#x39;&#x39;&#x39;&#48;&#x40;&#x67;&#x69;&#116;&#x2e;&#119;&#x64;&#102;&#x2e;&#x73;&#x61;&#112;&#x2e;&#x63;&#x6f;&#x72;&#112;</a>:hooks&#x2F;commit-msg i2d.qm.inspresults.records1&#x2F;.git&#x2F;hooks&#x2F;<br>commit-msg</p>
 <p>I309990@PVGN50896493A MINGW64 ~&#x2F;git&#x2F;2d.qm.inspresults.records1<br>&#x2F;&#x2F;查看状态<br>git status</p>
 <p>&#x2F;&#x2F;输出不同<br>git diff .&gt;tmp.patch</p>
 <p>&#x2F;&#x2F;加文件<br>git add &lt;文件&gt;</p>
@@ -404,10 +404,14 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const supabaseUrl = 'https://qnqtvyoygcxcfoucmwol.supabase.co';
-  const supabaseKey = 'sb_secret_x3piGUS5YppgXEOOOWRg2g_hJsrtVNQ';
-  const { createClient } = window.supabase;
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  if (!window.SUPABASE_INSTANCE) {
+    const supabaseUrl = 'https://qnqtvyoygcxcfoucmwol.supabase.co';
+    const supabaseKey = 'sb_secret_x3piGUS5YppgXEOOOWRg2g_hJsrtVNQ';
+    const { createClient } = window.supabase;
+    window.SUPABASE_INSTANCE = createClient(supabaseUrl, supabaseKey);
+  }
+  
+  const supabase = window.SUPABASE_INSTANCE;
 
   const showCount = async () => {
     const asyncLimit = new AsyncLimit(2);
