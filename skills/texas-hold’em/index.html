@@ -442,12 +442,7 @@
               .select('*', { count: 'exact' })
               .eq('url', url)
               .range(0, 0);
-            
             $(".supabase-like").eq(e).text(count || 0);
-            
-            if (count > 0) {
-              $(".supabase-like").eq(e).siblings(".icon-like").addClass('islike');
-            }
           } catch (err) {
             console.error('Error fetching likes:', err);
             $(".supabase-like").eq(e).text(0);

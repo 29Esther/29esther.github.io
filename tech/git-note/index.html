@@ -205,7 +205,7 @@
           <i class="iconfont iconheart icon-like"></i><span id="/tech/git-note/" class="supabase-like" data-flag-title="Git Note"></span>
         </span>
       
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2745</span>
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2742</span>
     </div>
   </div>
 </section>
@@ -217,7 +217,7 @@
       </section>
       <section class="content">
         
-        <p>git&#x2F;&#x2F;不知道有啥用<br>I309990@PVGN50896493A MINGW64 ~&#x2F;git<br>scp -p -P 29418 <a href="mailto:&#x69;&#x33;&#x30;&#x39;&#x39;&#x39;&#x30;&#64;&#103;&#105;&#116;&#46;&#x77;&#x64;&#102;&#46;&#115;&#x61;&#112;&#x2e;&#x63;&#111;&#x72;&#x70;">&#x69;&#x33;&#x30;&#x39;&#x39;&#x39;&#x30;&#64;&#103;&#105;&#116;&#46;&#x77;&#x64;&#102;&#46;&#115;&#x61;&#112;&#x2e;&#x63;&#111;&#x72;&#x70;</a>:hooks&#x2F;commit-msg i2d.qm.inspresults.records1&#x2F;.git&#x2F;hooks&#x2F;<br>commit-msg</p>
+        <p>git&#x2F;&#x2F;不知道有啥用<br>I309990@PVGN50896493A MINGW64 ~&#x2F;git<br>scp -p -P 29418 <a href="mailto:&#105;&#x33;&#x30;&#57;&#57;&#57;&#48;&#x40;&#x67;&#x69;&#116;&#x2e;&#119;&#x64;&#x66;&#46;&#x73;&#x61;&#x70;&#46;&#x63;&#x6f;&#114;&#x70;">&#105;&#x33;&#x30;&#57;&#57;&#57;&#48;&#x40;&#x67;&#x69;&#116;&#x2e;&#119;&#x64;&#x66;&#46;&#x73;&#x61;&#x70;&#46;&#x63;&#x6f;&#114;&#x70;</a>:hooks&#x2F;commit-msg i2d.qm.inspresults.records1&#x2F;.git&#x2F;hooks&#x2F;<br>commit-msg</p>
 <p>I309990@PVGN50896493A MINGW64 ~&#x2F;git&#x2F;2d.qm.inspresults.records1<br>&#x2F;&#x2F;查看状态<br>git status</p>
 <p>&#x2F;&#x2F;输出不同<br>git diff .&gt;tmp.patch</p>
 <p>&#x2F;&#x2F;加文件<br>git add &lt;文件&gt;</p>
@@ -467,12 +467,7 @@
               .select('*', { count: 'exact' })
               .eq('url', url)
               .range(0, 0);
-            
             $(".supabase-like").eq(e).text(count || 0);
-            
-            if (count > 0) {
-              $(".supabase-like").eq(e).siblings(".icon-like").addClass('islike');
-            }
           } catch (err) {
             console.error('Error fetching likes:', err);
             $(".supabase-like").eq(e).text(0);
