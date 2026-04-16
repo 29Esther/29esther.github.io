@@ -259,7 +259,7 @@
                 const syncStatus = ref('offline');
 
                 const initSupabase = () => {
-                    if (!SUPABASE_URL || SUPABASE_URL === 'https://qnqtvyoygcxcfoucmwol.supabase.co' || !window.supabase) {
+                    if (!SUPABASE_URL || !SUPABASE_URL.startsWith('https://') || !window.supabase) {
                         console.warn('Supabase not configured, using localStorage fallback');
                         return false;
                     }
